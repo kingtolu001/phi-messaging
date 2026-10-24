@@ -1,0 +1,453 @@
+﻿[
+    {
+        "file":  "docs/results/before-shared-v2-300-rate2.json",
+        "passed":  true,
+        "rate_scope":  "aggregate_across_workload_not_per_device",
+        "devices":  300,
+        "aggregate_sends_per_second":  2,
+        "min_resumed":  300,
+        "max_resumed":  300,
+        "expected":  12000,
+        "received":  12000,
+        "missing":  0,
+        "missing_warmup":  0,
+        "recipient_latency":  {
+                                  "samples":  12000,
+                                  "p50_ms":  446.1763,
+                                  "p95_ms":  936.839,
+                                  "p99_ms":  1199.6584,
+                                  "max_ms":  1800.3943
+                              },
+        "sender_ack_latency":  {
+                                   "samples":  40,
+                                   "p50_ms":  225.2329,
+                                   "p95_ms":  530.8486,
+                                   "p99_ms":  625.7779,
+                                   "max_ms":  625.7779
+                               },
+        "deliveries_per_second":  585.1907388981575,
+        "acknowledgements_per_second":  1.9506357963271916,
+        "connection_failures":  0,
+        "connection_retries":  0,
+        "http_attempt_errors":  0,
+        "unacknowledged":  0,
+        "queue_drops":  0,
+        "unscheduled":  0,
+        "duplicate_callbacks":  0,
+        "terminal_client_errors":  0,
+        "audit":  {
+                      "history_read_attempts":  1,
+                      "durable_rows":  50,
+                      "acknowledged_checked":  50,
+                      "missing_or_changed_acknowledged":  0,
+                      "unacknowledged_but_committed":  0
+                  },
+        "statements_per_second":  4950.297875331635,
+        "counter_window_seconds":  30.1763659,
+        "resource_sample_count":  5,
+        "apps_peak_cpu_percent":  243.17,
+        "apps_peak_memory_mib":  89.710000000000008,
+        "resource_peaks":  {
+                               "phi-messaging-app3-1":  {
+                                                            "cpu_percent":  93.41,
+                                                            "memory_mib":  33.2
+                                                        },
+                               "phi-messaging-app1-1":  {
+                                                            "cpu_percent":  80.5,
+                                                            "memory_mib":  27.92
+                                                        },
+                               "phi-messaging-app2-1":  {
+                                                            "cpu_percent":  85.26,
+                                                            "memory_mib":  29.77
+                                                        },
+                               "phi-messaging-postgres-1":  {
+                                                                "cpu_percent":  412.05,
+                                                                "memory_mib":  196.5
+                                                            },
+                               "phi-messaging-load-balancer-1":  {
+                                                                     "cpu_percent":  28.76,
+                                                                     "memory_mib":  18.14
+                                                                 },
+                               "phi-messaging-redis-1":  {
+                                                             "cpu_percent":  9.78,
+                                                             "memory_mib":  4.555
+                                                         }
+                           }
+    },
+    {
+        "file":  "docs/results/before-shared-v2-1000-rate2.json",
+        "passed":  false,
+        "rate_scope":  "aggregate_across_workload_not_per_device",
+        "devices":  1000,
+        "aggregate_sends_per_second":  2,
+        "min_resumed":  62,
+        "max_resumed":  1000,
+        "expected":  40000,
+        "received":  39983,
+        "missing":  17,
+        "missing_warmup":  0,
+        "recipient_latency":  {
+                                  "samples":  39983,
+                                  "p50_ms":  1928.0428,
+                                  "p95_ms":  4911.6488,
+                                  "p99_ms":  7889.3925,
+                                  "max_ms":  14902.8094
+                              },
+        "sender_ack_latency":  {
+                                   "samples":  40,
+                                   "p50_ms":  773.4588,
+                                   "p95_ms":  1608.6769,
+                                   "p99_ms":  3514.791,
+                                   "max_ms":  3514.791
+                               },
+        "deliveries_per_second":  1065.3054743264831,
+        "acknowledgements_per_second":  1.0657584216556868,
+        "connection_failures":  6202,
+        "connection_retries":  7340,
+        "http_attempt_errors":  0,
+        "unacknowledged":  0,
+        "queue_drops":  0,
+        "unscheduled":  0,
+        "duplicate_callbacks":  0,
+        "terminal_client_errors":  0,
+        "audit":  {
+                      "history_read_attempts":  5,
+                      "durable_rows":  0,
+                      "acknowledged_checked":  0,
+                      "missing_or_changed_acknowledged":  0,
+                      "unacknowledged_but_committed":  0,
+                      "error":  "request transport failure"
+                  },
+        "statements_per_second":  5572.808067490678,
+        "counter_window_seconds":  65.4788386,
+        "resource_sample_count":  8,
+        "apps_peak_cpu_percent":  311.06,
+        "apps_peak_memory_mib":  172.17,
+        "resource_peaks":  {
+                               "phi-messaging-app3-1":  {
+                                                            "cpu_percent":  111.44,
+                                                            "memory_mib":  57.33
+                                                        },
+                               "phi-messaging-app1-1":  {
+                                                            "cpu_percent":  111.63,
+                                                            "memory_mib":  62.85
+                                                        },
+                               "phi-messaging-app2-1":  {
+                                                            "cpu_percent":  107.42,
+                                                            "memory_mib":  56.34
+                                                        },
+                               "phi-messaging-postgres-1":  {
+                                                                "cpu_percent":  269.9,
+                                                                "memory_mib":  225.2
+                                                            },
+                               "phi-messaging-load-balancer-1":  {
+                                                                     "cpu_percent":  67.35,
+                                                                     "memory_mib":  47.83
+                                                                 },
+                               "phi-messaging-redis-1":  {
+                                                             "cpu_percent":  20.38,
+                                                             "memory_mib":  5.266
+                                                         }
+                           }
+    },
+    {
+        "file":  "docs/results/before-shared-v2-100-rate10.json",
+        "passed":  true,
+        "rate_scope":  "aggregate_across_workload_not_per_device",
+        "devices":  100,
+        "aggregate_sends_per_second":  10,
+        "min_resumed":  100,
+        "max_resumed":  100,
+        "expected":  20000,
+        "received":  20000,
+        "missing":  0,
+        "missing_warmup":  0,
+        "recipient_latency":  {
+                                  "samples":  20000,
+                                  "p50_ms":  1590.5883,
+                                  "p95_ms":  5276.0171,
+                                  "p99_ms":  9474.6517,
+                                  "max_ms":  10359.6399
+                              },
+        "sender_ack_latency":  {
+                                   "samples":  200,
+                                   "p50_ms":  1397.4416,
+                                   "p95_ms":  5230.3884,
+                                   "p99_ms":  8576.8515,
+                                   "max_ms":  9830.3298
+                               },
+        "deliveries_per_second":  732.3209940284971,
+        "acknowledgements_per_second":  7.323209940284971,
+        "connection_failures":  862,
+        "connection_retries":  866,
+        "http_attempt_errors":  11,
+        "unacknowledged":  0,
+        "queue_drops":  0,
+        "unscheduled":  0,
+        "duplicate_callbacks":  0,
+        "terminal_client_errors":  0,
+        "audit":  {
+                      "history_read_attempts":  1,
+                      "durable_rows":  250,
+                      "acknowledged_checked":  250,
+                      "missing_or_changed_acknowledged":  0,
+                      "unacknowledged_but_committed":  0
+                  },
+        "statements_per_second":  1928.0394010184575,
+        "counter_window_seconds":  64.5080178,
+        "resource_sample_count":  6,
+        "apps_peak_cpu_percent":  252.10999999999999,
+        "apps_peak_memory_mib":  93.300000000000011,
+        "resource_peaks":  {
+                               "phi-messaging-app3-1":  {
+                                                            "cpu_percent":  83.28,
+                                                            "memory_mib":  32.09
+                                                        },
+                               "phi-messaging-app1-1":  {
+                                                            "cpu_percent":  84.82,
+                                                            "memory_mib":  31.55
+                                                        },
+                               "phi-messaging-app2-1":  {
+                                                            "cpu_percent":  84.01,
+                                                            "memory_mib":  29.75
+                                                        },
+                               "phi-messaging-postgres-1":  {
+                                                                "cpu_percent":  494.52,
+                                                                "memory_mib":  205.1
+                                                            },
+                               "phi-messaging-load-balancer-1":  {
+                                                                     "cpu_percent":  20.25,
+                                                                     "memory_mib":  12.54
+                                                                 },
+                               "phi-messaging-redis-1":  {
+                                                             "cpu_percent":  9.59,
+                                                             "memory_mib":  4.918
+                                                         }
+                           }
+    },
+    {
+        "file":  "docs/results/after-shared-300-rate2.json",
+        "passed":  true,
+        "rate_scope":  "aggregate_across_workload_not_per_device",
+        "devices":  300,
+        "aggregate_sends_per_second":  2,
+        "min_resumed":  300,
+        "max_resumed":  300,
+        "expected":  12000,
+        "received":  12000,
+        "missing":  0,
+        "missing_warmup":  0,
+        "recipient_latency":  {
+                                  "samples":  12000,
+                                  "p50_ms":  92.4778,
+                                  "p95_ms":  223.0136,
+                                  "p99_ms":  319.404,
+                                  "max_ms":  647.1435
+                              },
+        "sender_ack_latency":  {
+                                   "samples":  40,
+                                   "p50_ms":  24.1606,
+                                   "p95_ms":  86.6523,
+                                   "p99_ms":  127.7594,
+                                   "max_ms":  127.7594
+                               },
+        "deliveries_per_second":  599.9828524900759,
+        "acknowledgements_per_second":  1.999942841633586,
+        "connection_failures":  0,
+        "connection_retries":  0,
+        "http_attempt_errors":  0,
+        "unacknowledged":  0,
+        "queue_drops":  0,
+        "unscheduled":  0,
+        "duplicate_callbacks":  0,
+        "terminal_client_errors":  0,
+        "audit":  {
+                      "history_read_attempts":  1,
+                      "durable_rows":  50,
+                      "acknowledged_checked":  50,
+                      "missing_or_changed_acknowledged":  0,
+                      "unacknowledged_but_committed":  0
+                  },
+        "statements_per_second":  428.08654398446464,
+        "counter_window_seconds":  32.4981016,
+        "resource_sample_count":  5,
+        "apps_peak_cpu_percent":  155.68,
+        "apps_peak_memory_mib":  45.36,
+        "resource_peaks":  {
+                               "phi-messaging-app3-1":  {
+                                                            "cpu_percent":  52.67,
+                                                            "memory_mib":  13.53
+                                                        },
+                               "phi-messaging-app1-1":  {
+                                                            "cpu_percent":  61.45,
+                                                            "memory_mib":  17.84
+                                                        },
+                               "phi-messaging-app2-1":  {
+                                                            "cpu_percent":  41.56,
+                                                            "memory_mib":  13.99
+                                                        },
+                               "phi-messaging-postgres-1":  {
+                                                                "cpu_percent":  61.14,
+                                                                "memory_mib":  78.48
+                                                            },
+                               "phi-messaging-load-balancer-1":  {
+                                                                     "cpu_percent":  45.12,
+                                                                     "memory_mib":  17.74
+                                                                 },
+                               "phi-messaging-redis-1":  {
+                                                             "cpu_percent":  22.74,
+                                                             "memory_mib":  4.875
+                                                         }
+                           }
+    },
+    {
+        "file":  "docs/results/after-shared-1000-rate2.json",
+        "passed":  false,
+        "rate_scope":  "aggregate_across_workload_not_per_device",
+        "devices":  1000,
+        "aggregate_sends_per_second":  2,
+        "min_resumed":  41,
+        "max_resumed":  994,
+        "expected":  40000,
+        "received":  16587,
+        "missing":  23413,
+        "missing_warmup":  4414,
+        "recipient_latency":  {
+                                  "samples":  16587,
+                                  "p50_ms":  17338.7163,
+                                  "p95_ms":  26190.0272,
+                                  "p99_ms":  28263.8892,
+                                  "max_ms":  30241.109
+                              },
+        "sender_ack_latency":  {
+                                   "samples":  19,
+                                   "p50_ms":  7589.9961,
+                                   "p95_ms":  13364.1021,
+                                   "p99_ms":  13364.1021,
+                                   "max_ms":  13364.1021
+                               },
+        "deliveries_per_second":  383.57238138254775,
+        "acknowledgements_per_second":  0.4393727163603067,
+        "connection_failures":  6582,
+        "connection_retries":  8663,
+        "http_attempt_errors":  98,
+        "unacknowledged":  26,
+        "queue_drops":  0,
+        "unscheduled":  0,
+        "duplicate_callbacks":  0,
+        "terminal_client_errors":  0,
+        "audit":  {
+                      "history_read_attempts":  1,
+                      "durable_rows":  25,
+                      "acknowledged_checked":  24,
+                      "missing_or_changed_acknowledged":  0,
+                      "unacknowledged_but_committed":  1
+                  },
+        "statements_per_second":  514.773070089605,
+        "counter_window_seconds":  95.9082805,
+        "resource_sample_count":  8,
+        "apps_peak_cpu_percent":  392.67,
+        "apps_peak_memory_mib":  104.59,
+        "resource_peaks":  {
+                               "phi-messaging-app3-1":  {
+                                                            "cpu_percent":  126.73,
+                                                            "memory_mib":  32.77
+                                                        },
+                               "phi-messaging-app1-1":  {
+                                                            "cpu_percent":  153.99,
+                                                            "memory_mib":  38.49
+                                                        },
+                               "phi-messaging-app2-1":  {
+                                                            "cpu_percent":  121.64,
+                                                            "memory_mib":  34.45
+                                                        },
+                               "phi-messaging-postgres-1":  {
+                                                                "cpu_percent":  693.07,
+                                                                "memory_mib":  197.3
+                                                            },
+                               "phi-messaging-load-balancer-1":  {
+                                                                     "cpu_percent":  106.32,
+                                                                     "memory_mib":  36.53
+                                                                 },
+                               "phi-messaging-redis-1":  {
+                                                             "cpu_percent":  33.24,
+                                                             "memory_mib":  7.051
+                                                         }
+                           }
+    },
+    {
+        "file":  "docs/results/after-shared-100-rate10.json",
+        "passed":  true,
+        "rate_scope":  "aggregate_across_workload_not_per_device",
+        "devices":  100,
+        "aggregate_sends_per_second":  10,
+        "min_resumed":  100,
+        "max_resumed":  100,
+        "expected":  20000,
+        "received":  20000,
+        "missing":  0,
+        "missing_warmup":  0,
+        "recipient_latency":  {
+                                  "samples":  20000,
+                                  "p50_ms":  64.67,
+                                  "p95_ms":  126.3204,
+                                  "p99_ms":  155.2487,
+                                  "max_ms":  242.8535
+                              },
+        "sender_ack_latency":  {
+                                   "samples":  200,
+                                   "p50_ms":  12.377,
+                                   "p95_ms":  36.052,
+                                   "p99_ms":  94.5525,
+                                   "max_ms":  109.9178
+                               },
+        "deliveries_per_second":  999.9828152953193,
+        "acknowledgements_per_second":  9.999828152953192,
+        "connection_failures":  0,
+        "connection_retries":  0,
+        "http_attempt_errors":  0,
+        "unacknowledged":  0,
+        "queue_drops":  0,
+        "unscheduled":  0,
+        "duplicate_callbacks":  0,
+        "terminal_client_errors":  0,
+        "audit":  {
+                      "history_read_attempts":  1,
+                      "durable_rows":  250,
+                      "acknowledged_checked":  250,
+                      "missing_or_changed_acknowledged":  0,
+                      "unacknowledged_but_committed":  0
+                  },
+        "statements_per_second":  451.5099155245785,
+        "counter_window_seconds":  30.85868,
+        "resource_sample_count":  5,
+        "apps_peak_cpu_percent":  106.24000000000001,
+        "apps_peak_memory_mib":  90.03,
+        "resource_peaks":  {
+                               "phi-messaging-app3-1":  {
+                                                            "cpu_percent":  32.69,
+                                                            "memory_mib":  27.47
+                                                        },
+                               "phi-messaging-app1-1":  {
+                                                            "cpu_percent":  33.87,
+                                                            "memory_mib":  28.8
+                                                        },
+                               "phi-messaging-app2-1":  {
+                                                            "cpu_percent":  45.98,
+                                                            "memory_mib":  34.82
+                                                        },
+                               "phi-messaging-postgres-1":  {
+                                                                "cpu_percent":  45.54,
+                                                                "memory_mib":  70.63
+                                                            },
+                               "phi-messaging-load-balancer-1":  {
+                                                                     "cpu_percent":  41.74,
+                                                                     "memory_mib":  12.51
+                                                                 },
+                               "phi-messaging-redis-1":  {
+                                                             "cpu_percent":  15.43,
+                                                             "memory_mib":  6.75
+                                                         }
+                           }
+    }
+]

@@ -1,0 +1,2 @@
+# Preserve reviewed source and generated artifact bytes, including evidence hashes.
+* -text

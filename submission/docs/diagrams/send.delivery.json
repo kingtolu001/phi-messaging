@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "619721f3-680a-4c12-bd8b-76218f9d0d98",
+  "status": "current",
+  "command": "deliver",
+  "type": "sequence",
+  "input": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\send.sequence.json",
+  "output": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\send.html",
+  "specification": {
+    "sha256": "4a97bceb91e065da5d6b8e0e08e08040ecbd766667a428bf54b2246b19fb64bd",
+    "bytes": 4917
+  },
+  "artifact": {
+    "sha256": "067bc545738680dd254fea43f974f885f145bae0fb4cd941cdc946a79c7c0b6c",
+    "bytes": 826134
+  }
+}

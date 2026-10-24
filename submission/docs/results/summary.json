@@ -1,0 +1,352 @@
+﻿[
+    {
+        "file":  "load-10-final.json",
+        "passed":  true,
+        "requested":  10,
+        "simultaneous_max":  10,
+        "min_during_measurement":  10,
+        "acknowledged":  40,
+        "expected":  400,
+        "received":  400,
+        "missing":  0,
+        "missing_warmup":  0,
+        "recipient_p50_ms":  64.5032,
+        "recipient_p95_ms":  129.4493,
+        "recipient_p99_ms":  174.88,
+        "ack_p99_ms":  89.1688,
+        "ack_per_second":  1.9999672205372554,
+        "deliveries_per_second":  19.99967220537255,
+        "connection_failures":  0,
+        "reconnect_retries":  0,
+        "http_errors":  0,
+        "message_errors":  0,
+        "queue_drops":  0,
+        "unscheduled":  0,
+        "cpu_samples_peak":  {
+                                 "phi-messaging-app3-1":  {
+                                                              "cpu_percent":  10.67,
+                                                              "memory_at_peak_cpu":  "8.602MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-app1-1":  {
+                                                              "cpu_percent":  8.28,
+                                                              "memory_at_peak_cpu":  "8.164MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-app2-1":  {
+                                                              "cpu_percent":  12.62,
+                                                              "memory_at_peak_cpu":  "8.988MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-postgres-1":  {
+                                                                  "cpu_percent":  24.3,
+                                                                  "memory_at_peak_cpu":  "64.39MiB / 7.449GiB"
+                                                              },
+                                 "phi-messaging-load-balancer-1":  {
+                                                                       "cpu_percent":  3.29,
+                                                                       "memory_at_peak_cpu":  "2.559MiB / 7.449GiB"
+                                                                   },
+                                 "phi-messaging-redis-1":  {
+                                                               "cpu_percent":  8.65,
+                                                               "memory_at_peak_cpu":  "3.68MiB / 7.449GiB"
+                                                           }
+                             }
+    },
+    {
+        "file":  "load-10.json",
+        "passed":  true,
+        "requested":  10,
+        "simultaneous_max":  10,
+        "min_during_measurement":  null,
+        "acknowledged":  41,
+        "expected":  410,
+        "received":  410,
+        "missing":  0,
+        "missing_warmup":  0,
+        "recipient_p50_ms":  49.3571,
+        "recipient_p95_ms":  110.0675,
+        "recipient_p99_ms":  139.1422,
+        "ack_p99_ms":  51.3459,
+        "ack_per_second":  2.0383905504589164,
+        "deliveries_per_second":  20.383905504589166,
+        "connection_failures":  0,
+        "reconnect_retries":  0,
+        "http_errors":  0,
+        "message_errors":  0,
+        "queue_drops":  0,
+        "unscheduled":  0,
+        "cpu_samples_peak":  {
+                                 "phi-messaging-app3-1":  {
+                                                              "cpu_percent":  10,
+                                                              "memory_at_peak_cpu":  "8.457MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-app1-1":  {
+                                                              "cpu_percent":  13.74,
+                                                              "memory_at_peak_cpu":  "7.633MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-app2-1":  {
+                                                              "cpu_percent":  13.43,
+                                                              "memory_at_peak_cpu":  "8.566MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-postgres-1":  {
+                                                                  "cpu_percent":  35.32,
+                                                                  "memory_at_peak_cpu":  "57.04MiB / 7.449GiB"
+                                                              },
+                                 "phi-messaging-load-balancer-1":  {
+                                                                       "cpu_percent":  2.14,
+                                                                       "memory_at_peak_cpu":  "2.598MiB / 7.449GiB"
+                                                                   },
+                                 "phi-messaging-redis-1":  {
+                                                               "cpu_percent":  11.66,
+                                                               "memory_at_peak_cpu":  "3.566MiB / 7.449GiB"
+                                                           }
+                             }
+    },
+    {
+        "file":  "load-100-rate10.json",
+        "passed":  false,
+        "requested":  100,
+        "simultaneous_max":  100,
+        "min_during_measurement":  100,
+        "acknowledged":  138,
+        "expected":  20000,
+        "received":  13800,
+        "missing":  6200,
+        "missing_warmup":  300,
+        "recipient_p50_ms":  3531.0099,
+        "recipient_p95_ms":  12650.6368,
+        "recipient_p99_ms":  14756.4941,
+        "ack_p99_ms":  14579.1677,
+        "ack_per_second":  2.161493936269432,
+        "deliveries_per_second":  216.1493936269432,
+        "connection_failures":  0,
+        "reconnect_retries":  0,
+        "http_errors":  120,
+        "message_errors":  66,
+        "queue_drops":  52,
+        "unscheduled":  0,
+        "cpu_samples_peak":  {
+                                 "phi-messaging-app3-1":  {
+                                                              "cpu_percent":  125.91,
+                                                              "memory_at_peak_cpu":  "26.06MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-app1-1":  {
+                                                              "cpu_percent":  131.31,
+                                                              "memory_at_peak_cpu":  "15.58MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-app2-1":  {
+                                                              "cpu_percent":  135.23,
+                                                              "memory_at_peak_cpu":  "23.36MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-postgres-1":  {
+                                                                  "cpu_percent":  737.98,
+                                                                  "memory_at_peak_cpu":  "187MiB / 7.449GiB"
+                                                              },
+                                 "phi-messaging-load-balancer-1":  {
+                                                                       "cpu_percent":  50.67,
+                                                                       "memory_at_peak_cpu":  "12.78MiB / 7.449GiB"
+                                                                   },
+                                 "phi-messaging-redis-1":  {
+                                                               "cpu_percent":  42.64,
+                                                               "memory_at_peak_cpu":  "4.008MiB / 7.449GiB"
+                                                           }
+                             }
+    },
+    {
+        "file":  "load-100.json",
+        "passed":  true,
+        "requested":  100,
+        "simultaneous_max":  100,
+        "min_during_measurement":  100,
+        "acknowledged":  40,
+        "expected":  4000,
+        "received":  4000,
+        "missing":  0,
+        "missing_warmup":  0,
+        "recipient_p50_ms":  1092.6126,
+        "recipient_p95_ms":  2672.2281,
+        "recipient_p99_ms":  3289.9478,
+        "ack_p99_ms":  2637.0918,
+        "ack_per_second":  1.928685522029933,
+        "deliveries_per_second":  192.8685522029933,
+        "connection_failures":  0,
+        "reconnect_retries":  0,
+        "http_errors":  0,
+        "message_errors":  0,
+        "queue_drops":  0,
+        "unscheduled":  0,
+        "cpu_samples_peak":  {
+                                 "phi-messaging-app3-1":  {
+                                                              "cpu_percent":  95.88,
+                                                              "memory_at_peak_cpu":  "16.17MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-app1-1":  {
+                                                              "cpu_percent":  101.1,
+                                                              "memory_at_peak_cpu":  "15.83MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-app2-1":  {
+                                                              "cpu_percent":  101.28,
+                                                              "memory_at_peak_cpu":  "15.46MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-postgres-1":  {
+                                                                  "cpu_percent":  584.82,
+                                                                  "memory_at_peak_cpu":  "190.1MiB / 7.449GiB"
+                                                              },
+                                 "phi-messaging-load-balancer-1":  {
+                                                                       "cpu_percent":  38.38,
+                                                                       "memory_at_peak_cpu":  "5.516MiB / 7.449GiB"
+                                                                   },
+                                 "phi-messaging-redis-1":  {
+                                                               "cpu_percent":  37.4,
+                                                               "memory_at_peak_cpu":  "4.074MiB / 7.449GiB"
+                                                           }
+                             }
+    },
+    {
+        "file":  "load-1000.json",
+        "passed":  false,
+        "requested":  1000,
+        "simultaneous_max":  971,
+        "min_during_measurement":  188,
+        "acknowledged":  40,
+        "expected":  40000,
+        "received":  38471,
+        "missing":  1529,
+        "missing_warmup":  1213,
+        "recipient_p50_ms":  8936.3392,
+        "recipient_p95_ms":  26645.8792,
+        "recipient_p99_ms":  33798.3664,
+        "ack_p99_ms":  9336.6993,
+        "ack_per_second":  1.0011767430967662,
+        "deliveries_per_second":  962.9067620918923,
+        "connection_failures":  5421,
+        "reconnect_retries":  8217,
+        "http_errors":  12,
+        "message_errors":  1,
+        "queue_drops":  0,
+        "unscheduled":  0,
+        "cpu_samples_peak":  {
+                                 "phi-messaging-app3-1":  {
+                                                              "cpu_percent":  176.49,
+                                                              "memory_at_peak_cpu":  "46.72MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-app1-1":  {
+                                                              "cpu_percent":  166.51,
+                                                              "memory_at_peak_cpu":  "44.71MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-app2-1":  {
+                                                              "cpu_percent":  214.78,
+                                                              "memory_at_peak_cpu":  "44.98MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-postgres-1":  {
+                                                                  "cpu_percent":  462.23,
+                                                                  "memory_at_peak_cpu":  "145MiB / 7.449GiB"
+                                                              },
+                                 "phi-messaging-load-balancer-1":  {
+                                                                       "cpu_percent":  107.72,
+                                                                       "memory_at_peak_cpu":  "44.43MiB / 7.449GiB"
+                                                                   },
+                                 "phi-messaging-redis-1":  {
+                                                               "cpu_percent":  54.54,
+                                                               "memory_at_peak_cpu":  "4.719MiB / 7.449GiB"
+                                                           }
+                             }
+    },
+    {
+        "file":  "load-300-initial.json",
+        "passed":  false,
+        "requested":  300,
+        "simultaneous_max":  233,
+        "min_during_measurement":  140,
+        "acknowledged":  37,
+        "expected":  12000,
+        "received":  10918,
+        "missing":  1082,
+        "missing_warmup":  6,
+        "recipient_p50_ms":  1539.9201,
+        "recipient_p95_ms":  13871.0526,
+        "recipient_p99_ms":  20643.3204,
+        "ack_p99_ms":  1607.2164,
+        "ack_per_second":  1.0275595812093723,
+        "deliveries_per_second":  303.2133920984845,
+        "connection_failures":  1395,
+        "reconnect_retries":  3676,
+        "http_errors":  24,
+        "message_errors":  3,
+        "queue_drops":  0,
+        "unscheduled":  0,
+        "cpu_samples_peak":  {
+                                 "phi-messaging-app3-1":  {
+                                                              "cpu_percent":  105.43,
+                                                              "memory_at_peak_cpu":  "17.85MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-app1-1":  {
+                                                              "cpu_percent":  105.85,
+                                                              "memory_at_peak_cpu":  "19.71MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-app2-1":  {
+                                                              "cpu_percent":  88.07,
+                                                              "memory_at_peak_cpu":  "17.27MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-postgres-1":  {
+                                                                  "cpu_percent":  506.17,
+                                                                  "memory_at_peak_cpu":  "197.3MiB / 7.449GiB"
+                                                              },
+                                 "phi-messaging-load-balancer-1":  {
+                                                                       "cpu_percent":  47.07,
+                                                                       "memory_at_peak_cpu":  "9.07MiB / 7.449GiB"
+                                                                   },
+                                 "phi-messaging-redis-1":  {
+                                                               "cpu_percent":  33.53,
+                                                               "memory_at_peak_cpu":  "5.711MiB / 7.449GiB"
+                                                           }
+                             }
+    },
+    {
+        "file":  "load-300-proxy-fixed.json",
+        "passed":  true,
+        "requested":  300,
+        "simultaneous_max":  300,
+        "min_during_measurement":  300,
+        "acknowledged":  40,
+        "expected":  12000,
+        "received":  12000,
+        "missing":  0,
+        "missing_warmup":  0,
+        "recipient_p50_ms":  1039.7238,
+        "recipient_p95_ms":  2134.6441,
+        "recipient_p99_ms":  2495.538,
+        "ack_p99_ms":  1897.0312,
+        "ack_per_second":  1.931741470827763,
+        "deliveries_per_second":  579.5224412483288,
+        "connection_failures":  0,
+        "reconnect_retries":  0,
+        "http_errors":  0,
+        "message_errors":  0,
+        "queue_drops":  0,
+        "unscheduled":  0,
+        "cpu_samples_peak":  {
+                                 "phi-messaging-app3-1":  {
+                                                              "cpu_percent":  90.38,
+                                                              "memory_at_peak_cpu":  "25.05MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-app1-1":  {
+                                                              "cpu_percent":  111.63,
+                                                              "memory_at_peak_cpu":  "22.6MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-app2-1":  {
+                                                              "cpu_percent":  100.15,
+                                                              "memory_at_peak_cpu":  "24.24MiB / 7.449GiB"
+                                                          },
+                                 "phi-messaging-postgres-1":  {
+                                                                  "cpu_percent":  414.15,
+                                                                  "memory_at_peak_cpu":  "211.1MiB / 7.449GiB"
+                                                              },
+                                 "phi-messaging-load-balancer-1":  {
+                                                                       "cpu_percent":  67.23,
+                                                                       "memory_at_peak_cpu":  "20.39MiB / 7.449GiB"
+                                                                   },
+                                 "phi-messaging-redis-1":  {
+                                                               "cpu_percent":  26.06,
+                                                               "memory_at_peak_cpu":  "4.098MiB / 7.449GiB"
+                                                           }
+                             }
+    }
+]

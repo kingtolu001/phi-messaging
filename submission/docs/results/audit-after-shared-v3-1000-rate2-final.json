@@ -1,0 +1,7 @@
+{
+  "history_read_attempts": 1,
+  "durable_rows": 36,
+  "acknowledged_checked": 36,
+  "missing_or_changed_acknowledged": 0,
+  "unacknowledged_but_committed": 0
+}

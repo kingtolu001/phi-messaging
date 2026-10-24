@@ -1,0 +1,522 @@
+{
+  "database_counter_window_seconds_monotonic": 33.6035208,
+  "database_queries_before": {
+    "at": "2026-10-23T20:02:05.0297784Z",
+    "statements": 1644609,
+    "execution_ms": 1580864.8477630108
+  },
+  "database_queries_after": {
+    "at": "2026-10-23T20:02:37.6031969Z",
+    "statements": 1782938,
+    "execution_ms": 1660678.0361890146
+  },
+  "database_statements_per_second_full_run": 4116.503173084173,
+  "missing_warmup_deliveries": 0,
+  "history_audit": {
+    "history_read_attempts": 1,
+    "durable_rows": 50,
+    "acknowledged_checked": 50,
+    "missing_or_changed_acknowledged": 0,
+    "unacknowledged_but_committed": 0
+  },
+  "min_resumed_during_measurement": 300,
+  "scheduler_lateness": {
+    "samples": 50,
+    "p50_ms": 0.4934,
+    "p95_ms": 2.0223,
+    "p99_ms": 5.5456,
+    "max_ms": 5.5456
+  },
+  "websocket_establishment_failures": 0,
+  "websocket_disconnects": 300,
+  "measurement_and_drain_seconds": 20.8063499,
+  "diagnostics_before": {
+    "postgres": " numbackends | xact_commit | xact_rollback | tup_returned | tup_fetched | deadlocks | sessions | sessions_abandoned | sessions_fatal \n-------------+-------------+---------------+--------------+-------------+-----------+----------+--------------------+----------------\n          25 |      906925 |        245733 |     79023330 |     8518692 |         0 |    22310 |                100 |              0\n(1 row)\n\n state  | wait_event_type | count \n--------+-----------------+-------\n active |                 |     1\n idle   | Client          |    24\n(2 rows)\n\n",
+    "redis": "# Stats\r\ntotal_connections_received:404\r\ntotal_commands_processed:76606\r\ninstantaneous_ops_per_sec:1\r\ntotal_net_input_bytes:2558860\r\ntotal_net_output_bytes:462585\r\ntotal_net_repl_input_bytes:0\r\ntotal_net_repl_output_bytes:0\r\ninstantaneous_input_kbps:0.02\r\ninstantaneous_output_kbps:0.01\r\ninstantaneous_input_repl_kbps:0.00\r\ninstantaneous_output_repl_kbps:0.00\r\nrejected_connections:0\r\nsync_full:0\r\nsync_partial_ok:0\r\nsync_partial_err:0\r\nexpired_subkeys:0\r\nexpired_keys:0\r\nexpired_stale_perc:0.00\r\nexpired_time_cap_reached_count:0\r\nexpire_cycle_cpu_milliseconds:21\r\nevicted_keys:0\r\nevicted_clients:0\r\nevicted_scripts:0\r\ntotal_eviction_exceeded_time:0\r\ncurrent_eviction_exceeded_time:0\r\nkeyspace_hits:20279\r\nkeyspace_misses:25\r\npubsub_channels:1\r\npubsub_patterns:0\r\npubsubshard_channels:0\r\nlatest_fork_usec:1303\r\ntotal_forks:3\r\nmigrate_cached_sockets:0\r\nslave_expires_tracked_keys:0\r\nactive_defrag_hits:0\r\nactive_defrag_misses:0\r\nactive_defrag_key_hits:0\r\nactive_defrag_key_misses:0\r\ntotal_active_defrag_time:0\r\ncurrent_active_defrag_time:0\r\ntracking_total_keys:0\r\ntracking_total_items:0\r\ntracking_total_prefixes:0\r\nunexpected_error_replies:0\r\ntotal_error_replies:17\r\ndump_payload_sanitizations:0\r\ntotal_reads_processed:11868\r\ntotal_writes_processed:12832\r\nio_threaded_reads_processed:0\r\nio_threaded_writes_processed:0\r\nclient_query_buffer_limit_disconnections:0\r\nclient_output_buffer_limit_disconnections:0\r\nreply_buffer_shrinks:147\r\nreply_buffer_expands:0\r\neventloop_cycles:13413\r\neventloop_duration_sum:11811601\r\neventloop_duration_cmd_sum:1714529\r\ninstantaneous_eventloop_cycles_per_sec:11\r\ninstantaneous_eventloop_duration_usec:1046\r\nacl_access_denied_auth:0\r\nacl_access_denied_cmd:0\r\nacl_access_denied_key:0\r\nacl_access_denied_channel:0\r\n"
+  },
+  "diagnostics_after": {
+    "postgres": " numbackends | xact_commit | xact_rollback | tup_returned | tup_fetched | deadlocks | sessions | sessions_abandoned | sessions_fatal \n-------------+-------------+---------------+--------------+-------------+-----------+----------+--------------------+----------------\n           9 |      958103 |        246110 |     89535781 |     8752797 |         0 |    22806 |                100 |              0\n(1 row)\n\n state  | wait_event_type | count \n--------+-----------------+-------\n active |                 |     1\n idle   | Client          |     8\n(2 rows)\n\n",
+    "redis": "# Stats\r\ntotal_connections_received:484\r\ntotal_commands_processed:85866\r\ninstantaneous_ops_per_sec:1011\r\ntotal_net_input_bytes:2863056\r\ntotal_net_output_bytes:522171\r\ntotal_net_repl_input_bytes:0\r\ntotal_net_repl_output_bytes:0\r\ninstantaneous_input_kbps:40.78\r\ninstantaneous_output_kbps:9.62\r\ninstantaneous_input_repl_kbps:0.00\r\ninstantaneous_output_repl_kbps:0.00\r\nrejected_connections:0\r\nsync_full:0\r\nsync_partial_ok:0\r\nsync_partial_err:0\r\nexpired_subkeys:0\r\nexpired_keys:0\r\nexpired_stale_perc:0.00\r\nexpired_time_cap_reached_count:0\r\nexpire_cycle_cpu_milliseconds:23\r\nevicted_keys:0\r\nevicted_clients:0\r\nevicted_scripts:0\r\ntotal_eviction_exceeded_time:0\r\ncurrent_eviction_exceeded_time:0\r\nkeyspace_hits:22678\r\nkeyspace_misses:26\r\npubsub_channels:1\r\npubsub_patterns:0\r\npubsubshard_channels:0\r\nlatest_fork_usec:1303\r\ntotal_forks:3\r\nmigrate_cached_sockets:0\r\nslave_expires_tracked_keys:0\r\nactive_defrag_hits:0\r\nactive_defrag_misses:0\r\nactive_defrag_key_hits:0\r\nactive_defrag_key_misses:0\r\ntotal_active_defrag_time:0\r\ncurrent_active_defrag_time:0\r\ntracking_total_keys:0\r\ntracking_total_items:0\r\ntracking_total_prefixes:0\r\nunexpected_error_replies:0\r\ntotal_error_replies:17\r\ndump_payload_sanitizations:0\r\ntotal_reads_processed:13278\r\ntotal_writes_processed:14377\r\nio_threaded_reads_processed:0\r\nio_threaded_writes_processed:0\r\nclient_query_buffer_limit_disconnections:0\r\nclient_output_buffer_limit_disconnections:0\r\nreply_buffer_shrinks:181\r\nreply_buffer_expands:0\r\neventloop_cycles:14818\r\neventloop_duration_sum:13019321\r\neventloop_duration_cmd_sum:1926027\r\ninstantaneous_eventloop_cycles_per_sec:118\r\ninstantaneous_eventloop_duration_usec:1167\r\nacl_access_denied_auth:0\r\nacl_access_denied_cmd:0\r\nacl_access_denied_key:0\r\nacl_access_denied_channel:0\r\n"
+  },
+  "config": {
+    "send_rate_scope": "aggregate_across_workload_not_per_device",
+    "device_http_pool": "per_device_max_2_connections_owned_until_shutdown",
+    "url": "http://127.0.0.1:8080",
+    "connections": 300,
+    "logical_messages_per_second": 2,
+    "warmup_ns": 5000000000,
+    "measurement_ns": 20000000000,
+    "connection_start_interval_ns": 10000000,
+    "drain_ns": 15000000000
+  },
+  "started": "2026-10-23T20:02:02.5230249Z",
+  "conversation": "524123db-a759-4edf-898a-8ed63a9afaec",
+  "passed": true,
+  "max_simultaneously_resumed": 300,
+  "connected_at_measurement_start": 300,
+  "never_connected": 0,
+  "connection_retries": 0,
+  "retry_http_statuses": {},
+  "client_terminal_errors": 0,
+  "client_error_kinds": {},
+  "http_attempt_errors": 0,
+  "unacknowledged_logical_messages": 0,
+  "scheduler_queue_drops": 0,
+  "unscheduled_rate_slots": 0,
+  "measured_logical_messages": 40,
+  "measured_acknowledged_messages": 40,
+  "expected_measured_deliveries": 12000,
+  "received_measured_deliveries": 12000,
+  "missing_measured_deliveries": 0,
+  "duplicate_callbacks": 0,
+  "suppressed_duplicates": 6762,
+  "gap_recovery_triggers": 0,
+  "sender_ack_latency": {
+    "samples": 40,
+    "p50_ms": 468.8392,
+    "p95_ms": 1139.9608,
+    "p99_ms": 1688.8793,
+    "max_ms": 1688.8793
+  },
+  "recipient_delivery_latency": {
+    "samples": 12000,
+    "p50_ms": 755.6684,
+    "p95_ms": 1675.0226,
+    "p99_ms": 2060.7728,
+    "max_ms": 2829.4434
+  },
+  "acknowledged_messages_per_second": 1.9224900182996538,
+  "recipient_deliveries_per_second_including_drain": 576.7470054898961,
+  "kill_requested_at": "0001-01-01T00:00:00Z",
+  "other_device_online_after_kill": false,
+  "retry_delays_ms": null,
+  "connections_by_instance": {
+    "2bb08d0b30f1": 120,
+    "43b32d0f5f17": 84,
+    "e51baaa33df5": 96
+  },
+  "resource_samples": [
+    {
+      "at": "2026-10-23T20:02:11.4918677Z",
+      "docker_stats": "{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"82.81%\",\"Container\":\"phi-messaging-app1-1\",\"ID\":\"43b32d0f5f17\",\"MemPerc\":\"0.22%\",\"MemUsage\":\"17.05MiB / 7.449GiB\",\"Name\":\"phi-messaging-app1-1\",\"NetIO\":\"1.31MB / 1.77MB\",\"PIDs\":\"17\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"92.04%\",\"Container\":\"phi-messaging-app2-1\",\"ID\":\"e51baaa33df5\",\"MemPerc\":\"0.23%\",\"MemUsage\":\"17.47MiB / 7.449GiB\",\"Name\":\"phi-messaging-app2-1\",\"NetIO\":\"1.39MB / 1.9MB\",\"PIDs\":\"15\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"100.50%\",\"Container\":\"phi-messaging-app3-1\",\"ID\":\"2bb08d0b30f1\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"18.54MiB / 7.449GiB\",\"Name\":\"phi-messaging-app3-1\",\"NetIO\":\"1.4MB / 1.93MB\",\"PIDs\":\"18\"}\n{\"BlockIO\":\"0B / 1.69MB\",\"CPUPerc\":\"429.22%\",\"Container\":\"phi-messaging-postgres-1\",\"ID\":\"e0bdcc7f78ea\",\"MemPerc\":\"2.83%\",\"MemUsage\":\"216.1MiB / 7.449GiB\",\"Name\":\"phi-messaging-postgres-1\",\"NetIO\":\"26.3MB / 16.8MB\",\"PIDs\":\"103\"}\n{\"BlockIO\":\"0B / 20.5kB\",\"CPUPerc\":\"18.67%\",\"Container\":\"phi-messaging-redis-1\",\"ID\":\"092ad9ff8194\",\"MemPerc\":\"0.05%\",\"MemUsage\":\"4.109MiB / 7.449GiB\",\"Name\":\"phi-messaging-redis-1\",\"NetIO\":\"4.07MB / 1.46MB\",\"PIDs\":\"6\"}\n{\"BlockIO\":\"0B / 4.1kB\",\"CPUPerc\":\"52.16%\",\"Container\":\"phi-messaging-load-balancer-1\",\"ID\":\"e1fb90b9c07f\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"18.59MiB / 7.449GiB\",\"Name\":\"phi-messaging-load-balancer-1\",\"NetIO\":\"2.17MB / 2.17MB\",\"PIDs\":\"2\"}\n"
+    },
+    {
+      "at": "2026-10-23T20:02:17.2946074Z",
+      "docker_stats": "{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"90.51%\",\"Container\":\"phi-messaging-app1-1\",\"ID\":\"43b32d0f5f17\",\"MemPerc\":\"0.25%\",\"MemUsage\":\"19.33MiB / 7.449GiB\",\"Name\":\"phi-messaging-app1-1\",\"NetIO\":\"3.26MB / 4.3MB\",\"PIDs\":\"18\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"97.05%\",\"Container\":\"phi-messaging-app2-1\",\"ID\":\"e51baaa33df5\",\"MemPerc\":\"0.28%\",\"MemUsage\":\"21.72MiB / 7.449GiB\",\"Name\":\"phi-messaging-app2-1\",\"NetIO\":\"3.52MB / 4.66MB\",\"PIDs\":\"20\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"112.21%\",\"Container\":\"phi-messaging-app3-1\",\"ID\":\"2bb08d0b30f1\",\"MemPerc\":\"0.29%\",\"MemUsage\":\"22MiB / 7.449GiB\",\"Name\":\"phi-messaging-app3-1\",\"NetIO\":\"3.92MB / 5.27MB\",\"PIDs\":\"18\"}\n{\"BlockIO\":\"0B / 1.69MB\",\"CPUPerc\":\"410.11%\",\"Container\":\"phi-messaging-postgres-1\",\"ID\":\"e0bdcc7f78ea\",\"MemPerc\":\"2.78%\",\"MemUsage\":\"212.4MiB / 7.449GiB\",\"Name\":\"phi-messaging-postgres-1\",\"NetIO\":\"32MB / 22.1MB\",\"PIDs\":\"108\"}\n{\"BlockIO\":\"0B / 20.5kB\",\"CPUPerc\":\"6.56%\",\"Container\":\"phi-messaging-redis-1\",\"ID\":\"092ad9ff8194\",\"MemPerc\":\"0.05%\",\"MemUsage\":\"4.113MiB / 7.449GiB\",\"Name\":\"phi-messaging-redis-1\",\"NetIO\":\"4.13MB / 1.48MB\",\"PIDs\":\"6\"}\n{\"BlockIO\":\"0B / 4.1kB\",\"CPUPerc\":\"35.76%\",\"Container\":\"phi-messaging-load-balancer-1\",\"ID\":\"e1fb90b9c07f\",\"MemPerc\":\"0.25%\",\"MemUsage\":\"18.74MiB / 7.449GiB\",\"Name\":\"phi-messaging-load-balancer-1\",\"NetIO\":\"5.91MB / 6MB\",\"PIDs\":\"2\"}\n"
+    },
+    {
+      "at": "2026-10-23T20:02:23.3117819Z",
+      "docker_stats": "{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"108.50%\",\"Container\":\"phi-messaging-app1-1\",\"ID\":\"43b32d0f5f17\",\"MemPerc\":\"0.28%\",\"MemUsage\":\"21.29MiB / 7.449GiB\",\"Name\":\"phi-messaging-app1-1\",\"NetIO\":\"5.27MB / 6.92MB\",\"PIDs\":\"18\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"104.83%\",\"Container\":\"phi-messaging-app2-1\",\"ID\":\"e51baaa33df5\",\"MemPerc\":\"0.29%\",\"MemUsage\":\"22.06MiB / 7.449GiB\",\"Name\":\"phi-messaging-app2-1\",\"NetIO\":\"5.24MB / 6.92MB\",\"PIDs\":\"20\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"113.58%\",\"Container\":\"phi-messaging-app3-1\",\"ID\":\"2bb08d0b30f1\",\"MemPerc\":\"0.30%\",\"MemUsage\":\"23.21MiB / 7.449GiB\",\"Name\":\"phi-messaging-app3-1\",\"NetIO\":\"6.25MB / 8.37MB\",\"PIDs\":\"18\"}\n{\"BlockIO\":\"0B / 1.7MB\",\"CPUPerc\":\"337.97%\",\"Container\":\"phi-messaging-postgres-1\",\"ID\":\"e0bdcc7f78ea\",\"MemPerc\":\"2.91%\",\"MemUsage\":\"221.9MiB / 7.449GiB\",\"Name\":\"phi-messaging-postgres-1\",\"NetIO\":\"37.6MB / 27.2MB\",\"PIDs\":\"108\"}\n{\"BlockIO\":\"0B / 20.5kB\",\"CPUPerc\":\"45.96%\",\"Container\":\"phi-messaging-redis-1\",\"ID\":\"092ad9ff8194\",\"MemPerc\":\"0.05%\",\"MemUsage\":\"4.105MiB / 7.449GiB\",\"Name\":\"phi-messaging-redis-1\",\"NetIO\":\"4.19MB / 1.5MB\",\"PIDs\":\"6\"}\n{\"BlockIO\":\"0B / 4.1kB\",\"CPUPerc\":\"49.38%\",\"Container\":\"phi-messaging-load-balancer-1\",\"ID\":\"e1fb90b9c07f\",\"MemPerc\":\"0.25%\",\"MemUsage\":\"19.43MiB / 7.449GiB\",\"Name\":\"phi-messaging-load-balancer-1\",\"NetIO\":\"9.54MB / 9.74MB\",\"PIDs\":\"2\"}\n"
+    },
+    {
+      "at": "2026-10-23T20:02:29.227956Z",
+      "docker_stats": "{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"105.03%\",\"Container\":\"phi-messaging-app1-1\",\"ID\":\"43b32d0f5f17\",\"MemPerc\":\"0.28%\",\"MemUsage\":\"21.55MiB / 7.449GiB\",\"Name\":\"phi-messaging-app1-1\",\"NetIO\":\"7.29MB / 9.57MB\",\"PIDs\":\"18\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"109.57%\",\"Container\":\"phi-messaging-app2-1\",\"ID\":\"e51baaa33df5\",\"MemPerc\":\"0.29%\",\"MemUsage\":\"22.03MiB / 7.449GiB\",\"Name\":\"phi-messaging-app2-1\",\"NetIO\":\"7.78MB / 10.3MB\",\"PIDs\":\"20\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"123.31%\",\"Container\":\"phi-messaging-app3-1\",\"ID\":\"2bb08d0b30f1\",\"MemPerc\":\"0.31%\",\"MemUsage\":\"23.29MiB / 7.449GiB\",\"Name\":\"phi-messaging-app3-1\",\"NetIO\":\"8.75MB / 11.7MB\",\"PIDs\":\"20\"}\n{\"BlockIO\":\"0B / 1.7MB\",\"CPUPerc\":\"310.13%\",\"Container\":\"phi-messaging-postgres-1\",\"ID\":\"e0bdcc7f78ea\",\"MemPerc\":\"2.91%\",\"MemUsage\":\"222.3MiB / 7.449GiB\",\"Name\":\"phi-messaging-postgres-1\",\"NetIO\":\"43.5MB / 32.5MB\",\"PIDs\":\"102\"}\n{\"BlockIO\":\"0B / 20.5kB\",\"CPUPerc\":\"5.12%\",\"Container\":\"phi-messaging-redis-1\",\"ID\":\"092ad9ff8194\",\"MemPerc\":\"0.06%\",\"MemUsage\":\"4.359MiB / 7.449GiB\",\"Name\":\"phi-messaging-redis-1\",\"NetIO\":\"4.3MB / 1.54MB\",\"PIDs\":\"6\"}\n{\"BlockIO\":\"0B / 4.1kB\",\"CPUPerc\":\"40.20%\",\"Container\":\"phi-messaging-load-balancer-1\",\"ID\":\"e1fb90b9c07f\",\"MemPerc\":\"0.25%\",\"MemUsage\":\"18.85MiB / 7.449GiB\",\"Name\":\"phi-messaging-load-balancer-1\",\"NetIO\":\"12.7MB / 12.9MB\",\"PIDs\":\"2\"}\n"
+    },
+    {
+      "at": "2026-10-23T20:02:35.0609263Z",
+      "docker_stats": "{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"85.76%\",\"Container\":\"phi-messaging-app1-1\",\"ID\":\"43b32d0f5f17\",\"MemPerc\":\"0.25%\",\"MemUsage\":\"19.16MiB / 7.449GiB\",\"Name\":\"phi-messaging-app1-1\",\"NetIO\":\"9.33MB / 12.2MB\",\"PIDs\":\"18\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"78.69%\",\"Container\":\"phi-messaging-app2-1\",\"ID\":\"e51baaa33df5\",\"MemPerc\":\"0.27%\",\"MemUsage\":\"20.93MiB / 7.449GiB\",\"Name\":\"phi-messaging-app2-1\",\"NetIO\":\"9.84MB / 12.9MB\",\"PIDs\":\"20\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"85.77%\",\"Container\":\"phi-messaging-app3-1\",\"ID\":\"2bb08d0b30f1\",\"MemPerc\":\"0.31%\",\"MemUsage\":\"23.98MiB / 7.449GiB\",\"Name\":\"phi-messaging-app3-1\",\"NetIO\":\"11.1MB / 14.9MB\",\"PIDs\":\"20\"}\n{\"BlockIO\":\"0B / 1.7MB\",\"CPUPerc\":\"344.70%\",\"Container\":\"phi-messaging-postgres-1\",\"ID\":\"e0bdcc7f78ea\",\"MemPerc\":\"2.44%\",\"MemUsage\":\"186MiB / 7.449GiB\",\"Name\":\"phi-messaging-postgres-1\",\"NetIO\":\"48.3MB / 36.7MB\",\"PIDs\":\"101\"}\n{\"BlockIO\":\"0B / 20.5kB\",\"CPUPerc\":\"10.97%\",\"Container\":\"phi-messaging-redis-1\",\"ID\":\"092ad9ff8194\",\"MemPerc\":\"0.05%\",\"MemUsage\":\"4.109MiB / 7.449GiB\",\"Name\":\"phi-messaging-redis-1\",\"NetIO\":\"4.3MB / 1.54MB\",\"PIDs\":\"6\"}\n{\"BlockIO\":\"0B / 4.1kB\",\"CPUPerc\":\"30.29%\",\"Container\":\"phi-messaging-load-balancer-1\",\"ID\":\"e1fb90b9c07f\",\"MemPerc\":\"0.24%\",\"MemUsage\":\"18.62MiB / 7.449GiB\",\"Name\":\"phi-messaging-load-balancer-1\",\"NetIO\":\"16.8MB / 17.2MB\",\"PIDs\":\"2\"}\n"
+    }
+  ],
+  "records": [
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "3483e23f-b1d5-4ab7-a81f-c53a0c8d6655",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 1,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c488f513-590e-420e-a70b-120c0c98222d",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 2,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "1e7c82da-1a04-4bce-ab7c-215a19b403b9",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 3,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "658c9d81-d98c-4c62-81fa-85b493cc81ac",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 4,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "95fffb06-8784-463f-8637-52c78151d6b7",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 5,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "2a0129ce-2753-4a00-8252-25c7e5ec84ae",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 6,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "dcaccace-f9d2-4d92-aec3-16264cc0052b",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 7,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "50d3b9a8-1f4d-4a7a-9376-9d5ecd0b46ea",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 8,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "21dbd597-85db-4e8a-82ae-774a723bdc16",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 9,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "783cadbb-8006-4b9a-a379-22b449eaff95",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 10,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "1d665c59-8892-414b-97b4-f5eec5efdd4d",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 11,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "5f5f5ed9-3106-4857-9495-e675c0ef31cd",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 13,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "7ce36503-f314-4f84-809c-b28729e302e9",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 12,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "feadfef5-fd6d-402b-b9aa-a5773ad44113",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 14,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "b60533c4-fc3f-46f1-a7c6-ce3ebbb904bf",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 15,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "e05c2e13-e47d-431a-b0f5-fb044b754a70",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 16,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "15e7205a-86e7-40d4-b950-9c44bf26fabf",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 17,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "acccfd0c-fed3-4cdd-9ce4-84ab47a61ad0",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 18,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "a3ab175c-6256-466b-9278-a6a7553a3048",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 19,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "a772bd51-6066-4186-b5fe-539c36f18475",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 21,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "295e1de1-c661-46de-8ca8-bfc662e3ddbe",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 20,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "fb39cf1d-e74e-46c6-a717-6bb16f21d5d1",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 23,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "31a49d27-8a7a-4cdb-b25e-ccc0ce2ee9d5",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 22,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "dff10722-d724-4a9a-b2ac-0e7888cd6676",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 25,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "0e0a934a-9c05-4676-ab99-678c9085ab21",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 24,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "172a6497-8d89-4741-a38f-be1c1ef49be3",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 26,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "555bf8d0-5d09-4f80-8c48-5bc1784ebd39",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 27,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "f4f99895-d188-4ce5-b64c-878fcd33c6cb",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 28,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "6b39aab6-70bf-4043-ac26-f6e09ccf8336",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 29,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "5706a5b4-5e12-4121-824a-4de3f1242ee7",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 30,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "f8fb5249-1be2-4bf6-a005-39e725365370",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 31,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "a502fba8-b161-435c-8ab2-7fb770cb8de1",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 32,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "448fa989-e780-4818-aa4d-c7e49d3a5c88",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 33,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "49ba42ed-832c-4484-b56d-317af3a79d37",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 34,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "da89bca9-2f56-4c45-aadb-82b2db5fc843",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 35,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "af572510-30d6-4851-94ee-66d43dd6ce54",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 36,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "ab14ae91-1596-467f-858e-372330a6c73d",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 37,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "bd196739-221b-408f-b26e-337e838e4c28",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 38,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "7a707e3a-aaa2-4580-b39b-ff424ed54e44",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 39,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "5ce1430e-74bf-4113-ac9f-470db853e0c7",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 40,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "4992bd3e-b5cc-47fd-9b95-12ebe3c18e4b",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 41,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "90d270cd-a84f-4537-8485-d85a0dccad80",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 42,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "eb429f7e-b591-4df4-b211-20ae54bcdd9d",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 43,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "805ee830-ef23-4fc5-8765-845c045ddbfb",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 44,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "d839a3c4-ec56-45ea-885f-c60329926be2",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 45,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "42b5fadb-ec34-4f1f-b848-c05a949b3cb0",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 46,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "391f24b7-0803-45a0-b4aa-4884c096a9ce",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 47,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "5952a839-f1f6-4ad9-a69a-ca0a5d2eb08a",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 48,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "26655d28-f73a-465d-9d24-b423329f2fe8",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 49,
+      "delivered_devices": 300
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "55f0884d-06d3-4456-906b-91d2bc59597e",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 50,
+      "delivered_devices": 300
+    }
+  ]
+}

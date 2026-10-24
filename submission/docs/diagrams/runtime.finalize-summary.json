@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\runtime.architecture.json",
+    "sha256": "4e05a3d68dfbe7880b4add9ab2ef4d4fbc199da455f19f60ffb85da147ed1924",
+    "bytes": 3399
+  },
+  "artifact": {
+    "path": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\runtime.html",
+    "sha256": "c56913e498d7857e5dcd1a054549ba7dd52e42b24fc0de09c86d331d247cb235",
+    "bytes": 818040
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\runtime.finalize.json",
+    "summaryReceipt": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\runtime.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\runtime.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 10838,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

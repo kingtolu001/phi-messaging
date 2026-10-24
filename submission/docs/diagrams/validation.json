@@ -1,0 +1,42 @@
+{
+  "evidence": "automated artifact and browser gates; source semantics reviewed separately",
+  "runs": [
+    {
+      "source_sha256": "f956e6c507b1253865493b5c8f15e053f6929bb4ebc5d831b54685358e630333",
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "name": "runtime",
+      "html_sha256": "c98afef7ad079f6ddb5f7383cce0c32c6ac63d18d1410e69f388011f7a7c1db1",
+      "receipt": "docs/diagrams/review/final-20261024/runtime/runtime.finalize-summary.json"
+    },
+    {
+      "name": "send",
+      "receipt": "docs/diagrams/review/send-legend-final/send.finalize-summary.json",
+      "source_sha256": "4a97bceb91e065da5d6b8e0e08e08040ecbd766667a428bf54b2246b19fb64bd",
+      "html_sha256": "067bc545738680dd254fea43f974f885f145bae0fb4cd941cdc946a79c7c0b6c",
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      }
+    },
+    {
+      "source_sha256": "464cf4219a860ab5aaaacde83ea78fa7bf15d194fb5bf15ff3e3c1d652fe2b82",
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "name": "recovery",
+      "html_sha256": "68de700c60c2fbf1f163dcbc0342fd83bb47c2fa47533eec9f02ed68fdfafc61",
+      "receipt": "docs/diagrams/review/final-20261024/recovery/recovery.finalize-summary.json"
+    }
+  ],
+  "archify": "3.2.0"
+}

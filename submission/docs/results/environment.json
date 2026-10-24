@@ -1,0 +1,22 @@
+﻿{
+    "host_cpu":  {
+                     "Name":  "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+                     "NumberOfCores":  4,
+                     "NumberOfLogicalProcessors":  8
+                 },
+    "host_memory":  {
+                        "TotalPhysicalMemory":  16516628480
+                    },
+    "docker":  {
+                   "NCPU":  8,
+                   "MemTotal":  7998763008,
+                   "KernelVersion":  "6.6.87.2-microsoft-standard-WSL2",
+                   "OperatingSystem":  "Docker Desktop",
+                   "Architecture":  "x86_64",
+                   "ServerVersion":  "28.5.2"
+               },
+    "go":  "go version go1.26.2 windows/amd64",
+    "note":  "Shared development machine; unrelated containers may consume CPU. No exclusive CPU pinning.",
+    "captured_at":  "2026-10-23T16:15:22.6308231+00:00",
+    "compose":  "Docker Compose version v2.40.3-desktop.1"
+}

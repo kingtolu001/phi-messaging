@@ -1,0 +1,65 @@
+{
+  "method": "Archify native exportMenu.run in a local headless browser; no HTML edits",
+  "records": [
+    {
+      "file": "docs/diagrams/runtime.svg",
+      "format": "svg",
+      "canonical": true,
+      "bytes": 161632,
+      "sha256": "a958679d9152aa2e50371f18feeed4a7d1a8a6aea8c68d32d259beff9ca589f9",
+      "html_sha256": "c98afef7ad079f6ddb5f7383cce0c32c6ac63d18d1410e69f388011f7a7c1db1",
+      "width": null,
+      "height": null
+    },
+    {
+      "file": "docs/diagrams/runtime.png",
+      "format": "png",
+      "canonical": true,
+      "bytes": 506370,
+      "sha256": "d14fad7e8e1bb8028da9fc4737dd86a961fec7d0289c97ffa694038fa6eda056",
+      "html_sha256": "c98afef7ad079f6ddb5f7383cce0c32c6ac63d18d1410e69f388011f7a7c1db1",
+      "width": null,
+      "height": null
+    },
+    {
+      "file": "docs/diagrams/send.svg",
+      "format": "svg",
+      "canonical": true,
+      "bytes": 174828,
+      "sha256": "a2f8291c95fb88f5d9a324d562506bafabb2ed27ccec30a54c744bd182638a62",
+      "html_sha256": "067bc545738680dd254fea43f974f885f145bae0fb4cd941cdc946a79c7c0b6c",
+      "width": null,
+      "height": null
+    },
+    {
+      "file": "docs/diagrams/send.png",
+      "format": "png",
+      "canonical": true,
+      "bytes": 844567,
+      "sha256": "b12578184ddd071731368d5a810698835b69a9a8a94f4a7317e8bdadee25a0fa",
+      "html_sha256": "067bc545738680dd254fea43f974f885f145bae0fb4cd941cdc946a79c7c0b6c",
+      "width": null,
+      "height": null
+    },
+    {
+      "file": "docs/diagrams/recovery.svg",
+      "format": "svg",
+      "canonical": true,
+      "bytes": 179386,
+      "sha256": "b492aea1e9772757d1b6027fe7c4e70747e75ac18abb30a85145a9e3fddcedf3",
+      "html_sha256": "68de700c60c2fbf1f163dcbc0342fd83bb47c2fa47533eec9f02ed68fdfafc61",
+      "width": null,
+      "height": null
+    },
+    {
+      "file": "docs/diagrams/recovery.png",
+      "format": "png",
+      "canonical": true,
+      "bytes": 1025691,
+      "sha256": "a89820493d2d5046ca4827fd54e6c4a3dc24383fda7a06e9d0d574f830dd2268",
+      "html_sha256": "68de700c60c2fbf1f163dcbc0342fd83bb47c2fa47533eec9f02ed68fdfafc61",
+      "width": null,
+      "height": null
+    }
+  ]
+}

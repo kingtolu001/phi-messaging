@@ -1,0 +1,6 @@
+.git
+*.log
+coverage*
+*.exe
+.artifacts
+docs/results

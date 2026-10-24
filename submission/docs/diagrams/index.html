@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B3.1 messaging diagrams</title>
+<style>
+body{font:16px/1.6 system-ui,sans-serif;background:#f6f8fb;color:#172033;max-width:1100px;margin:48px auto;padding:0 24px}
+h1{line-height:1.2}a{color:#075c9c}section{background:white;border:1px solid #dae2ec;border-radius:12px;padding:24px;margin:20px 0}
+img{display:block;max-width:100%;max-height:360px;margin:20px auto;object-fit:contain}small{color:#475569}nav{display:flex;gap:18px;flex-wrap:wrap}
+@media(prefers-color-scheme:dark){body{background:#101827;color:#e4eaf2}section{background:#172033;border-color:#334155}a{color:#80c8ff}small{color:#c1cbd9}}
+</style>
+<h1>B3.1 messaging diagrams</h1>
+<p>Three Go application processes share one PostgreSQL instance and one Redis instance. PostgreSQL commit is the durability boundary; client cursors and periodic history recovery repair missed live notifications.</p>
+<section><h2><a href="runtime.html">1. Runtime architecture</a></h2>
+<p>Identical replicas are grouped in one box. Each owns its publisher, Redis listener, four feed workers and reconciliation timer. PostgreSQL, Redis, Nginx and the Docker host remain shared failure points.</p>
+<a href="runtime.html"><img src="runtime.png" alt="Messaging runtime architecture with client devices, Nginx, three grouped Go replicas, single PostgreSQL and single Redis"></a>
+<nav><a href="runtime.html">Interactive HTML</a><a href="runtime.architecture.json">Editable JSON</a><a href="runtime.svg">SVG</a><a href="runtime.png">PNG</a></nav></section>
+<section><h2><a href="send.html">2. Durable send and outbox delivery</a></h2>
+<p>Commit precedes acknowledgement. A publisher inside any app claims the outbox, publishes a conversation hint, then marks publication. Recipient delivery reads committed PostgreSQL state.</p>
+<nav><a href="send.html">Interactive HTML</a><a href="send.sequence.json">Editable JSON</a><a href="send.svg">SVG</a><a href="send.png">PNG</a></nav></section>
+<section><h2><a href="recovery.html">3. Node failure and durable recovery</a></h2>
+<p>The client reconnects through Nginx with jitter, resumes its processed cursor, and merges HTTP history with live events. Server reconciliation and client polling independently repair missed hints.</p>
+<nav><a href="recovery.html">Interactive HTML</a><a href="recovery.sequence.json">Editable JSON</a><a href="recovery.svg">SVG</a><a href="recovery.png">PNG</a></nav></section>
+<p><a href="README.md">Regeneration and review notes</a> · <a href="validation.json">Current validation receipts</a> · <a href="implementation-evidence.json">Reviewed source hashes</a> · <a href="exports.json">Export hashes</a></p>
+<small>Native Archify JSON and standalone HTML; no Mermaid embedding. Interaction order is illustrative, not measured latency. Source semantics were reviewed against local working files; no Git-pinned source verification is claimed. These diagrams do not establish load capacity or database/cache high availability.</small>
+</html>

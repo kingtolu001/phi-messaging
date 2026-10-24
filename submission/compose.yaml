@@ -1,0 +1,82 @@
+name: phi-messaging
+x-app: &app
+  build:
+    context: .
+    target: app
+  environment:
+    DATABASE_URL: postgres://phi:phi_local@postgres:5432/phi?sslmode=disable
+    REDIS_URL: redis://redis:6379/0
+    TOKENS_FILE: /config/demo-tokens.json
+    ALLOWED_ORIGINS: http://localhost:8080
+  volumes:
+    - ./config/demo-tokens.json:/config/demo-tokens.json:ro
+  depends_on:
+    postgres:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+  stop_grace_period: 15s
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    command: [postgres, -c, shared_preload_libraries=pg_stat_statements, -c, pg_stat_statements.track=all]
+    environment:
+      POSTGRES_USER: phi
+      POSTGRES_PASSWORD: phi_local
+      POSTGRES_DB: phi
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./migrations/001_initial.sql:/docker-entrypoint-initdb.d/001_initial.sql:ro
+      - ./config/seed.sql:/docker-entrypoint-initdb.d/002_seed.sql:ro
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U phi -d phi"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: [CMD, redis-cli, ping]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+  app1:
+    <<: *app
+    ports: ["127.0.0.1:8081:8080"]
+  app2:
+    <<: *app
+    ports: ["127.0.0.1:8082:8080"]
+  app3:
+    <<: *app
+    ports: ["127.0.0.1:8083:8080"]
+  load-balancer:
+    image: nginx:1.28-alpine
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    ports: ["127.0.0.1:8080:80"]
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on: [app1, app2, app3]
+  tests:
+    profiles: [test]
+    build:
+      context: .
+      target: tests
+    environment:
+      REQUIRE_INTEGRATION: "1"
+      TEST_DATABASE_URL: postgres://phi:phi_local@postgres:5432/phi?sslmode=disable
+      TEST_REDIS_URL: redis://redis:6379/1
+    volumes:
+      - test-go-cache:/root/.cache/go-build
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  test-go-cache:

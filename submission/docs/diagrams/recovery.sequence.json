@@ -1,0 +1,47 @@
+{
+  "schema_version":1,
+  "diagram_type":"sequence",
+  "meta":{"title":"Node failure: client reconnect and durable recovery", "locale":"en", "output":"docs/diagrams/recovery.html", "quality_profile":"showcase"},
+  "participants":[
+    {"id":"device","type":"external","label":"Device","sublabel":"Owns processed cursor"},
+    {"id":"dead","type":"backend","label":"App A","sublabel":"Killed process"},
+    {"id":"lb","type":"cloud","label":"Nginx","sublabel":"Round-robin ingress"},
+    {"id":"healthy","type":"backend","label":"Healthy apps","sublabel":"B / C; HTTP may differ"},
+    {"id":"pg","type":"database","label":"PostgreSQL","sublabel":"Single durable instance"},
+    {"id":"redis","type":"database","label":"Redis","sublabel":"Single hint / lease store"}
+  ],
+  "segments":[
+    {"from":150,"to":320,"label":"Application process fails"},
+    {"from":355,"to":740,"label":"Authenticated resume before HTTP catch-up"},
+    {"from":775,"to":1080,"label":"Durable HTTP history and duplicate suppression"},
+    {"from":1120,"to":1450,"label":"Independent periodic repair and presence"}
+  ],
+  "messages":[
+    {"id":"break","from":"dead","to":"device","y":175,"label":"Socket closes / eventually times out","note":"Node A was killed; its queues and shared tails are lost, not committed messages."},
+    {"id":"backoff","from":"device","to":"lb","y":260,"label":"Client retries with capped exponential jitter","note":"Base 100 ms doubles up to 10 s; each delay is in [base/2, base)."},
+    {"id":"upgrade","from":"lb","to":"healthy","y":380,"label":"Authenticated WS upgrade","variant":"security"},
+    {"id":"lease","from":"healthy","to":"redis","y":425,"label":"Create independent connection lease"},
+    {"id":"ready","from":"healthy","to":"device","y":470,"label":"ready(instance ID), through Nginx","variant":"return"},
+    {"id":"resume","from":"device","to":"healthy","y":520,"label":"resume: last processed contiguous cursor","note":"Device cursor is independent of Node A's last enqueued position."},
+    {"id":"membership","from":"healthy","to":"pg","y":600,"label":"Check every resume membership and head","variant":"security"},
+    {"id":"authorized","from":"pg","to":"healthy","y":645,"label":"Authorized head; cursor not beyond it","variant":"return"},
+    {"id":"resumed","from":"healthy","to":"device","y":690,"label":"resumed; socket reader buffers live events","variant":"return"},
+    {"id":"history","from":"device","to":"lb","y":800,"label":"GET messages?after=processed_cursor","variant":"emphasis"},
+    {"id":"http-route","from":"lb","to":"healthy","y":845,"label":"Recovery HTTP can reach another replica"},
+    {"id":"durable","from":"healthy","to":"pg","y":890,"label":"Fresh membership/head; history on cache miss","variant":"security"},
+    {"id":"page","from":"pg","to":"healthy","y":935,"label":"Committed head / fallback history","variant":"return"},
+    {"id":"merge","from":"healthy","to":"device","y":985,"label":"HTTP page through Nginx; merge with live events","variant":"return","note":"Drop sequence <= cursor; gaps recover again; advance only after callback success."},
+    {"id":"sweep","from":"healthy","to":"pg","y":1145,"label":"Server 1 s shared-feed sweep: head + receipts"},
+    {"id":"tail","from":"pg","to":"healthy","y":1190,"label":"Committed tail / durable receipt positions","variant":"return"},
+    {"id":"repair","from":"healthy","to":"device","y":1235,"label":"Ordered WS messages / current read events","variant":"emphasis"},
+    {"id":"client-poll","from":"device","to":"lb","y":1280,"label":"Client 1 s HTTP catch-up also repairs gaps"},
+    {"id":"presence","from":"healthy","to":"redis","y":1350,"label":"Presence operation: prune expired leases","note":"Redis TIME; surviving devices remain online while any lease is valid."}
+  ],
+  "cards":[
+    {"dot":"cyan","title":"Who recovers what","items":["Client owns reconnect, jitter, HTTP catch-up, duplicate suppression and processed cursors.","Each surviving app owns shared-feed reconciliation and bounded WS delivery.","Register/resume first, then HTTP catch-up: live/history overlap is expected.","Server and client both reconcile every second; neither needs every Redis hint."]},
+    {"dot":"emerald","title":"Durability and receipts","items":["Acknowledged messages already committed with outbox and sequence in PostgreSQL.","Lost-ack retries reuse the client message ID; identical payload returns original result.","Read positions are durable; resume emits current receipts and GET /receipts restores them.","The sample Go client processes messages but ignores live read-event frames."]},
+    {"dot":"amber","title":"Multiple devices and failure limits","items":["One 30 s Redis lease per connection; pongs renew after server pings every 10 s.","A killed node cannot clean up; expired leases are pruned on Redis presence operations.","Other device leases keep the user online; last_seen is last observed activity.","Cursor memory is not persisted by the sample client; restarting it can replay from zero."]},
+    {"dot":"rose","title":"Not database/cache high availability","items":["This path assumes PostgreSQL, Redis and Nginx are reachable while one app dies.","PostgreSQL outage: sends cannot acknowledge; retries wait for recovery.","Redis outage: HTTP history/sends can work, but presence/new WS setup is unavailable.","No dependency replica, distributed cursor store or automatic database failover exists.","The proxy never retries an uncertain POST; recovery and send retries belong to the client."]},
+    {"dot":"slate","title":"Sequence scope","items":["B/C represents surviving processes; an HTTP request need not hit the WS process.","Healthy-app messages to the device travel through Nginx; forwarding hops are abbreviated.","Periodic repair and lease operations are independent; vertical placement is illustrative order, not measured time.","Code-inspected working files are recorded in implementation-evidence.json; no commit-pinned source claim."]}
+  ]
+}

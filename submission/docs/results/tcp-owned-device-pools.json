@@ -1,0 +1,20 @@
+﻿{
+    "captured_at":  "2026-10-23T20:04:44.3464124+00:00",
+    "note":  "Snapshot during original-app v3 stages using per-device HTTP pools; not a port-exhaustion assertion",
+    "localhost_8080_states":  [
+                                  {
+                                      "Name":  "LISTENING",
+                                      "Count":  1
+                                  },
+                                  {
+                                      "Name":  "TIME_WAIT",
+                                      "Count":  4665
+                                  },
+                                  {
+                                      "Name":  "ESTABLISHED",
+                                      "Count":  434
+                                  }
+                              ],
+    "total_time_wait":  4693,
+    "dynamic_port_configuration":  "\r\nProtocol tcp Dynamic Port Range\r\n---------------------------------\r\nStart Port      : 49152\r\nNumber of Ports : 16384\r\n\r\n"
+}

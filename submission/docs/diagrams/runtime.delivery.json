@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "84773c6a-8155-4959-84e9-8aa00a1ddbd0",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\runtime.architecture.json",
+  "output": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\runtime.html",
+  "specification": {
+    "sha256": "f956e6c507b1253865493b5c8f15e053f6929bb4ebc5d831b54685358e630333",
+    "bytes": 3412
+  },
+  "artifact": {
+    "sha256": "c98afef7ad079f6ddb5f7383cce0c32c6ac63d18d1410e69f388011f7a7c1db1",
+    "bytes": 818092
+  }
+}

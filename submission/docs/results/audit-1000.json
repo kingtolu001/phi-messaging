@@ -1,0 +1,6 @@
+{
+  "durable_rows": 49,
+  "acknowledged_checked": 49,
+  "missing_or_changed_acknowledged": 0,
+  "unacknowledged_but_committed": 0
+}

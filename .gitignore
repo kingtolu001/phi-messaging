@@ -1,0 +1,9 @@
+.tools/
+/learning/
+.env
+.env.*
+!.env.example
+*.exe
+*.test
+*.prof
+coverage.out

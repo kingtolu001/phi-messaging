@@ -1,0 +1,2133 @@
+{
+  "database_queries_before": {
+    "at": "2026-10-23T17:19:59.5933794Z",
+    "statements": 507652,
+    "execution_ms": 237743.0333310015
+  },
+  "database_queries_after": {
+    "at": "2026-10-23T19:23:19.3886576Z",
+    "statements": 630253,
+    "execution_ms": 679488.0410060008
+  },
+  "database_statements_per_second_full_run": 16.568161062669652,
+  "missing_warmup_deliveries": 0,
+  "history_audit": {
+    "history_read_attempts": 1,
+    "durable_rows": 250,
+    "acknowledged_checked": 250,
+    "missing_or_changed_acknowledged": 0,
+    "unacknowledged_but_committed": 0
+  },
+  "min_resumed_during_measurement": 99,
+  "scheduler_lateness": {
+    "samples": 250,
+    "p50_ms": 0.5015,
+    "p95_ms": 3.5383,
+    "p99_ms": 14.2806,
+    "max_ms": 55.4133
+  },
+  "websocket_establishment_failures": 0,
+  "websocket_disconnects": 102,
+  "measurement_and_drain_seconds": 33.6989342,
+  "diagnostics_before": {
+    "postgres": " numbackends | xact_commit | xact_rollback | tup_returned | tup_fetched | deadlocks \n-------------+-------------+---------------+--------------+-------------+-----------\n          25 |      456378 |        183772 |     23526453 |     4027497 |         0\n(1 row)\n\n state  | wait_event_type | count \n--------+-----------------+-------\n active |                 |     1\n idle   | Client          |    24\n(2 rows)\n\n",
+    "redis": "# Stats\r\ntotal_connections_received:1265\r\ntotal_commands_processed:89268\r\ninstantaneous_ops_per_sec:0\r\ntotal_net_input_bytes:2911998\r\ntotal_net_output_bytes:437355\r\ntotal_net_repl_input_bytes:0\r\ntotal_net_repl_output_bytes:0\r\ninstantaneous_input_kbps:0.01\r\ninstantaneous_output_kbps:0.00\r\ninstantaneous_input_repl_kbps:0.00\r\ninstantaneous_output_repl_kbps:0.00\r\nrejected_connections:0\r\nsync_full:0\r\nsync_partial_ok:0\r\nsync_partial_err:0\r\nexpired_subkeys:0\r\nexpired_keys:1\r\nexpired_stale_perc:0.00\r\nexpired_time_cap_reached_count:0\r\nexpire_cycle_cpu_milliseconds:108\r\nevicted_keys:0\r\nevicted_clients:0\r\nevicted_scripts:0\r\ntotal_eviction_exceeded_time:0\r\ncurrent_eviction_exceeded_time:0\r\nkeyspace_hits:23434\r\nkeyspace_misses:16\r\npubsub_channels:1\r\npubsub_patterns:0\r\npubsubshard_channels:0\r\nlatest_fork_usec:16519\r\ntotal_forks:2\r\nmigrate_cached_sockets:0\r\nslave_expires_tracked_keys:0\r\nactive_defrag_hits:0\r\nactive_defrag_misses:0\r\nactive_defrag_key_hits:0\r\nactive_defrag_key_misses:0\r\ntotal_active_defrag_time:0\r\ncurrent_active_defrag_time:0\r\ntracking_total_keys:0\r\ntracking_total_items:0\r\ntracking_total_prefixes:0\r\nunexpected_error_replies:0\r\ntotal_error_replies:11\r\ndump_payload_sanitizations:0\r\ntotal_reads_processed:14482\r\ntotal_writes_processed:13794\r\nio_threaded_reads_processed:0\r\nio_threaded_writes_processed:0\r\nclient_query_buffer_limit_disconnections:0\r\nclient_output_buffer_limit_disconnections:0\r\nreply_buffer_shrinks:263\r\nreply_buffer_expands:0\r\neventloop_cycles:31298\r\neventloop_duration_sum:42520578\r\neventloop_duration_cmd_sum:5171093\r\ninstantaneous_eventloop_cycles_per_sec:9\r\ninstantaneous_eventloop_duration_usec:712\r\nacl_access_denied_auth:0\r\nacl_access_denied_cmd:0\r\nacl_access_denied_key:0\r\nacl_access_denied_channel:0\r\n"
+  },
+  "diagnostics_after": {
+    "postgres": " numbackends | xact_commit | xact_rollback | tup_returned | tup_fetched | deadlocks \n-------------+-------------+---------------+--------------+-------------+-----------\n          23 |      507813 |        184338 |     29582744 |     5026465 |         0\n(1 row)\n\n state  | wait_event_type | count \n--------+-----------------+-------\n active |                 |     1\n idle   | Client          |    22\n(2 rows)\n\n",
+    "redis": "# Stats\r\ntotal_connections_received:1355\r\ntotal_commands_processed:93570\r\ninstantaneous_ops_per_sec:463\r\ntotal_net_input_bytes:3063648\r\ntotal_net_output_bytes:523962\r\ntotal_net_repl_input_bytes:0\r\ntotal_net_repl_output_bytes:0\r\ninstantaneous_input_kbps:19.21\r\ninstantaneous_output_kbps:7.51\r\ninstantaneous_input_repl_kbps:0.00\r\ninstantaneous_output_repl_kbps:0.00\r\nrejected_connections:0\r\nsync_full:0\r\nsync_partial_ok:0\r\nsync_partial_err:0\r\nexpired_subkeys:0\r\nexpired_keys:2\r\nexpired_stale_perc:0.00\r\nexpired_time_cap_reached_count:0\r\nexpire_cycle_cpu_milliseconds:110\r\nevicted_keys:0\r\nevicted_clients:0\r\nevicted_scripts:0\r\ntotal_eviction_exceeded_time:0\r\ncurrent_eviction_exceeded_time:0\r\nkeyspace_hits:24438\r\nkeyspace_misses:18\r\npubsub_channels:1\r\npubsub_patterns:0\r\npubsubshard_channels:0\r\nlatest_fork_usec:956\r\ntotal_forks:4\r\nmigrate_cached_sockets:0\r\nslave_expires_tracked_keys:0\r\nactive_defrag_hits:0\r\nactive_defrag_misses:0\r\nactive_defrag_key_hits:0\r\nactive_defrag_key_misses:0\r\ntotal_active_defrag_time:0\r\ncurrent_active_defrag_time:0\r\ntracking_total_keys:0\r\ntracking_total_items:0\r\ntracking_total_prefixes:0\r\nunexpected_error_replies:0\r\ntotal_error_replies:11\r\ndump_payload_sanitizations:0\r\ntotal_reads_processed:15637\r\ntotal_writes_processed:15455\r\nio_threaded_reads_processed:0\r\nio_threaded_writes_processed:0\r\nclient_query_buffer_limit_disconnections:0\r\nclient_output_buffer_limit_disconnections:0\r\nreply_buffer_shrinks:277\r\nreply_buffer_expands:0\r\neventloop_cycles:32378\r\neventloop_duration_sum:43828217\r\neventloop_duration_cmd_sum:5305656\r\ninstantaneous_eventloop_cycles_per_sec:22\r\ninstantaneous_eventloop_duration_usec:1158\r\nacl_access_denied_auth:0\r\nacl_access_denied_cmd:0\r\nacl_access_denied_key:0\r\nacl_access_denied_channel:0\r\n"
+  },
+  "config": {
+    "send_rate_scope": "aggregate_across_workload_not_per_device",
+    "url": "http://127.0.0.1:8080",
+    "connections": 100,
+    "logical_messages_per_second": 10,
+    "warmup_ns": 5000000000,
+    "measurement_ns": 20000000000,
+    "connection_start_interval_ns": 10000000,
+    "drain_ns": 15000000000
+  },
+  "started": "2026-10-23T17:19:57.8033745Z",
+  "conversation": "bfbb5c7f-40b2-4cf5-8309-54e798d42477",
+  "passed": true,
+  "max_simultaneously_resumed": 100,
+  "connected_at_measurement_start": 100,
+  "never_connected": 0,
+  "connection_retries": 2,
+  "retry_http_statuses": {
+    "0": 2
+  },
+  "client_terminal_errors": 0,
+  "client_error_kinds": {},
+  "http_attempt_errors": 28,
+  "unacknowledged_logical_messages": 0,
+  "scheduler_queue_drops": 0,
+  "unscheduled_rate_slots": 0,
+  "measured_logical_messages": 200,
+  "measured_acknowledged_messages": 200,
+  "expected_measured_deliveries": 20000,
+  "received_measured_deliveries": 20000,
+  "missing_measured_deliveries": 0,
+  "duplicate_callbacks": 0,
+  "suppressed_duplicates": 7193,
+  "gap_recovery_triggers": 0,
+  "sender_ack_latency": {
+    "samples": 200,
+    "p50_ms": 1544.3113,
+    "p95_ms": 5684.3063,
+    "p99_ms": 7154.9662,
+    "max_ms": 12959.9538
+  },
+  "recipient_delivery_latency": {
+    "samples": 20000,
+    "p50_ms": 1715.5185,
+    "p95_ms": 6036.4997,
+    "p99_ms": 8028.7798,
+    "max_ms": 13512.0848
+  },
+  "acknowledged_messages_per_second": 5.934905798890222,
+  "recipient_deliveries_per_second_including_drain": 593.4905798890222,
+  "kill_requested_at": "0001-01-01T00:00:00Z",
+  "other_device_online_after_kill": false,
+  "retry_delays_ms": [
+    94.938385,
+    88.217888
+  ],
+  "connections_by_instance": {
+    "b129c269c796": 32,
+    "dd19fa77d875": 33,
+    "dddfb535e761": 37
+  },
+  "resource_samples": [
+    {
+      "at": "2026-10-23T17:20:03.6026157Z",
+      "docker_stats": "{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"82.16%\",\"Container\":\"phi-messaging-app1-1\",\"ID\":\"b129c269c796\",\"MemPerc\":\"0.46%\",\"MemUsage\":\"35.27MiB / 7.449GiB\",\"Name\":\"phi-messaging-app1-1\",\"NetIO\":\"47.6MB / 65.4MB\",\"PIDs\":\"21\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"78.78%\",\"Container\":\"phi-messaging-app2-1\",\"ID\":\"dd19fa77d875\",\"MemPerc\":\"0.53%\",\"MemUsage\":\"40.2MiB / 7.449GiB\",\"Name\":\"phi-messaging-app2-1\",\"NetIO\":\"48.2MB / 66.2MB\",\"PIDs\":\"24\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"90.08%\",\"Container\":\"phi-messaging-app3-1\",\"ID\":\"dddfb535e761\",\"MemPerc\":\"0.45%\",\"MemUsage\":\"34.45MiB / 7.449GiB\",\"Name\":\"phi-messaging-app3-1\",\"NetIO\":\"49.9MB / 68.7MB\",\"PIDs\":\"21\"}\n{\"BlockIO\":\"111kB / 659kB\",\"CPUPerc\":\"474.01%\",\"Container\":\"phi-messaging-postgres-1\",\"ID\":\"e0bdcc7f78ea\",\"MemPerc\":\"2.60%\",\"MemUsage\":\"198.2MiB / 7.449GiB\",\"Name\":\"phi-messaging-postgres-1\",\"NetIO\":\"96.2MB / 91.7MB\",\"PIDs\":\"98\"}\n{\"BlockIO\":\"0B / 45.1kB\",\"CPUPerc\":\"1.92%\",\"Container\":\"phi-messaging-redis-1\",\"ID\":\"092ad9ff8194\",\"MemPerc\":\"0.07%\",\"MemUsage\":\"5.098MiB / 7.449GiB\",\"Name\":\"phi-messaging-redis-1\",\"NetIO\":\"4.51MB / 1.51MB\",\"PIDs\":\"6\"}\n{\"BlockIO\":\"0B / 12.3kB\",\"CPUPerc\":\"20.96%\",\"Container\":\"phi-messaging-load-balancer-1\",\"ID\":\"e1fb90b9c07f\",\"MemPerc\":\"0.17%\",\"MemUsage\":\"12.76MiB / 7.449GiB\",\"Name\":\"phi-messaging-load-balancer-1\",\"NetIO\":\"206MB / 209MB\",\"PIDs\":\"2\"}\n"
+    },
+    {
+      "at": "2026-10-23T19:22:48.4699112Z",
+      "docker_stats": "{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"98.36%\",\"Container\":\"phi-messaging-app1-1\",\"ID\":\"b129c269c796\",\"MemPerc\":\"0.43%\",\"MemUsage\":\"32.87MiB / 7.449GiB\",\"Name\":\"phi-messaging-app1-1\",\"NetIO\":\"48.6MB / 66.7MB\",\"PIDs\":\"21\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"82.73%\",\"Container\":\"phi-messaging-app2-1\",\"ID\":\"dd19fa77d875\",\"MemPerc\":\"0.40%\",\"MemUsage\":\"30.33MiB / 7.449GiB\",\"Name\":\"phi-messaging-app2-1\",\"NetIO\":\"49.5MB / 67.9MB\",\"PIDs\":\"24\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"92.11%\",\"Container\":\"phi-messaging-app3-1\",\"ID\":\"dddfb535e761\",\"MemPerc\":\"0.41%\",\"MemUsage\":\"31.23MiB / 7.449GiB\",\"Name\":\"phi-messaging-app3-1\",\"NetIO\":\"51MB / 70.1MB\",\"PIDs\":\"21\"}\n{\"BlockIO\":\"111kB / 659kB\",\"CPUPerc\":\"681.01%\",\"Container\":\"phi-messaging-postgres-1\",\"ID\":\"e0bdcc7f78ea\",\"MemPerc\":\"2.67%\",\"MemUsage\":\"203.5MiB / 7.449GiB\",\"Name\":\"phi-messaging-postgres-1\",\"NetIO\":\"99MB / 94.5MB\",\"PIDs\":\"108\"}\n{\"BlockIO\":\"0B / 49.2kB\",\"CPUPerc\":\"15.36%\",\"Container\":\"phi-messaging-redis-1\",\"ID\":\"092ad9ff8194\",\"MemPerc\":\"0.09%\",\"MemUsage\":\"6.535MiB / 7.449GiB\",\"Name\":\"phi-messaging-redis-1\",\"NetIO\":\"4.52MB / 1.53MB\",\"PIDs\":\"11\"}\n{\"BlockIO\":\"0B / 12.3kB\",\"CPUPerc\":\"33.63%\",\"Container\":\"phi-messaging-load-balancer-1\",\"ID\":\"e1fb90b9c07f\",\"MemPerc\":\"0.17%\",\"MemUsage\":\"12.86MiB / 7.449GiB\",\"Name\":\"phi-messaging-load-balancer-1\",\"NetIO\":\"208MB / 211MB\",\"PIDs\":\"2\"}\n"
+    },
+    {
+      "at": "2026-10-23T19:22:54.2093625Z",
+      "docker_stats": "{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"70.02%\",\"Container\":\"phi-messaging-app1-1\",\"ID\":\"b129c269c796\",\"MemPerc\":\"0.42%\",\"MemUsage\":\"31.67MiB / 7.449GiB\",\"Name\":\"phi-messaging-app1-1\",\"NetIO\":\"50.1MB / 68.6MB\",\"PIDs\":\"21\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"74.02%\",\"Container\":\"phi-messaging-app2-1\",\"ID\":\"dd19fa77d875\",\"MemPerc\":\"0.38%\",\"MemUsage\":\"29.2MiB / 7.449GiB\",\"Name\":\"phi-messaging-app2-1\",\"NetIO\":\"50.9MB / 69.7MB\",\"PIDs\":\"24\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"67.80%\",\"Container\":\"phi-messaging-app3-1\",\"ID\":\"dddfb535e761\",\"MemPerc\":\"0.40%\",\"MemUsage\":\"30.68MiB / 7.449GiB\",\"Name\":\"phi-messaging-app3-1\",\"NetIO\":\"52.2MB / 71.8MB\",\"PIDs\":\"21\"}\n{\"BlockIO\":\"111kB / 659kB\",\"CPUPerc\":\"450.61%\",\"Container\":\"phi-messaging-postgres-1\",\"ID\":\"e0bdcc7f78ea\",\"MemPerc\":\"2.00%\",\"MemUsage\":\"152.4MiB / 7.449GiB\",\"Name\":\"phi-messaging-postgres-1\",\"NetIO\":\"103MB / 98.3MB\",\"PIDs\":\"80\"}\n{\"BlockIO\":\"0B / 49.2kB\",\"CPUPerc\":\"1.81%\",\"Container\":\"phi-messaging-redis-1\",\"ID\":\"092ad9ff8194\",\"MemPerc\":\"0.06%\",\"MemUsage\":\"4.93MiB / 7.449GiB\",\"Name\":\"phi-messaging-redis-1\",\"NetIO\":\"4.58MB / 1.56MB\",\"PIDs\":\"6\"}\n{\"BlockIO\":\"0B / 12.3kB\",\"CPUPerc\":\"17.90%\",\"Container\":\"phi-messaging-load-balancer-1\",\"ID\":\"e1fb90b9c07f\",\"MemPerc\":\"0.17%\",\"MemUsage\":\"12.96MiB / 7.449GiB\",\"Name\":\"phi-messaging-load-balancer-1\",\"NetIO\":\"210MB / 213MB\",\"PIDs\":\"2\"}\n"
+    },
+    {
+      "at": "2026-10-23T19:22:59.2985352Z",
+      "docker_stats": "{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"85.42%\",\"Container\":\"phi-messaging-app1-1\",\"ID\":\"b129c269c796\",\"MemPerc\":\"0.40%\",\"MemUsage\":\"30.34MiB / 7.449GiB\",\"Name\":\"phi-messaging-app1-1\",\"NetIO\":\"51.3MB / 70.2MB\",\"PIDs\":\"21\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"77.26%\",\"Container\":\"phi-messaging-app2-1\",\"ID\":\"dd19fa77d875\",\"MemPerc\":\"0.38%\",\"MemUsage\":\"28.7MiB / 7.449GiB\",\"Name\":\"phi-messaging-app2-1\",\"NetIO\":\"52.1MB / 71.3MB\",\"PIDs\":\"24\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"105.06%\",\"Container\":\"phi-messaging-app3-1\",\"ID\":\"dddfb535e761\",\"MemPerc\":\"0.39%\",\"MemUsage\":\"29.39MiB / 7.449GiB\",\"Name\":\"phi-messaging-app3-1\",\"NetIO\":\"53.9MB / 74MB\",\"PIDs\":\"21\"}\n{\"BlockIO\":\"111kB / 733kB\",\"CPUPerc\":\"518.74%\",\"Container\":\"phi-messaging-postgres-1\",\"ID\":\"e0bdcc7f78ea\",\"MemPerc\":\"2.60%\",\"MemUsage\":\"198.2MiB / 7.449GiB\",\"Name\":\"phi-messaging-postgres-1\",\"NetIO\":\"106MB / 101MB\",\"PIDs\":\"103\"}\n{\"BlockIO\":\"0B / 49.2kB\",\"CPUPerc\":\"3.99%\",\"Container\":\"phi-messaging-redis-1\",\"ID\":\"092ad9ff8194\",\"MemPerc\":\"0.06%\",\"MemUsage\":\"4.945MiB / 7.449GiB\",\"Name\":\"phi-messaging-redis-1\",\"NetIO\":\"4.6MB / 1.58MB\",\"PIDs\":\"6\"}\n{\"BlockIO\":\"0B / 12.3kB\",\"CPUPerc\":\"25.62%\",\"Container\":\"phi-messaging-load-balancer-1\",\"ID\":\"e1fb90b9c07f\",\"MemPerc\":\"0.17%\",\"MemUsage\":\"12.81MiB / 7.449GiB\",\"Name\":\"phi-messaging-load-balancer-1\",\"NetIO\":\"212MB / 215MB\",\"PIDs\":\"2\"}\n"
+    },
+    {
+      "at": "2026-10-23T19:23:04.999356Z",
+      "docker_stats": "{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"76.18%\",\"Container\":\"phi-messaging-app1-1\",\"ID\":\"b129c269c796\",\"MemPerc\":\"0.41%\",\"MemUsage\":\"31.14MiB / 7.449GiB\",\"Name\":\"phi-messaging-app1-1\",\"NetIO\":\"52.9MB / 72.3MB\",\"PIDs\":\"21\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"74.65%\",\"Container\":\"phi-messaging-app2-1\",\"ID\":\"dd19fa77d875\",\"MemPerc\":\"0.39%\",\"MemUsage\":\"29.71MiB / 7.449GiB\",\"Name\":\"phi-messaging-app2-1\",\"NetIO\":\"53.8MB / 73.4MB\",\"PIDs\":\"24\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"76.42%\",\"Container\":\"phi-messaging-app3-1\",\"ID\":\"dddfb535e761\",\"MemPerc\":\"0.39%\",\"MemUsage\":\"29.62MiB / 7.449GiB\",\"Name\":\"phi-messaging-app3-1\",\"NetIO\":\"55.7MB / 76.3MB\",\"PIDs\":\"21\"}\n{\"BlockIO\":\"111kB / 733kB\",\"CPUPerc\":\"442.07%\",\"Container\":\"phi-messaging-postgres-1\",\"ID\":\"e0bdcc7f78ea\",\"MemPerc\":\"2.25%\",\"MemUsage\":\"171.7MiB / 7.449GiB\",\"Name\":\"phi-messaging-postgres-1\",\"NetIO\":\"111MB / 106MB\",\"PIDs\":\"90\"}\n{\"BlockIO\":\"0B / 49.2kB\",\"CPUPerc\":\"9.60%\",\"Container\":\"phi-messaging-redis-1\",\"ID\":\"092ad9ff8194\",\"MemPerc\":\"0.06%\",\"MemUsage\":\"4.93MiB / 7.449GiB\",\"Name\":\"phi-messaging-redis-1\",\"NetIO\":\"4.65MB / 1.61MB\",\"PIDs\":\"6\"}\n{\"BlockIO\":\"0B / 12.3kB\",\"CPUPerc\":\"13.57%\",\"Container\":\"phi-messaging-load-balancer-1\",\"ID\":\"e1fb90b9c07f\",\"MemPerc\":\"0.17%\",\"MemUsage\":\"12.71MiB / 7.449GiB\",\"Name\":\"phi-messaging-load-balancer-1\",\"NetIO\":\"214MB / 217MB\",\"PIDs\":\"2\"}\n"
+    },
+    {
+      "at": "2026-10-23T19:23:10.3512316Z",
+      "docker_stats": "{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"73.01%\",\"Container\":\"phi-messaging-app1-1\",\"ID\":\"b129c269c796\",\"MemPerc\":\"0.37%\",\"MemUsage\":\"28.59MiB / 7.449GiB\",\"Name\":\"phi-messaging-app1-1\",\"NetIO\":\"54.6MB / 74.5MB\",\"PIDs\":\"21\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"74.33%\",\"Container\":\"phi-messaging-app2-1\",\"ID\":\"dd19fa77d875\",\"MemPerc\":\"0.39%\",\"MemUsage\":\"29.6MiB / 7.449GiB\",\"Name\":\"phi-messaging-app2-1\",\"NetIO\":\"55.4MB / 75.6MB\",\"PIDs\":\"24\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"70.99%\",\"Container\":\"phi-messaging-app3-1\",\"ID\":\"dddfb535e761\",\"MemPerc\":\"0.38%\",\"MemUsage\":\"29.36MiB / 7.449GiB\",\"Name\":\"phi-messaging-app3-1\",\"NetIO\":\"57.5MB / 78.8MB\",\"PIDs\":\"21\"}\n{\"BlockIO\":\"111kB / 733kB\",\"CPUPerc\":\"481.09%\",\"Container\":\"phi-messaging-postgres-1\",\"ID\":\"e0bdcc7f78ea\",\"MemPerc\":\"2.34%\",\"MemUsage\":\"178.2MiB / 7.449GiB\",\"Name\":\"phi-messaging-postgres-1\",\"NetIO\":\"115MB / 110MB\",\"PIDs\":\"92\"}\n{\"BlockIO\":\"0B / 49.2kB\",\"CPUPerc\":\"3.86%\",\"Container\":\"phi-messaging-redis-1\",\"ID\":\"092ad9ff8194\",\"MemPerc\":\"0.06%\",\"MemUsage\":\"4.863MiB / 7.449GiB\",\"Name\":\"phi-messaging-redis-1\",\"NetIO\":\"4.7MB / 1.64MB\",\"PIDs\":\"6\"}\n{\"BlockIO\":\"0B / 12.3kB\",\"CPUPerc\":\"16.79%\",\"Container\":\"phi-messaging-load-balancer-1\",\"ID\":\"e1fb90b9c07f\",\"MemPerc\":\"0.17%\",\"MemUsage\":\"12.73MiB / 7.449GiB\",\"Name\":\"phi-messaging-load-balancer-1\",\"NetIO\":\"218MB / 220MB\",\"PIDs\":\"2\"}\n"
+    },
+    {
+      "at": "2026-10-23T19:23:16.0571152Z",
+      "docker_stats": "{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"71.33%\",\"Container\":\"phi-messaging-app1-1\",\"ID\":\"b129c269c796\",\"MemPerc\":\"0.38%\",\"MemUsage\":\"29.02MiB / 7.449GiB\",\"Name\":\"phi-messaging-app1-1\",\"NetIO\":\"56.5MB / 77MB\",\"PIDs\":\"21\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"80.25%\",\"Container\":\"phi-messaging-app2-1\",\"ID\":\"dd19fa77d875\",\"MemPerc\":\"0.37%\",\"MemUsage\":\"28.25MiB / 7.449GiB\",\"Name\":\"phi-messaging-app2-1\",\"NetIO\":\"57.4MB / 78.2MB\",\"PIDs\":\"24\"}\n{\"BlockIO\":\"0B / 0B\",\"CPUPerc\":\"77.08%\",\"Container\":\"phi-messaging-app3-1\",\"ID\":\"dddfb535e761\",\"MemPerc\":\"0.38%\",\"MemUsage\":\"29.31MiB / 7.449GiB\",\"Name\":\"phi-messaging-app3-1\",\"NetIO\":\"59.7MB / 81.6MB\",\"PIDs\":\"21\"}\n{\"BlockIO\":\"111kB / 733kB\",\"CPUPerc\":\"425.30%\",\"Container\":\"phi-messaging-postgres-1\",\"ID\":\"e0bdcc7f78ea\",\"MemPerc\":\"2.63%\",\"MemUsage\":\"200.3MiB / 7.449GiB\",\"Name\":\"phi-messaging-postgres-1\",\"NetIO\":\"120MB / 116MB\",\"PIDs\":\"100\"}\n{\"BlockIO\":\"0B / 49.2kB\",\"CPUPerc\":\"7.99%\",\"Container\":\"phi-messaging-redis-1\",\"ID\":\"092ad9ff8194\",\"MemPerc\":\"0.06%\",\"MemUsage\":\"4.863MiB / 7.449GiB\",\"Name\":\"phi-messaging-redis-1\",\"NetIO\":\"4.72MB / 1.67MB\",\"PIDs\":\"6\"}\n{\"BlockIO\":\"0B / 12.3kB\",\"CPUPerc\":\"17.09%\",\"Container\":\"phi-messaging-load-balancer-1\",\"ID\":\"e1fb90b9c07f\",\"MemPerc\":\"0.17%\",\"MemUsage\":\"12.73MiB / 7.449GiB\",\"Name\":\"phi-messaging-load-balancer-1\",\"NetIO\":\"221MB / 223MB\",\"PIDs\":\"2\"}\n"
+    }
+  ],
+  "records": [
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "4351d805-49a2-4291-b777-e79be9440de6",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 1,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "bf7d5d16-750f-451b-b2a9-e81c5047b43a",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 2,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "7f32cb48-69e3-4292-b04d-7a43597fffae",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 3,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "7002b980-64d5-4506-b66c-7169130e8bbf",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 4,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "5ec06209-6164-4f87-bfb7-8ee67a872bbf",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 17,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c03ef05b-d72b-467a-979d-18516e99fbed",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 7,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "da063df2-7092-46fb-83eb-4fc7eef4bcc5",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 8,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c1ad7c7d-4881-4da8-af14-00630979c51b",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 6,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "dc608ac9-364e-4459-8628-95b74f8bbaa9",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 15,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "e81e3d36-ee54-4502-9fbd-0517b0ce74de",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 28,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "b925e026-f767-4166-b253-61ffa411a114",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 5,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "3b4a1a0a-aae9-4771-a3e4-6a45afba2a67",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 9,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "588e7fe4-d840-438c-8624-36210a60efab",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 49,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c9d348f1-55ac-41bc-810f-d794130e4a0a",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 11,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "3481e52f-2cf8-436a-b6c2-3654fd4c60ee",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 23,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "98a429cf-b560-4102-a84f-a680261014bb",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 20,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "6a9a376c-017b-47d5-b8a8-73e4d76fccee",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 12,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "ee74f313-e4a9-487a-8098-f224122b3bd6",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 39,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "230c1f27-bfe8-4aef-bbfc-319702d8f7ca",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 10,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "974ed3ae-39aa-4bd8-8c5d-30729ec069b4",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 16,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "34b26837-5aae-4b8c-a676-fd2fc258a452",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 56,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "9701c470-ae3f-40a4-bce0-1a0327a03777",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 44,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "b7bc9d3c-068c-49e4-9c2f-b11c159c1ff4",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 34,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "f9863c31-3699-48c9-9226-734bb91d7e60",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 14,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "6fa29aa0-8ed5-4b58-80d3-e7673d8143f0",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 13,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "b1071095-4751-420b-a086-f649161e8431",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 24,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "1eff910f-a719-4fb8-8fff-6312e536af5d",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 19,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "29322e32-50a6-49cf-9fff-6275979c9aaf",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 32,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "865159bd-9f00-4dbc-9b49-a46a84fb61f5",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 26,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "9c5da36b-28ae-423a-97a8-79925304cf70",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 27,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "8409df8f-59ae-4a99-b372-ca25a2e28a8a",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 18,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "29d34af3-1296-4853-aa81-5caa8fa426da",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 22,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "69f1b93a-8a19-49d1-ae89-0ad1c6b52329",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 21,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "2ea3a552-1fd3-4221-88aa-e2ea3b10c1bb",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 37,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "5881e738-5274-413b-a939-57a3046f8a2e",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 25,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "07c0ac21-ab13-4ac4-b50c-36eca724c319",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 52,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "1c8e3ef4-2382-424a-93be-14253940adc1",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 35,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "bd7d6dca-e7b3-418e-b27b-22315aa99931",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 71,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "82b073c9-4558-4b14-a5cd-5d6273b92f3a",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 43,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "edb355e1-1ddc-4e74-8e95-eead628fcd2b",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 38,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "bc28a128-1417-4880-87f0-d36907b59b1e",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 29,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "4506aff7-5cbe-4bd2-a8f6-da648d00fff4",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 30,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "bd827289-c1e9-4ce9-8924-a666191c4d6a",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 31,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c2b5d5dd-701e-4027-8514-21d549cf5a4e",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 41,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "8e5d7250-dee7-4de4-8db8-c4b3b5c61d8e",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 36,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "19b12c4c-686e-48e9-b7f0-9b27a76ddba1",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 33,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c4f8f453-b631-4337-8004-75580f363605",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 72,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "3897c55f-57d0-41e5-868b-b48501f12990",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 47,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "83b8b387-542d-417b-8cc9-1f07d39a9158",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 65,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "50c892ce-2859-4302-90b5-d37b70ba20d0",
+      "measured": false,
+      "acknowledged": true,
+      "sequence": 45,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "8956d94d-17c2-4ae1-9bc9-c6882227cb82",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 40,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "8c85dd7f-e188-4b5c-bcc8-8ce76cb4d12b",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 63,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "cdeb5973-3778-489d-8641-8a132625abae",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 42,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "ecaaab0c-965e-417f-b7b7-3d4f9f4b0de4",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 61,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "07dae96c-c5f6-4051-b908-0bfe83b11526",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 66,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "8855f246-e5ed-4e8a-9c62-837e6ecd69c5",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 59,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "9cde973b-e98c-45c5-943e-1df66732dad0",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 120,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "d09a28dc-b246-4ea0-ba76-7f0235c449bc",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 48,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "f3ac60de-051d-46df-bf6c-6b2d8e8e8ab0",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 46,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "da6870eb-9d8a-4853-8926-100b5adbe337",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 53,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "6f4f03ab-2c0e-47a9-80fd-7d630f4114af",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 50,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "51469ad3-4979-4e6f-b009-0c503007c63a",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 85,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "fbdeb138-3646-4d7e-98dc-41a13ea5cdd4",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 51,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "d55bfa77-71c3-4571-bee3-31ccb088cfd2",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 70,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "48c432be-0ece-4c24-8e09-54a5ddc97402",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 55,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c1e99bd8-6be6-4dc9-b511-4c99f021a7c6",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 60,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "818422c1-0163-45d5-8d40-676f3dd313ac",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 54,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "5c039759-4ece-45cc-b806-384ef81f00cd",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 99,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "01d3ea52-4374-4918-8e7c-b89c1d376336",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 62,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "fa085528-03de-4fea-bce4-ff0ed7ada739",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 57,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c157f34c-cb99-48e5-a7c8-4311e83e53ae",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 58,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "6d6e59ba-06ee-4147-a6ae-890d0dfb77de",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 77,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "e91c3f9e-e649-445c-a28a-2ae4c1eb1f0d",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 92,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "074d328f-d0ac-4500-9ddb-d1fede73ec6a",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 69,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "9422f9af-d7d8-4b7a-82bc-cae3574d7a67",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 80,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "8280be13-eb34-43e2-8d32-a48d4b26666c",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 93,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "4a5133cc-6064-4863-b9b1-38104c83e5fb",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 64,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "066047eb-7f9e-432c-b970-29fd9e98681c",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 87,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "a081ea90-8503-4d49-aa4c-9d47d746757c",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 76,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "31a7d54f-aab2-4c8f-a4e3-3de6966335f1",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 67,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "9c00c1f0-8dfc-4ccd-a551-14695b755cde",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 78,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "be6e86a5-055f-4df6-abd4-5730a013f1fc",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 68,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "922802e0-2a3f-4423-a3bd-e50c6c73ad13",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 74,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "b3b4abe1-afb7-4916-87aa-d721121c42f8",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 89,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "3e2faa81-e0a9-41d9-8a6b-4506fb44591f",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 88,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "a0368d1c-fe0c-47d9-8be4-fed4a99eb4cf",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 73,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "240fdfa3-5c6e-407e-8472-c54f283bcac4",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 75,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "32a623a5-376b-4074-afd0-2f9f471a1fcb",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 79,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "d85eb7d9-7a9c-4170-a66d-163902899337",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 83,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "cbdfe686-bcb3-4408-bfae-bb49cd6eb7de",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 84,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "fbc05428-2474-4ec1-aa98-20a52f9dbc00",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 90,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "57af6445-a39b-471e-9af8-e35b2abf3034",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 81,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "9a3b8dac-d5e0-49a2-8a51-c25146f310be",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 105,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "99e8f232-0920-4d04-8216-a05652f2dd04",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 82,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "358e3ea3-c8e0-40e4-af8d-b2d2e307e112",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 97,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "727c5e75-7c8d-4284-9a9a-7741b64e8451",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 100,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "d9589996-b688-44b6-a06b-25061562a7d0",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 114,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "f00e962d-9b37-431d-b24c-0600283b9c04",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 110,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "b1ad74b9-ee9b-464b-a2b1-932f1d9aad89",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 86,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "fe40c161-7ac2-4d0a-b97c-5da9d9b7bebf",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 98,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "4d8adc17-b625-448d-bcac-45a54aaa8574",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 130,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "4f6d4317-801c-4736-beb1-6873f04dbc89",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 94,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "806b430b-569c-45c4-a6ce-32be02aba508",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 91,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "a45efa75-5146-4b0a-be1a-173951e17a7f",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 111,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "5e50c130-7cde-452e-952e-8bf9f0019603",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 101,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "524795c4-cc88-4744-899f-7dd5ab955c3d",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 96,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "75f45125-c9c4-4ea4-969b-31cd3912d24e",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 95,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "3db6ac21-35bf-4c4b-acd7-0a1e08ad1b70",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 107,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "a18b3994-6f5a-4a5e-9904-8a7e5bcc0c0f",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 112,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "42e6ee62-bfdb-4239-a72f-85827eb2ed72",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 141,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "95960ee7-ef77-485a-960d-7c95ceb00ed2",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 113,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "0e9f8de4-a1fe-41d4-b3a9-b6ae6b15e938",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 106,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "a10f061d-f207-4319-8f1e-7d39eb61e273",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 109,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "204a2dc8-e30d-4d97-91d4-093a0f38e002",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 103,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "48b70a09-b29d-43ba-b89c-71634dc71fd1",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 102,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "fa14bf3c-0ade-4f36-84a7-960b8e227de1",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 119,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "143a0b9d-1c41-47e0-bacb-99c5321f2792",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 104,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "7b0b63f3-0733-404c-8e38-a5093010ec52",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 136,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "3febf467-3e03-42c3-9e14-3bf51364b4fc",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 121,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "035369f5-1d68-414b-a2ce-4c0659b8ddb5",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 134,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "1b2cb4c4-0f23-4fd3-86d2-8e2c80df64af",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 122,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "f1e7e1cf-6be2-4fc8-8c80-a4e534590f63",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 108,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "6d0f9d08-2f70-4e78-99e1-7a706cd02434",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 131,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "8595079e-1727-4684-a4c3-b53498815c8e",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 123,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "58a011ee-43ab-4f1b-a35e-9a8c1703c2c5",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 129,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "5bf8aeee-22ce-463c-864a-59f7e1b56fcb",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 124,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "46cd0e00-1f84-4178-b679-9e91f2ac7f44",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 115,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c7241940-751c-4cfa-a64c-141d2a89ef94",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 144,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "605018c4-ff68-404a-b16a-dff45d70058e",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 116,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "f190cfc0-6f61-4dd4-81f6-d4a8dc2cc8a0",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 132,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "b7ec6ac0-cbc3-47ab-9e37-36dce09c5e64",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 118,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "b02719da-5002-4eaa-988c-6b2de87a9a7b",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 117,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "ca6a75aa-ccba-4cee-ade7-b9b8a1f33557",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 127,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "176a73a0-9cc5-4bd9-94d6-8b589ffe46a8",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 126,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "99498224-f5c0-4f62-88ae-c5d3423eed1e",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 147,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "b2465fb3-7c83-4e46-9ea7-2044ce46c0f8",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 128,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "1e86b7d6-480b-4d7b-a096-ce1d0351d107",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 135,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "9ebd2f47-5772-4c5e-9ce4-09c9ec15b580",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 125,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "e89d022d-3202-415d-9780-300c65183db4",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 137,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "e264d0c9-811d-4ea5-9b7e-3e20ce6e4077",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 164,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "a73880a8-3e14-4411-bb21-72efd6e10fa2",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 157,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "d84dcec7-ef23-40c6-893e-4cb0159dce99",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 133,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "aee98dc5-f4ca-4923-83ed-6c9a7ef950ba",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 139,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "d27cf120-02f4-4ab2-99fc-cd9e3188707a",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 140,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "1c3c7342-37a7-4733-810e-1e1de1829fbe",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 150,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "77158a35-33ec-431f-b94a-b1f926a9a856",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 170,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "abde39f1-58cd-4681-b4c8-49d4536fc801",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 166,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "a4fc1e60-1610-42e3-b7e6-989e4d6e7ed5",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 186,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "f08940e8-282f-4f03-a4e4-8763f33a3563",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 149,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "4b6df9d5-e3ed-4ac7-8490-6d4a44e12467",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 138,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "2f56cc9b-fc97-4170-b370-41d7ee5212ac",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 151,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "ec93cb3f-078e-4164-8f31-15cc222aedeb",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 143,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "17062969-d301-40c5-8c4c-763b72f98952",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 142,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "935040c6-5981-47da-a54c-a4d4603a7dfe",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 148,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "eb1045fb-1f14-4755-99b3-e5350eb23381",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 146,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "fb735717-078d-41d6-b66e-65608793e4cf",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 156,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "7e63c41f-0395-40c7-9bb3-6fe7c0b4211c",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 153,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "0a1c5604-2da5-41c9-b44f-f382d2bcb708",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 145,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "30d21d7e-e8c7-4835-b9c2-cc11591633f6",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 165,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c8b5d483-f534-40b4-aa5e-cc48fd35ed73",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 163,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c01f782f-0ac5-4e56-91bb-aaaeb3ad56db",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 162,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "68a85670-1eef-42db-99ca-24f65fb4f040",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 158,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "0983d75f-5129-4f49-8c42-56408082cdb5",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 154,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "1777c844-2604-457a-898d-cea1793a8c47",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 152,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "14670780-6853-40db-b958-9f7270b5c626",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 155,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c737f00b-4631-4983-9de6-df3558c0a9f5",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 159,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "d0909c28-61c5-49e8-a6b3-1ecfc37f994f",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 176,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "64453f5a-3d38-42c7-b5b9-4feb28669271",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 175,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "6b2edae1-6bbb-445f-89a0-734ff4bffbb2",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 179,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "95bd7240-78ab-4cf8-b3d7-639cca45aff3",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 185,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "2ca90948-786a-4aca-ba61-f27d231cd37b",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 161,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "5c8b3456-dedd-4634-8736-27dafcdf185d",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 160,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "400312db-8daa-4a04-a408-02efbac7d4be",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 188,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "0db0582d-dd67-4674-b949-a6dc7d422afd",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 178,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "2ce97bdb-f6e0-4c8f-970d-a4a87d206e44",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 210,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "f9a35ac6-ae28-452f-b3c7-d457322ba623",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 191,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "0bb51c72-0408-4695-aec7-367dee914a8d",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 184,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "2a690903-ab99-438b-ba51-bc93a8fc3203",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 168,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "6163269d-ba67-44f9-a39a-7c7c03e48835",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 169,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "ca5f5186-6404-4a77-87a9-e40763c1e8a8",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 167,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "ae2348bb-36c8-4bb2-abca-3ec8dd32c695",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 177,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "7abcc600-589f-4b9c-8573-3cb45151fe1f",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 174,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "bc54f6b4-f1a8-41b8-ad6e-5f8a5dd8941b",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 172,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "e95d9981-a094-437c-8ddd-3812a9e60d67",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 171,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "96412424-d5c3-4d20-8365-a750d11a3b94",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 187,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "8313ea81-67eb-4f4e-89c8-e3f4e5ff7803",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 173,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "1853bc6f-4bff-41b7-bdda-cddd3e2dd0f3",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 181,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "e919a76b-eacc-4588-a092-821114c8f64e",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 180,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "8320cfa5-7767-482b-99f5-450822c6ebd4",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 192,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "42db8fec-b635-4fc0-902d-e66dd0d2f57c",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 229,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "031ed937-1606-430c-92d5-b12a10b9ae67",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 194,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "a4296bef-9782-4582-9955-c4c0540adcf8",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 189,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "d0a4893c-428b-463b-829b-f7e156dc30de",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 203,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "ca61106e-e3e7-4c82-b653-257269e8df97",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 209,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "f17e0d90-8832-4f79-b34e-f4ae6cb52fbc",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 201,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "905402bd-ff80-46f1-a824-186ed85ca3c7",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 183,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "59e0383f-5e95-4160-a7ae-952e089c4977",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 182,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "7ec5035c-958c-4d5f-b454-051d6c5d2d50",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 190,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "5e4e5803-284e-4a75-8ee4-feebd9415890",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 204,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c65e5a29-8eca-44cd-b603-51d577b8277a",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 221,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c6009908-82c1-4780-a00f-a20ec88fabd5",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 197,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "f2ff5d11-caee-48a0-95b2-ae31fcb14d6a",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 199,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "d7efa036-a6ae-44a6-bd93-be1ae51d3a39",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 214,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "69dbb5de-00f9-432e-a22a-aded8c6f29c6",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 198,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "0c331982-3ff3-4322-a4a2-c5f9412e2664",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 196,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "27389741-a9ce-42e2-a123-1e667397e1bf",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 193,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "dc77ad50-4004-4d0b-8e7a-3af5f21014ce",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 202,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "00efd4a9-cbae-44af-a160-03bbc48ad9c5",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 208,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "c4a5c790-a75d-44f0-8efd-2af3a9209de1",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 207,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "506758f3-a746-41ed-a769-0346f404ef71",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 195,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "cd90f662-08de-49fc-9507-bddc2348a182",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 206,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "abcd39d6-a56b-43fd-a8b6-7a9d7be382d0",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 205,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "586fb31e-bcc1-4eae-b941-c3cbd1d7cf05",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 200,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "afb93e8c-4ec6-45f5-b065-48f25b95c2bc",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 216,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "d64ebaf7-b8f3-49b3-a1ee-58eeb94a2073",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 240,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "817d752b-27d8-4773-a7e2-fb1f689b903d",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 218,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "ebe48e2d-5594-48bf-a2fc-6685062970f7",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 236,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "96bf9cbb-dba5-4c12-b811-1e4af689beab",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 212,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "f4edd47c-3816-4559-b016-eaab9c0c86b9",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 246,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "a489f386-2375-42e7-a916-3afb23f6e77e",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 232,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "1e755ee5-a558-4c5b-a38a-8f691b5713cb",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 213,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "9e246435-5ec0-4399-bceb-23616cf5e2e7",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 215,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "3ae7b349-0887-4249-b87c-c3a25955f571",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 220,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "b24a85eb-ca08-4d80-b69b-d32317c4d106",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 211,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "71f0a55b-f083-44e1-a365-c1d98b6dd957",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 222,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "e546b740-0f96-42ed-946f-7a2a4a5f67fc",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 226,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "d3815680-941c-4a10-bd30-541f63433482",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 228,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "4b5b0942-b53b-4103-885b-da9b58ec1353",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 217,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "b28dc06c-c5c0-4701-9eed-826464356d48",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 245,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "ea04cf69-d6d1-4a88-b00d-9f6fed97566b",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 238,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "b81f8745-6b3b-4216-a931-521d8bb351d5",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 230,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "dc6b1e1d-ccdf-4f1f-90a0-7416a9ccc3be",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 219,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "bdfb2e59-1e6f-42af-90c4-e2a790eeb50a",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 223,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "863f9ca9-a326-428c-a1e9-57cccd15c74a",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 242,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "08e941bc-09d9-4c9f-9754-638aa55cad05",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 224,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "1ab1162c-7fef-4846-b009-f18e13ce83d9",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 225,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "74e0922a-8bf6-4d14-80f1-4d3a87c10e06",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 248,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "496c9e44-b5d1-4e6b-a28b-090b3dcd27c5",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 227,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "2b89bdb3-2a5d-4592-b569-91b9483c4f11",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 247,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "59508bd7-b6df-46b4-aec6-af8660ef3423",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 244,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "7e6d837a-a880-43c1-81a2-5c0dd4643413",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 237,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "04cfa326-88ec-4e5d-afd5-56ecd265ccb1",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 231,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "179d0934-176f-41b0-981a-200fb0d11822",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 243,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "cd94aa39-667c-4c87-b5b2-13e6eda97c21",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 234,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "4d1e50e6-e07e-4e35-8978-6a4fc3a37685",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 235,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "e98b5851-d67b-47b6-9c54-d3b9249b0baa",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 233,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "ea05b3d3-4633-4a74-b0bc-2215b26aef72",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 239,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "7b1768eb-3e1e-4b26-a78c-aa4bcfa1cc9b",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 241,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "48c02237-221e-4695-9117-5904c6d4a001",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 249,
+      "delivered_devices": 100
+    },
+    {
+      "sender_id": "11111111-1111-4111-8111-111111111111",
+      "client_message_id": "8622b055-091c-44f7-bcf1-02819e775d26",
+      "measured": true,
+      "acknowledged": true,
+      "sequence": 250,
+      "delivered_devices": 100
+    }
+  ]
+}

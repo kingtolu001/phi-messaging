@@ -1,0 +1,43 @@
+{
+  "schema_version":1,
+  "diagram_type":"sequence",
+  "meta":{"title":"Durable send, acknowledgement and asynchronous outbox", "locale":"en", "output":"docs/diagrams/send.html", "quality_profile":"showcase", "legend":{"entries":{"dashed":{"label":"Async hint"}}}},
+  "participants":[
+    {"id":"sender","type":"external","label":"Sender","sublabel":"HTTP client"},
+    {"id":"api","type":"backend","label":"Send handler","sublabel":"Any Go app"},
+    {"id":"pg","type":"database","label":"PostgreSQL","sublabel":"Single durable instance"},
+    {"id":"publisher","type":"backend","label":"Publisher","sublabel":"One inside each app"},
+    {"id":"redis","type":"messagebus","label":"Redis","sublabel":"Best-effort hints"},
+    {"id":"delivery","type":"backend","label":"Delivery","sublabel":"Receiving app feed / WS"},
+    {"id":"receiver","type":"external","label":"Recipient","sublabel":"Processed device cursor"}
+  ],
+  "segments":[
+    {"from":150,"to":540,"label":"Durable transaction and HTTP success"},
+    {"from":570,"to":815,"label":"Independent outbox publisher"},
+    {"from":850,"to":1100,"label":"Hint-triggered durable delivery"}
+  ],
+  "messages":[
+    {"id":"send","from":"sender","to":"api","y":170,"label":"POST message + client_message_id","variant":"emphasis","note":"Bearer authentication; body validation."},
+    {"id":"lock","from":"api","to":"pg","y":240,"label":"BEGIN; lock conversation; check membership","variant":"security"},
+    {"id":"idempotency","from":"pg","to":"api","y":280,"label":"Locked head; sender/client-ID lookup","variant":"return","note":"Existing identical send returns its committed result; conflict returns 409."},
+    {"id":"write","from":"api","to":"pg","y":365,"label":"New ID: message + next sequence + outbox","variant":"emphasis"},
+    {"id":"commit","from":"api","to":"pg","y":400,"label":"COMMIT","variant":"emphasis"},
+    {"id":"committed","from":"pg","to":"api","y":440,"label":"Commit succeeded","variant":"return"},
+    {"id":"ack","from":"api","to":"sender","y":490,"label":"201 new / 200 identical committed retry","variant":"return"},
+    {"id":"claim","from":"publisher","to":"pg","y":595,"label":"BEGIN; claim pending row: SKIP LOCKED"},
+    {"id":"pending","from":"pg","to":"publisher","y":635,"label":"Locked outbox row / conversation ID","variant":"return"},
+    {"id":"publish","from":"publisher","to":"redis","y":680,"label":"PUBLISH conversation ID","variant":"dashed"},
+    {"id":"pub-result","from":"redis","to":"publisher","y":720,"label":"Publish result","variant":"return"},
+    {"id":"mark","from":"publisher","to":"pg","y":765,"label":"On publish success: mark published; COMMIT","note":"Crash before mark commits can repeat the hint."},
+    {"id":"hint","from":"redis","to":"delivery","y":875,"label":"Conversation hint (can repeat or be missed)","variant":"dashed"},
+    {"id":"query","from":"delivery","to":"pg","y":925,"label":"Subscribed feed: committed head, tail, receipts"},
+    {"id":"rows","from":"pg","to":"delivery","y":970,"label":"Ascending messages + durable read positions","variant":"return"},
+    {"id":"ws","from":"delivery","to":"receiver","y":1020,"label":"Ordered WS events through Nginx","variant":"emphasis","note":"Server cursor advances on enqueue; device advances after its callback."}
+  ],
+  "cards":[
+    {"dot":"emerald","title":"Durability boundary","items":["Message, last_sequence and outbox share one PostgreSQL transaction.","No successful new-send response precedes COMMIT; Redis is not on the acknowledgement path.","Commit uncertainty or a lost response: retry the same sender/client ID.","ACK and publishing can race after commit; ACK-first here is one possible interleaving."]},
+    {"dot":"amber","title":"Publisher failure behavior","items":["Each app has one publisher; SKIP LOCKED coordinates them through PostgreSQL.","Its claim transaction stays open across the bounded Redis call.","Publish failure rolls back; retry backoff is bounded by 5 s.","Publish accepted with no subscribers is not delivery proof; repeated publication is safe."]},
+    {"dot":"cyan","title":"Receiving side","items":["Receiver was already authenticated, membership-checked and subscribed.","Redis listener targets one shared conversation feed; four local workers refresh feeds.","One-second server reconciliation repairs lost hints; old cursors use authorized history.","Client suppresses duplicates and accepts only contiguous sequence after callback success."]},
+    {"dot":"rose","title":"Limits and scope","items":["One PostgreSQL and one Redis instance; application replication is not dependency HA.","128-event queues and five-second writes bound slow consumers; reconnect recovers durable history.","Reads/receipt updates are separate HTTP operations, not automatic message acknowledgements.","Nginx forwards ingress/egress and is omitted as a participant; positions show order, not measured timing."]}
+  ]
+}

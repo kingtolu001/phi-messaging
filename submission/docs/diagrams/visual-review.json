@@ -1,0 +1,25 @@
+{
+  "review_date": "2026-10-24",
+  "reviewer": "Assistant image inspection",
+  "scope": "Complete native light-theme PNG exports",
+  "status": "reviewed",
+  "observation": "No clipped content or overlapping labels observed in the inspected complete drawings.",
+  "limits": "No manual dark-theme perceptual review; automated light/dark browser gates are separate evidence.",
+  "reviewed": [
+    {
+      "png": "docs/diagrams/runtime.png",
+      "png_sha256": "d14fad7e8e1bb8028da9fc4737dd86a961fec7d0289c97ffa694038fa6eda056",
+      "html_sha256": "c98afef7ad079f6ddb5f7383cce0c32c6ac63d18d1410e69f388011f7a7c1db1"
+    },
+    {
+      "png": "docs/diagrams/send.png",
+      "png_sha256": "b12578184ddd071731368d5a810698835b69a9a8a94f4a7317e8bdadee25a0fa",
+      "html_sha256": "067bc545738680dd254fea43f974f885f145bae0fb4cd941cdc946a79c7c0b6c"
+    },
+    {
+      "png": "docs/diagrams/recovery.png",
+      "png_sha256": "a89820493d2d5046ca4827fd54e6c4a3dc24383fda7a06e9d0d574f830dd2268",
+      "html_sha256": "68de700c60c2fbf1f163dcbc0342fd83bb47c2fa47533eec9f02ed68fdfafc61"
+    }
+  ]
+}

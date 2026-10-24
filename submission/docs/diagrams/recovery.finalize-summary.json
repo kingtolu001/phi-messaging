@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "sequence",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\recovery.sequence.json",
+    "sha256": "75f8c1bcdc03bde643c71e873627640b08e3c07cdf3e18ba0f879cf99e08602d",
+    "bytes": 5987
+  },
+  "artifact": {
+    "path": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\recovery.html",
+    "sha256": "beed1fb362c8c51c2ae1d26774f2d2ef66c6ecd1ed40ac9d91cacbedbf648ddb",
+    "bytes": 828141
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "fail"
+  },
+  "failedStage": "browser-check",
+  "diagnostics": [
+    {
+      "code": "viewer/temp-cleanup-incomplete",
+      "severity": "error",
+      "message": "Browser cleanup could not safely finish; inspect the reported retained path.",
+      "subject": {
+        "artifact": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\recovery.html"
+      },
+      "evidence": {
+        "reason": "Chrome did not exit; retained temporary profile \"C:\\Users\\toluk\\AppData\\Local\\Temp\\archify-visual-check-profile-QMtGZz\".",
+        "retainedDirectory": "C:\\Users\\toluk\\AppData\\Local\\Temp\\archify-visual-check-profile-QMtGZz"
+      },
+      "supportedFixes": [
+        "resolve the reported process or filesystem failure; verify directory ownership before manual cleanup"
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\recovery.finalize.json",
+    "summaryReceipt": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\recovery.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\recovery.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 13850,
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  }
+}
