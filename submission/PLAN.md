@@ -32,7 +32,6 @@
 - Architecture and key process-flow diagrams produced with Archify or Diagram Design.
 - Tests cover core logic and failure claims.
 - Mock external services; no cloud account required.
-- Teaching material remains in the sibling learning directory.
 
 ## Current status
 Delivery steps 2 and 3 implemented:
@@ -125,7 +124,7 @@ Verified optimization and rerun (2026-10-23):
   conversation distributions remain unverified. No test was counted as passed
   merely because it was skipped or a report existed.
 - See `docs/validation-shared-delivery.md`, `docs/results/shared-comparison.json`,
-  raw v3 reports and `../learning/08-sharing-durable-delivery.md`. Historical
+  raw v3 reports. Historical
   results and intermediate failed optimization builds are preserved separately.
 
 Verified diagrams (2026-10-24):
@@ -142,7 +141,7 @@ Verified diagrams (2026-10-24):
   implementation/config files. The workspace has no Git snapshot, so native
   commit-pinned source verification was unavailable and was not claimed.
 - README links the diagrams, editable sources, validation records and repeatable
-  generation commands. Teaching notes are in `../learning/09-archify-diagrams.md`.
+  generation commands.
 - No application/load-test rerun is claimed for this documentation/tooling change;
   earlier failed load stages and remaining capacity limits are unchanged.
 
@@ -151,9 +150,8 @@ Remaining:
   recovery checks, proxy/network and admission/reconnect overhead; rerun longer
   isolated tests before any larger capacity claim. Do not equate fewer queries
   with successful delivery or erase the failed matching stage.
-- Final README review, owner-provided actual total time spent and live-review rehearsal.
+- Final README review and live-review rehearsal.
 - Production concerns intentionally outside this local exercise: identity/TLS,
   dependency HA, client cursor persistence and retention/observability design.
 
-Teaching explanations remain exclusively in `../learning/`. No commits or pushes
-were made for this delivery.
+No commits or pushes were made for this delivery.

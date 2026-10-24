@@ -265,6 +265,5 @@ require replicated durable storage with tested failover/backups, Redis failover
 with defined presence-loss semantics, redundant ingress and multiple hosts.
 None of those changes is presented as implemented or sufficient without testing.
 
-Teaching explanations are in `../../learning/07-harness-metrics-and-failures.md`.
-No commits or pushes were made. Required diagrams, owner-provided actual total
-time spent and final live-review rehearsal remain outside this validation result.
+No commits or pushes were made. Required diagrams and final live-review rehearsal
+remain outside this validation result.

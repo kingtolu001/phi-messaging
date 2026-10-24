@@ -133,5 +133,4 @@ rates are aggregate across the workload, never per device. Historical failures r
 explicit failures, not claimed capacity. The required diagrams were generated
 with Archify and validated; see the links above. No total time spent has been recorded. AI assistance:
 OpenAI Codex assisted implementation, review, tests and documentation in this
-workspace. The owner must provide actual total time spent before final submission.
-Teaching walkthroughs are maintained separately and are excluded from this repository.
+workspace.

@@ -126,6 +126,5 @@ Tool/font notices are retained in [Archify MIT](licenses/Archify-MIT.txt) and
   completed checkout as described above. Application/load tests were not rerun for
   this documentation-only change; prior performance failures remain unchanged.
 
-Teaching explanations are maintained separately and are excluded from this repository.
 No application code, migrations or dependency-HA configuration changed. No commit,
 push or external publication was performed.
