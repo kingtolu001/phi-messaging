@@ -1,0 +1,79 @@
+{
+  "source": "docs/results/users-20k-soak-shared-repair-awake-resources.jsonl",
+  "samples": 77,
+  "errors": 0,
+  "containers": {
+    "phi-messaging-app2-1": {
+      "samples": 77,
+      "max_cpu_percent": 133.46,
+      "max_memory_mib": 491
+    },
+    "phi-messaging-app1-1": {
+      "samples": 77,
+      "max_cpu_percent": 137.51,
+      "max_memory_mib": 492
+    },
+    "phi-messaging-app3-1": {
+      "samples": 77,
+      "max_cpu_percent": 126.33,
+      "max_memory_mib": 491.9
+    },
+    "phi-messaging-load-balancer-1": {
+      "samples": 77,
+      "max_cpu_percent": 102.89,
+      "max_memory_mib": 617.5
+    },
+    "phi-messaging-postgres-1": {
+      "samples": 77,
+      "max_cpu_percent": 260.76,
+      "max_memory_mib": 332.4
+    },
+    "phi-messaging-redis-1": {
+      "samples": 77,
+      "max_cpu_percent": 41.89,
+      "max_memory_mib": 25.23
+    },
+    "osai-temporal": {
+      "samples": 77,
+      "max_cpu_percent": 17.64,
+      "max_memory_mib": 194.4
+    },
+    "osai-otel": {
+      "samples": 77,
+      "max_cpu_percent": 1.75,
+      "max_memory_mib": 37.74
+    },
+    "osai-postgres": {
+      "samples": 77,
+      "max_cpu_percent": 18.34,
+      "max_memory_mib": 109.7
+    },
+    "phi-messaging-users-20k-soak-shared-repair-awake-3": {
+      "samples": 75,
+      "max_cpu_percent": 43.02,
+      "max_memory_mib": 230.7
+    },
+    "phi-messaging-users-20k-soak-shared-repair-awake-2": {
+      "samples": 75,
+      "max_cpu_percent": 62.15,
+      "max_memory_mib": 230.2
+    },
+    "phi-messaging-users-20k-soak-shared-repair-awake-1": {
+      "samples": 75,
+      "max_cpu_percent": 57.69,
+      "max_memory_mib": 232.2
+    },
+    "phi-messaging-users-20k-soak-shared-repair-awake-0": {
+      "samples": 75,
+      "max_cpu_percent": 55.99,
+      "max_memory_mib": 231.5
+    }
+  },
+  "same_sample_group_maxima": {
+    "app_cpu_percent": 324.09999999999997,
+    "app_memory_mib": 1473.5,
+    "driver_cpu_percent": 194.73999999999998,
+    "driver_memory_mib": 924.5999999999999
+  },
+  "basis": "Sampled whole-run CPU/memory; 100% CPU equals one logical CPU. Group maxima sum simultaneous rows, not independent per-container peaks. Includes setup and teardown."
+}

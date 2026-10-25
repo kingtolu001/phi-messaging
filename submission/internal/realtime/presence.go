@@ -9,7 +9,7 @@ import (
 )
 
 // All timestamps and lease decisions use Redis server time in one atomic script.
-var leaseScript = redis.NewScript(`
+const leaseLua = `
 local t=redis.call('TIME')
 local now=t[1]*1000+math.floor(t[2]/1000)
 redis.call('ZREMRANGEBYSCORE',KEYS[1],'-inf',now)
@@ -21,7 +21,9 @@ elseif ARGV[1]=='remove' then
  redis.call('ZREM',KEYS[1],ARGV[2])
 end
 return {redis.call('ZCARD',KEYS[1]),redis.call('GET',KEYS[2]) or ''}
-`)
+`
+
+var leaseScript = redis.NewScript(leaseLua)
 
 type Presence struct {
 	UserID   string     `json:"user_id"`
@@ -54,6 +56,31 @@ func (l Leases) apply(ctx context.Context, user, connection, op string) (Presenc
 func (l Leases) Touch(ctx context.Context, user, connection string) error {
 	_, err := l.apply(ctx, user, connection, "touch")
 	return err
+}
+
+type Renewal struct {
+	User, Connection string
+}
+
+// TouchBatch preserves one atomic lease operation per connection, while sharing
+// the network round trip. Individual command errors remain individual failures.
+func (l Leases) TouchBatch(ctx context.Context, renewals []Renewal) []error {
+	commands := make([]*redis.Cmd, len(renewals))
+	_, batchErr := l.Redis.Pipelined(ctx, func(pipe redis.Pipeliner) error {
+		for i, renewal := range renewals {
+			// EVAL avoids a NOSCRIPT failure after Redis restart or script eviction.
+			commands[i] = pipe.Eval(ctx, leaseLua, []string{l.Prefix + "leases:" + renewal.User, l.Prefix + "seen:" + renewal.User}, "touch", renewal.Connection, l.TTL.Milliseconds())
+		}
+		return nil
+	})
+	errors := make([]error, len(commands))
+	for i, command := range commands {
+		errors[i] = command.Err()
+		if errors[i] == nil && command.Val() == nil {
+			errors[i] = batchErr
+		}
+	}
+	return errors
 }
 func (l Leases) Remove(ctx context.Context, user, connection string) error {
 	_, err := l.apply(ctx, user, connection, "remove")

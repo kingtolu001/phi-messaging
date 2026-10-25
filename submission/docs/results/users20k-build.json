@@ -1,0 +1,40 @@
+{
+  "profile": "compose.yaml + compose.scale.yaml",
+  "seed_distinct_recipients": 20000,
+  "generator_sha256": "7aa422c2c8e8e88a08251a72f112093a90afccab5934f547f88aed4de77d6f34",
+  "source_state": "Uncommitted current workspace; changes verified by current-source tests",
+  "apps": [
+    {
+      "oom_killed": false,
+      "image": "sha256:5d78eed516ea8e6e76e0dd01f6fa69f5648405b7d6dbe6034844761d2404739d",
+      "name": "/phi-messaging-app1-1",
+      "configured_limits": [
+        "MAX_CONNECTIONS=12000",
+        "MAX_DELIVERY_FEEDS=512",
+        "HANDSHAKES_PER_SECOND=500"
+      ]
+    },
+    {
+      "oom_killed": false,
+      "image": "sha256:fef24f6ffbe88bcbbc1ed01be5430586d09353b77929f467add4d964b7e10cea",
+      "name": "/phi-messaging-app2-1",
+      "configured_limits": [
+        "HANDSHAKES_PER_SECOND=500",
+        "MAX_CONNECTIONS=12000",
+        "MAX_DELIVERY_FEEDS=512"
+      ]
+    },
+    {
+      "oom_killed": false,
+      "image": "sha256:7ff2af576ba6b0a51d6f187cd7edf58372ab67fe9656c4f3da9616cc25a7ec06",
+      "name": "/phi-messaging-app3-1",
+      "configured_limits": [
+        "MAX_DELIVERY_FEEDS=512",
+        "HANDSHAKES_PER_SECOND=500",
+        "MAX_CONNECTIONS=12000"
+      ]
+    }
+  ],
+  "captured_at": "2026-10-25T07:18:21.4948834+00:00",
+  "source_base_commit": "f32327150f6e60a4d65d1c98a073390d8c31072c"
+}

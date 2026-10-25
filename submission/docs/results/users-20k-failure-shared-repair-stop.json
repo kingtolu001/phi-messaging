@@ -1,0 +1,7 @@
+{
+  "barrier_exists": false,
+  "reason": "Legacy second sender is not a member of distinct-user groups; stopped generators before releasing barrier",
+  "stopped_at": "2026-10-25T20:29:14.2931486+00:00",
+  "classification": "ABORTED_HARNESS_STARTUP",
+  "run": "users-20k-failure-shared-repair"
+}

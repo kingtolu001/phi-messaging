@@ -1,0 +1,16 @@
+{
+  "commit_push_performed": false,
+  "aggregate_tests": 5,
+  "race_log": "users-20k-failure-shared-repair-v2-tests.log",
+  "race_top_level_passes": 56,
+  "compose_tests": 3,
+  "readiness": "PASS",
+  "git_diff_check": "PASS",
+  "race_skips": 0,
+  "vet": "PASS",
+  "dependency_passed": true,
+  "dependency_failed_assertions": 0,
+  "dependency_assertions": 24,
+  "diagrams": "PASS",
+  "vet_log": "users20k-final-vet.log"
+}

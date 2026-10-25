@@ -1,0 +1,13 @@
+{
+  "finished_at": "2026-10-25T20:30:45.2655463+00:00",
+  "shards": 4,
+  "status": "FAIL",
+  "global_aggregate_sends_per_second": 40,
+  "idle_sleep_prevention": true,
+  "users": 20000,
+  "diagnostics_exit_code": 0,
+  "started_at": "2026-10-25T20:26:59.9544999+00:00",
+  "fault_requested": true,
+  "error": "Cohort at offset 0 connected 0/5000 users",
+  "ramp_milliseconds_per_driver": 20
+}

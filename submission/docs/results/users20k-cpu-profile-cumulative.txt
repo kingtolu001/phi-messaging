@@ -1,0 +1,29 @@
+File: exercise-linux
+Build ID: f71227fea7e605f065beef12ba2e27935da611ff
+Type: cpu
+Time: 2026-10-25 08:40:02 WAT
+Duration: 485.84s, Total samples = 1338.86s (275.58%)
+Showing nodes accounting for 1033.03s, 77.16% of 1338.86s total
+Dropped 1430 nodes (cum <= 6.69s)
+Showing top 20 nodes out of 108
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%   1044.83s 78.04%  phi-messaging/internal/exercise.RunLoad.func3
+     0.07s 0.0052% 0.0052%   1044.82s 78.04%  phi-messaging/internal/client.(*Client).Run
+     0.53s  0.04% 0.045%   1042.31s 77.85%  phi-messaging/internal/client.(*Client).once
+  1030.88s 77.00% 77.04%   1030.88s 77.00%  internal/runtime/syscall/linux.Syscall6
+     0.28s 0.021% 77.06%   1025.66s 76.61%  syscall.RawSyscall6
+     0.12s 0.009% 77.07%   1022.05s 76.34%  syscall.Syscall
+     0.52s 0.039% 77.11%       995s 74.32%  github.com/gorilla/websocket.(*Dialer).DialContext
+     0.11s 0.0082% 77.12%    990.09s 73.95%  net.(*Dialer).DialContext
+     0.05s 0.0037% 77.12%    984.41s 73.53%  net.(*sysDialer).dialParallel
+     0.03s 0.0022% 77.12%    984.33s 73.52%  net.(*sysDialer).dialSerial
+     0.08s 0.006% 77.13%    984.07s 73.50%  net.(*sysDialer).dialSingle
+     0.01s 0.00075% 77.13%    982.47s 73.38%  net.internetSocket
+     0.02s 0.0015% 77.13%    982.39s 73.38%  net.socket
+     0.02s 0.0015% 77.13%    982.20s 73.36%  net.(*sysDialer).dialTCP
+         0     0% 77.13%    982.18s 73.36%  net.(*sysDialer).doDialTCP (inline)
+     0.04s 0.003% 77.14%    982.18s 73.36%  net.(*sysDialer).doDialTCPProto
+     0.08s 0.006% 77.14%    978.65s 73.10%  net.(*netFD).dial
+     0.14s  0.01% 77.15%    976.98s 72.97%  net.(*netFD).connect
+     0.04s 0.003% 77.16%    967.82s 72.29%  syscall.Connect
+     0.01s 0.00075% 77.16%    967.77s 72.28%  syscall.connect

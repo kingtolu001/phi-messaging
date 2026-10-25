@@ -1,0 +1,13 @@
+{
+  "database_counter_window_seconds_monotonic": 194.9316325,
+  "database_statements_per_second_full_run": 1650.8505873206598,
+  "started_at": "2026-10-25T12:58:45.6663248+00:00",
+  "finished_at": "2026-10-25T13:02:25.3616486+00:00",
+  "shards": 4,
+  "fault_requested": false,
+  "error": "Sharded validation failed; inspect all retained reports",
+  "global_aggregate_sends_per_second": 40,
+  "status": "FAIL",
+  "barrier_released_at": "2026-10-25T13:00:16.5856515+00:00",
+  "users": 20000
+}

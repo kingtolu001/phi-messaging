@@ -22,5 +22,5 @@ foreach ($spec in @(@{name='runtime';type='architecture'}, @{name='send';type='s
 node scripts/export-diagrams.mjs
 if ($LASTEXITCODE -ne 0) { throw 'Native static export failed' }
 $ledger = @{archify='3.2.0';evidence='automated artifact and browser gates; source semantics reviewed separately';runs=$runs}
-[IO.File]::WriteAllText((Join-Path (Get-Location) 'docs/diagrams/validation.json'), ($ledger | ConvertTo-Json -Depth 8) + "`n", [Text.UTF8Encoding]::new($false))
+[IO.File]::WriteAllText((Join-Path (Get-Location) 'docs/diagrams/validation.json'), (($ledger | ConvertTo-Json -Depth 8) -replace "`r`n", "`n") + "`n", [Text.UTF8Encoding]::new($false))
 Write-Output 'PASS: all three diagrams finalized and native SVG/PNG exports generated.'

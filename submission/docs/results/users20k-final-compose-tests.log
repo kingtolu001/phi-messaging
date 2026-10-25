@@ -1,0 +1,8 @@
+=== RUN   TestComposeThreeNodeDelivery
+--- PASS: TestComposeThreeNodeDelivery (0.11s)
+=== RUN   TestComposeProxyErrorsUseProtocolJSON
+--- PASS: TestComposeProxyErrorsUseProtocolJSON (0.00s)
+=== RUN   TestComposeConcurrentOrderingAndRetries
+--- PASS: TestComposeConcurrentOrderingAndRetries (0.39s)
+PASS
+ok  	phi-messaging/integration	3.134s

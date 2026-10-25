@@ -1,0 +1,29 @@
+File: exercise-linux
+Build ID: f71227fea7e605f065beef12ba2e27935da611ff
+Type: cpu
+Time: 2026-10-25 08:40:02 WAT
+Duration: 485.84s, Total samples = 1338.86s (275.58%)
+Showing nodes accounting for 1201.54s, 89.74% of 1338.86s total
+Dropped 1430 nodes (cum <= 6.69s)
+Showing top 20 nodes out of 108
+      flat  flat%   sum%        cum   cum%
+  1030.88s 77.00% 77.00%   1030.88s 77.00%  internal/runtime/syscall/linux.Syscall6
+   106.99s  7.99% 84.99%    106.99s  7.99%  runtime/pprof.lostProfileEvent
+    14.98s  1.12% 86.11%     15.25s  1.14%  runtime.adjustsudogs
+    10.82s  0.81% 86.91%     10.82s  0.81%  runtime.asyncPreempt
+     7.18s  0.54% 87.45%      7.18s  0.54%  runtime.spanClass.sizeclass (inline)
+     6.77s  0.51% 87.96%     23.20s  1.73%  encoding/json.(*Decoder).readValue
+     4.36s  0.33% 88.28%     12.27s  0.92%  runtime.tryDeferToSpanScan
+     2.68s   0.2% 88.48%      7.01s  0.52%  runtime.pcvalue
+     2.61s  0.19% 88.68%         9s  0.67%  runtime.selectgo
+     2.20s  0.16% 88.84%     32.40s  2.42%  encoding/json.(*decodeState).object
+        2s  0.15% 88.99%      7.15s  0.53%  runtime.scanblock
+     1.71s  0.13% 89.12%      7.49s  0.56%  runtime.scanObjectsSmall
+     1.39s   0.1% 89.22%     15.73s  1.17%  runtime.mallocgcSmallScanNoHeader
+     1.34s   0.1% 89.32%     50.36s  3.76%  runtime.mallocgc
+     1.32s 0.099% 89.42%     25.14s  1.88%  runtime.newobject
+     1.24s 0.093% 89.51%     10.59s  0.79%  runtime.scanSpan
+     1.12s 0.084% 89.60%     10.11s  0.76%  runtime.schedule
+     0.69s 0.052% 89.65%      8.52s  0.64%  runtime.mallocgcSmallNoscan
+     0.63s 0.047% 89.70%      9.80s  0.73%  encoding/json.(*decodeState).literalStore
+     0.63s 0.047% 89.74%     27.55s  2.06%  github.com/gorilla/websocket.(*Conn).advanceFrame

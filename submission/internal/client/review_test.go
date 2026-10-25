@@ -50,6 +50,22 @@ func TestRetryJitterStillVariesAtCap(t *testing.T) {
 		t.Fatal("capped backoff lost jitter")
 	}
 }
+
+func TestSlowFailedHandshakeDoesNotResetBackoff(t *testing.T) {
+	// No accepted resume means no healthy session, regardless of dial duration.
+	c := Client{}
+	if c.stableSession() {
+		t.Fatal("failed handshakes count as healthy uptime")
+	}
+	c.connectedAt = time.Now().Add(-time.Second)
+	if c.stableSession() {
+		t.Fatal("short session resets backoff")
+	}
+	c.connectedAt = time.Now().Add(-11 * time.Second)
+	if !c.stableSession() {
+		t.Fatal("healthy uptime does not reset backoff")
+	}
+}
 func TestRejectUnsolicitedMessages(t *testing.T) {
 	c := Client{Cursors: map[string]int64{"known": 0}, OnMessage: func(storage.Message) error { t.Fatal("unsolicited callback"); return nil }}
 	if c.Accept(storage.Message{ConversationID: "other", Sequence: 1}) == nil {

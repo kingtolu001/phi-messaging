@@ -16,6 +16,7 @@ import (
 )
 
 type Config struct {
+	LogDiagnostics      bool
 	InstanceID          string
 	Tokens              map[string]string
 	Origins             []string
@@ -26,24 +27,27 @@ type Config struct {
 	QueueSize           int
 	MaxConnections      int
 	HandshakesPerSecond int
+	MaxDeliveryFeeds    int
 }
 type Server struct {
-	store      *storage.Store
-	redis      *redis.Client
-	config     Config
-	leases     realtime.Leases
-	ctx        context.Context
-	cancel     context.CancelFunc
-	wg         sync.WaitGroup
-	mu         sync.Mutex
-	sessions   map[*session]struct{}
-	slots      int
-	closing    bool
-	rateStart  time.Time
-	attempts   int
-	subscribed atomic.Bool
-	mux        *http.ServeMux
-	delivery   *deliveryHub
+	diagnostics diagnostics
+	renewals    chan renewalRequest
+	store       *storage.Store
+	redis       *redis.Client
+	config      Config
+	leases      realtime.Leases
+	ctx         context.Context
+	cancel      context.CancelFunc
+	wg          sync.WaitGroup
+	mu          sync.Mutex
+	sessions    map[*session]struct{}
+	slots       int
+	closing     bool
+	rateStart   time.Time
+	attempts    int
+	subscribed  atomic.Bool
+	mux         *http.ServeMux
+	delivery    *deliveryHub
 }
 
 func New(store *storage.Store, r *redis.Client, c Config) (*Server, error) {
@@ -81,16 +85,26 @@ func New(store *storage.Store, r *redis.Client, c Config) (*Server, error) {
 	if c.HandshakesPerSecond == 0 {
 		c.HandshakesPerSecond = 100
 	}
-	if c.PollInterval <= 0 || c.LeaseTTL < 300*time.Millisecond || c.WriteTimeout <= 0 || c.QueueSize < 1 || c.MaxConnections < 1 || c.HandshakesPerSecond < 1 {
+	if c.MaxDeliveryFeeds == 0 {
+		c.MaxDeliveryFeeds = maxDeliveryFeeds
+	}
+	if c.PollInterval <= 0 || c.LeaseTTL < 300*time.Millisecond || c.WriteTimeout <= 0 || c.QueueSize < 1 || c.MaxConnections < 1 || c.HandshakesPerSecond < 1 || c.MaxDeliveryFeeds < 1 || c.MaxDeliveryFeeds > 4096 {
 		return nil, errors.New("invalid server limits")
 	}
 	ctx, cancel := context.WithCancel(context.Background())
 	s := &Server{store: store, redis: r, config: c, leases: realtime.Leases{Redis: r, Prefix: c.Prefix, TTL: c.LeaseTTL}, ctx: ctx, cancel: cancel, sessions: make(map[*session]struct{}), mux: http.NewServeMux()}
 	s.delivery = newDeliveryHub(s)
+	s.renewals = make(chan renewalRequest, c.MaxConnections)
+	s.wg.Add(1)
+	go s.renewLeases()
 	s.routes()
 	s.wg.Add(2)
 	go s.listen()
 	go s.publish()
+	if c.LogDiagnostics {
+		s.wg.Add(1)
+		go s.logDiagnostics()
+	}
 	return s, nil
 }
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) { s.mux.ServeHTTP(w, r) }

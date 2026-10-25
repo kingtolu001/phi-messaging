@@ -1,0 +1,1 @@
+PASS: readiness reads reject missing/partial reports and enforce full cohorts

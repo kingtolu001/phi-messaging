@@ -1,0 +1,11 @@
+{
+  "started_at": "2026-10-25T18:20:12.6262750+00:00",
+  "diagnostics_exit_code": 0,
+  "users": 20000,
+  "global_aggregate_sends_per_second": 40,
+  "shards": 4,
+  "status": "FAIL",
+  "finished_at": "2026-10-25T18:23:34.1389681+00:00",
+  "fault_requested": false,
+  "error": "Shard 1 did not connect its full user cohort"
+}

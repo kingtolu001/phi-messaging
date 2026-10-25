@@ -1,9 +1,32 @@
 {
-  "review_date": "2026-10-24",
+  "review_date": "2026-10-25",
   "basis": "Manual inspection of working files; whole-file SHA-256 drift detection",
   "git_commit_verified": false,
-  "limitation": "Workspace has no Git repository. Native Git-pinned source evidence is unavailable.",
+  "limitation": "Reviewed uncommitted working files. Native Git-pinned source verification was not run; hashes detect later drift only.",
   "files": [
+    {
+      "path": "compose.scale.yaml",
+      "sha256": "b336020db297ff6da1319da33f79ceb198415ef33c94e31c7d1d598f2940eba2",
+      "claim": "Local scale profile overrides socket/feed/admission bounds; PostgreSQL and Redis remain single instances.",
+      "ranges": []
+    },
+    {
+      "path": "internal/server/renewals.go",
+      "sha256": "11d5a29388d30f04a7592671f6446da4390bd6cc21d9853e082c63c81e4cc0d8",
+      "claim": "One bounded renewal worker per app, batching individual Redis connection leases.",
+      "ranges": [
+        {
+          "symbol": "func (s *Server) renewLease(",
+          "line": 18,
+          "end_line": 32
+        },
+        {
+          "symbol": "func (s *Server) renewLeases(",
+          "line": 33,
+          "end_line": 80
+        }
+      ]
+    },
     {
       "path": "compose.yaml",
       "sha256": "99b11f5251c7ee543ad12408508a224fd1124ce820d2bf8e04d74c0554fa4cda",
@@ -18,89 +41,89 @@
     },
     {
       "path": "cmd/server/main.go",
-      "sha256": "8ca200c9682cb232f586b36b7279adc06ea6c2f33dbb9477ae225e88e7239bc1",
+      "sha256": "5d8dd54ff40eea2483bcbb8cd398d78eddb813236bc57041b65ae5b1e70ce437",
       "claim": "32 SQL connections; workers belong to app process; bounded shutdown.",
       "ranges": [
         {
           "symbol": "func run(",
-          "line": 21,
-          "end_line": 88
+          "line": 23,
+          "end_line": 100
         }
       ]
     },
     {
       "path": "internal/server/server.go",
-      "sha256": "b7719fa34d0f40e73b7f9399c91cbe7f6674ee3dc242245a3d6ef0ef2fb6de89",
+      "sha256": "a4a9490c4f8a4664ae50abc0ece09ce8700851ef167f78a41c74686119b8866f",
       "claim": "One publisher/listener in each app, default limits and targeted hints.",
       "ranges": [
         {
           "symbol": "func New(",
-          "line": 49,
-          "end_line": 95
+          "line": 53,
+          "end_line": 109
         },
         {
           "symbol": "func (s *Server) listen(",
-          "line": 110,
-          "end_line": 139
+          "line": 124,
+          "end_line": 153
         },
         {
           "symbol": "func (s *Server) publish(",
-          "line": 140,
-          "end_line": 163
+          "line": 154,
+          "end_line": 177
         }
       ]
     },
     {
       "path": "internal/server/delivery.go",
-      "sha256": "601318f663f298d38ba0ae53b38f97d3fa24a5903afc89b332433277eaeadf98",
+      "sha256": "cd0095cfb405f2a53188e772d5e84a7b212d64183f2c834ca2b1f8a2bc80af73",
       "claim": "Four workers, one-second sweep, bounded shared tails and authorized HTTP fallback.",
       "ranges": [
         {
           "symbol": "func newDeliveryHub(",
-          "line": 38,
-          "end_line": 60
+          "line": 39,
+          "end_line": 61
         },
         {
           "symbol": "func (h *deliveryHub) attach(",
-          "line": 87,
-          "end_line": 116
+          "line": 88,
+          "end_line": 121
         },
         {
           "symbol": "func (h *deliveryHub) refresh(",
-          "line": 149,
-          "end_line": 223
+          "line": 154,
+          "end_line": 234
         },
         {
           "symbol": "func (s *Server) recoveryPage(",
-          "line": 260,
-          "end_line": 270
+          "line": 271,
+          "end_line": 281
         }
       ]
     },
     {
       "path": "internal/server/websocket.go",
-      "sha256": "012933fa35a0f0660eb1e829e342407037cb53e13d3a2d550bd28c267ca56aaa",
+      "sha256": "8647f0c3cc0bc74a76fc75cc759697dd3cd6d2cabddc9ff15ab72c56d2495c97",
       "claim": "Membership before events, ready/resume/resumed, leases, queued cursor and ordered delivery.",
       "ranges": [
         {
           "symbol": "func (c *session) enqueue(",
-          "line": 30,
-          "end_line": 43
+          "line": 31,
+          "end_line": 45
         },
         {
           "symbol": "func (s *Server) acceptWebSocket(",
-          "line": 61,
-          "end_line": 184
+          "line": 63,
+          "end_line": 199
         },
         {
           "symbol": "func (c *session) writeLoop(",
-          "line": 190,
-          "end_line": 209
+          "line": 205,
+          "end_line": 230
         },
         {
           "symbol": "func (c *session) catchUp(",
-          "line": 223,
-          "end_line": 283
+          "line": 244,
+          "end_line": 305
         }
       ]
     },
@@ -145,18 +168,18 @@
     },
     {
       "path": "internal/storage/delivery.go",
-      "sha256": "5734ea224886786c7f59f4d6c8838fd303d71602ff864b3793fffe8f3e51be0b",
+      "sha256": "c52a70be50eeb294e0b55717c7df89ff03cce916b55c134c427d071715d68455",
       "claim": "Fresh membership/head checks; SKIP LOCKED publish then mark in one transaction.",
       "ranges": [
         {
           "symbol": "func (s *Store) Head(",
-          "line": 11,
-          "end_line": 23
+          "line": 13,
+          "end_line": 25
         },
         {
           "symbol": "func (s *Store) PublishNext(",
-          "line": 46,
-          "end_line": 71
+          "line": 48,
+          "end_line": 73
         }
       ]
     },
@@ -179,45 +202,45 @@
     },
     {
       "path": "internal/client/client.go",
-      "sha256": "94fee36573919a132306d2be19afd64bc127a8c253587b89b4019be058dc2d8b",
+      "sha256": "6c8d068942c1d912c781ea0620fbe4bce9ded09d9e10d5179fa8a43f03d01476",
       "claim": "Device owns cursor, callback-before-advance, dedup, gap repair, HTTP polling and jittered reconnect.",
       "ranges": [
         {
           "symbol": "func retryDelay(",
-          "line": 56,
-          "end_line": 59
-        },
-        {
-          "symbol": "func (c *Client) Accept(",
-          "line": 60,
+          "line": 75,
           "end_line": 78
         },
         {
+          "symbol": "func (c *Client) Accept(",
+          "line": 103,
+          "end_line": 121
+        },
+        {
           "symbol": "func (c *Client) Recover(",
-          "line": 122,
-          "end_line": 147
+          "line": 167,
+          "end_line": 192
         },
         {
           "symbol": "func (c *Client) Run(",
-          "line": 148,
-          "end_line": 211
+          "line": 193,
+          "end_line": 260
         },
         {
           "symbol": "func (c *Client) once(",
-          "line": 212,
-          "end_line": 355
+          "line": 264,
+          "end_line": 442
         }
       ]
     },
     {
       "path": "internal/realtime/presence.go",
-      "sha256": "eb6580ae0882fee954a4e64a544616466ad0f3d6ab88af429621f463d5115c27",
+      "sha256": "fd471b3b74dc9f77f5ad85bd78877dc9aeb0806147f6e9db4e6ae52a2415e8b8",
       "claim": "Redis TIME and Lua prune per-connection leases on presence operations.",
       "ranges": [
         {
           "symbol": "func (l Leases) apply(",
-          "line": 37,
-          "end_line": 53
+          "line": 39,
+          "end_line": 55
         }
       ]
     },

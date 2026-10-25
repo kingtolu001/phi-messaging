@@ -1,0 +1,31 @@
+{
+  "started_at": "2026-10-25T07:49:57.3836202+00:00",
+  "status": "FAIL",
+  "docker_probe_output": "28.5.2",
+  "free_disk_bytes": 10645528576,
+  "target_distinct_recipient_users": 20000,
+  "error": "Distinct-user stage 20000 failed; larger stages remain skipped",
+  "stages": [
+    {
+      "report": "docs/results/users20k-run4-10000.json",
+      "aggregate_logical_sends_per_second": 20,
+      "database_statements_per_second_full_run": 2212.370087508922,
+      "status": "PASS",
+      "exit_code": 0,
+      "reason": "All generator assertions passed",
+      "users": 10000,
+      "full_run_seconds_monotonic": 114.8221093
+    },
+    {
+      "report": "docs/results/users20k-run4-20000.json",
+      "aggregate_logical_sends_per_second": 40,
+      "database_statements_per_second_full_run": 1381.9408745534429,
+      "status": "FAIL",
+      "exit_code": 1,
+      "reason": "connection, delivery or message assertions failed; inspect counters",
+      "users": 20000,
+      "full_run_seconds_monotonic": 510.0247145
+    }
+  ],
+  "finished_at": "2026-10-25T08:00:59.7981862+00:00"
+}

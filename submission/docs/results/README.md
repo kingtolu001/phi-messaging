@@ -1,6 +1,21 @@
 # Validation artifact index
 
 All workload send rates are **aggregate logical sends/second, never per device**.
+
+The final clean 20,000-recipient five-minute run is
+`users-20k-soak-shared-repair-awake-*` (PASS), at 40 aggregate sends/s. Consult
+`../validation-20000-users.md` for scope, latency definitions and before/after
+comparison. `users-20k-soak-*` and `users-sharded-*` include retained failures;
+`users-20k-shared-repair-clock-disturbance.json` explains the disturbed v2 run.
+The initial `users-20k-failure-shared-repair` was deliberately stopped before
+measurement after a harness sender-membership defect was found; its stop record
+is separate from the controller's FAIL status.
+
+`users-20k-failure-shared-repair-v2-*` is the passing final 20,000-recipient
+SIGKILL scenario. `users20k-final-checks.json` indexes final correctness checks;
+`users20k-final-dependency-failure.json` contains all 24 passing dependency and
+recovery assertions. These complement the clean soak, rather than relabeling
+earlier failures.
 This also applies to older JSON without a `send_rate_scope` field. At rate 2,
 300 recipient devices expect 600 device deliveries/s, not 600 logical sends/s.
 

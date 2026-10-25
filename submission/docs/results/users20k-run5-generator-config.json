@@ -1,0 +1,33 @@
+{
+  "port_range": "1024\t65535",
+  "command": [
+    "-mode",
+    "load",
+    "-url",
+    "http://load-balancer",
+    "-distinct-users",
+    "-shared-http",
+    "-recovery-interval",
+    "10s",
+    "-connections",
+    "20000",
+    "-rate",
+    "40",
+    "-warmup",
+    "10s",
+    "-duration",
+    "60s",
+    "-ramp",
+    "2ms",
+    "-drain",
+    "30s",
+    "-out",
+    "docs/results/users20k-run5-20000.json"
+  ],
+  "sysctls": {
+    "net.ipv4.ip_local_port_range": "1024 65535"
+  },
+  "container": "/phi-messaging-loadgen-run-b51bc72cc765",
+  "memory_limit": 3221225472,
+  "captured_at": "2026-10-25T08:04:39.9277069+00:00"
+}

@@ -1,0 +1,12 @@
+{
+  "finished_at": "2026-10-25T19:09:05.6848713+00:00",
+  "diagnostics_exit_code": 0,
+  "global_aggregate_sends_per_second": 40,
+  "fault_requested": false,
+  "ramp_milliseconds_per_driver": 20,
+  "started_at": "2026-10-25T19:08:30.1260159+00:00",
+  "shards": 4,
+  "users": 20000,
+  "status": "FAIL",
+  "error": "Current-source tests/build failed"
+}

@@ -1,0 +1,427 @@
+{
+  "source_status": "docs\\results\\users20k-run2-status.json",
+  "target_users": 20000,
+  "status": "FAIL",
+  "stages": [
+    {
+      "database_statements_per_second_full_run": 307.57421770682663,
+      "exit_code": 0,
+      "full_run_seconds_monotonic": 74.8534782,
+      "users": 300,
+      "report": "docs/results/users20k-run2-300.json",
+      "reason": "All generator assertions passed",
+      "status": "PASS",
+      "aggregate_logical_sends_per_second": 8,
+      "config": {
+        "send_rate_scope": "aggregate_across_workload_not_per_device",
+        "device_http_pool": "shared_generator_max_256_connections",
+        "url": "http://load-balancer",
+        "connections": 300,
+        "logical_messages_per_second": 8,
+        "warmup_ns": 10000000000,
+        "measurement_ns": 60000000000,
+        "connection_start_interval_ns": 2000000,
+        "drain_ns": 30000000000,
+        "distinct_user_per_recipient": true,
+        "recovery_interval_ns": 10000000000,
+        "shared_generator_http_pool": true
+      },
+      "distinct_recipient_users": 300,
+      "conversations": 4,
+      "connected_at_start": 300,
+      "min_connected": 300,
+      "peak_connected": 300,
+      "recipients_with_measured_delivery": 300,
+      "expected": 36000,
+      "delivered": 36000,
+      "missing": 0,
+      "missing_warmup": 0,
+      "connection_failures": 0,
+      "retries": 0,
+      "http_attempt_errors": 0,
+      "unacknowledged": 0,
+      "duplicate_callbacks": 0,
+      "suppressed_duplicates": 245,
+      "delivery_latency": {
+        "samples": 36000,
+        "p50_ms": 48.114172,
+        "p95_ms": 99.609622,
+        "p99_ms": 106.307375,
+        "max_ms": 127.672839
+      },
+      "ack_latency": {
+        "samples": 480,
+        "p50_ms": 6.125805,
+        "p95_ms": 9.080649,
+        "p99_ms": 16.346949,
+        "max_ms": 36.076978
+      },
+      "sender_throughput": 7.999851328896272,
+      "recipient_throughput": 599.9888496672204,
+      "scheduler_lateness": {
+        "samples": 560,
+        "p50_ms": 0.641116,
+        "p95_ms": 1.136472,
+        "p99_ms": 1.254471,
+        "max_ms": 3.487037
+      },
+      "audit": {
+        "history_read_attempts": 4,
+        "durable_rows": 560,
+        "acknowledged_checked": 560,
+        "missing_or_changed_acknowledged": 0,
+        "unacknowledged_but_committed": 0
+      },
+      "passed": true,
+      "resources": {
+        "phi-messaging-app1-1": {
+          "samples": 14,
+          "max_cpu_percent": 15.16,
+          "max_memory_mib": 22.77
+        },
+        "phi-messaging-app2-1": {
+          "samples": 14,
+          "max_cpu_percent": 15.51,
+          "max_memory_mib": 22.77
+        },
+        "phi-messaging-app3-1": {
+          "samples": 14,
+          "max_cpu_percent": 14.37,
+          "max_memory_mib": 22.29
+        },
+        "phi-messaging-postgres-1": {
+          "samples": 14,
+          "max_cpu_percent": 25.96,
+          "max_memory_mib": 85.95
+        },
+        "phi-messaging-redis-1": {
+          "samples": 14,
+          "max_cpu_percent": 12.8,
+          "max_memory_mib": 9.871
+        },
+        "phi-messaging-load-balancer-1": {
+          "samples": 14,
+          "max_cpu_percent": 11.71,
+          "max_memory_mib": 122.4
+        }
+      }
+    },
+    {
+      "database_statements_per_second_full_run": 734.7475437282801,
+      "exit_code": 0,
+      "full_run_seconds_monotonic": 77.23741369999999,
+      "users": 1000,
+      "report": "docs/results/users20k-run2-1000.json",
+      "reason": "All generator assertions passed",
+      "status": "PASS",
+      "aggregate_logical_sends_per_second": 22,
+      "config": {
+        "send_rate_scope": "aggregate_across_workload_not_per_device",
+        "device_http_pool": "shared_generator_max_256_connections",
+        "url": "http://load-balancer",
+        "connections": 1000,
+        "logical_messages_per_second": 22,
+        "warmup_ns": 10000000000,
+        "measurement_ns": 60000000000,
+        "connection_start_interval_ns": 2000000,
+        "drain_ns": 30000000000,
+        "distinct_user_per_recipient": true,
+        "recovery_interval_ns": 10000000000,
+        "shared_generator_http_pool": true
+      },
+      "distinct_recipient_users": 1000,
+      "conversations": 11,
+      "connected_at_start": 1000,
+      "min_connected": 1000,
+      "peak_connected": 1000,
+      "recipients_with_measured_delivery": 1000,
+      "expected": 120000,
+      "delivered": 120000,
+      "missing": 0,
+      "missing_warmup": 0,
+      "connection_failures": 0,
+      "retries": 0,
+      "http_attempt_errors": 0,
+      "unacknowledged": 0,
+      "duplicate_callbacks": 0,
+      "suppressed_duplicates": 1031,
+      "delivery_latency": {
+        "samples": 120000,
+        "p50_ms": 55.853055,
+        "p95_ms": 107.263522,
+        "p99_ms": 123.860202,
+        "max_ms": 784.39159
+      },
+      "ack_latency": {
+        "samples": 1320,
+        "p50_ms": 6.158102,
+        "p95_ms": 18.148997,
+        "p99_ms": 54.258525,
+        "max_ms": 738.891784
+      },
+      "sender_throughput": 21.856343737463117,
+      "recipient_throughput": 1986.940339769374,
+      "scheduler_lateness": {
+        "samples": 1540,
+        "p50_ms": 0.586458,
+        "p95_ms": 1.22821,
+        "p99_ms": 5.531857,
+        "max_ms": 27.658919
+      },
+      "audit": {
+        "history_read_attempts": 11,
+        "durable_rows": 1540,
+        "acknowledged_checked": 1540,
+        "missing_or_changed_acknowledged": 0,
+        "unacknowledged_but_committed": 0
+      },
+      "passed": true,
+      "resources": {
+        "phi-messaging-app1-1": {
+          "samples": 14,
+          "max_cpu_percent": 63.59,
+          "max_memory_mib": 51.57
+        },
+        "phi-messaging-app2-1": {
+          "samples": 14,
+          "max_cpu_percent": 59.06,
+          "max_memory_mib": 50.97
+        },
+        "phi-messaging-app3-1": {
+          "samples": 14,
+          "max_cpu_percent": 62.95,
+          "max_memory_mib": 49.91
+        },
+        "phi-messaging-postgres-1": {
+          "samples": 14,
+          "max_cpu_percent": 65.87,
+          "max_memory_mib": 99.62
+        },
+        "phi-messaging-redis-1": {
+          "samples": 14,
+          "max_cpu_percent": 15.61,
+          "max_memory_mib": 9.789
+        },
+        "phi-messaging-load-balancer-1": {
+          "samples": 14,
+          "max_cpu_percent": 49.81,
+          "max_memory_mib": 140.1
+        }
+      }
+    },
+    {
+      "database_statements_per_second_full_run": 1828.3073678156215,
+      "exit_code": 0,
+      "full_run_seconds_monotonic": 85.75636829999999,
+      "users": 3000,
+      "report": "docs/results/users20k-run2-3000.json",
+      "reason": "All generator assertions passed",
+      "status": "PASS",
+      "aggregate_logical_sends_per_second": 62,
+      "config": {
+        "send_rate_scope": "aggregate_across_workload_not_per_device",
+        "device_http_pool": "shared_generator_max_256_connections",
+        "url": "http://load-balancer",
+        "connections": 3000,
+        "logical_messages_per_second": 62,
+        "warmup_ns": 10000000000,
+        "measurement_ns": 60000000000,
+        "connection_start_interval_ns": 2000000,
+        "drain_ns": 30000000000,
+        "distinct_user_per_recipient": true,
+        "recovery_interval_ns": 10000000000,
+        "shared_generator_http_pool": true
+      },
+      "distinct_recipient_users": 3000,
+      "conversations": 31,
+      "connected_at_start": 3000,
+      "min_connected": 3000,
+      "peak_connected": 3000,
+      "recipients_with_measured_delivery": 3000,
+      "expected": 360000,
+      "delivered": 360000,
+      "missing": 0,
+      "missing_warmup": 0,
+      "connection_failures": 0,
+      "retries": 0,
+      "http_attempt_errors": 0,
+      "unacknowledged": 0,
+      "duplicate_callbacks": 0,
+      "suppressed_duplicates": 5852,
+      "delivery_latency": {
+        "samples": 360000,
+        "p50_ms": 86.732579,
+        "p95_ms": 323.825692,
+        "p99_ms": 564.036992,
+        "max_ms": 1108.060819
+      },
+      "ack_latency": {
+        "samples": 3720,
+        "p50_ms": 18.426953,
+        "p95_ms": 135.94089,
+        "p99_ms": 251.767709,
+        "max_ms": 523.191448
+      },
+      "sender_throughput": 61.89523671549803,
+      "recipient_throughput": 5989.8616176288415,
+      "scheduler_lateness": {
+        "samples": 4340,
+        "p50_ms": 0.713893,
+        "p95_ms": 16.540652,
+        "p99_ms": 46.054693,
+        "max_ms": 113.186782
+      },
+      "audit": {
+        "history_read_attempts": 31,
+        "durable_rows": 4340,
+        "acknowledged_checked": 4340,
+        "missing_or_changed_acknowledged": 0,
+        "unacknowledged_but_committed": 0
+      },
+      "passed": true,
+      "resources": {
+        "phi-messaging-app1-1": {
+          "samples": 15,
+          "max_cpu_percent": 117.76,
+          "max_memory_mib": 104.9
+        },
+        "phi-messaging-app2-1": {
+          "samples": 15,
+          "max_cpu_percent": 110.14,
+          "max_memory_mib": 108.1
+        },
+        "phi-messaging-app3-1": {
+          "samples": 15,
+          "max_cpu_percent": 95.04,
+          "max_memory_mib": 104.3
+        },
+        "phi-messaging-postgres-1": {
+          "samples": 15,
+          "max_cpu_percent": 257.59,
+          "max_memory_mib": 290.5
+        },
+        "phi-messaging-redis-1": {
+          "samples": 15,
+          "max_cpu_percent": 24.25,
+          "max_memory_mib": 11.38
+        },
+        "phi-messaging-load-balancer-1": {
+          "samples": 15,
+          "max_cpu_percent": 97.06,
+          "max_memory_mib": 192.7
+        }
+      }
+    },
+    {
+      "database_statements_per_second_full_run": 3156.9965369313386,
+      "exit_code": 1,
+      "full_run_seconds_monotonic": 131.81991019999998,
+      "users": 10000,
+      "report": "docs/results/users20k-run2-10000.json",
+      "reason": "Not reached",
+      "status": "FAIL",
+      "aggregate_logical_sends_per_second": 204,
+      "config": {
+        "send_rate_scope": "aggregate_across_workload_not_per_device",
+        "device_http_pool": "shared_generator_max_256_connections",
+        "url": "http://load-balancer",
+        "connections": 10000,
+        "logical_messages_per_second": 204,
+        "warmup_ns": 10000000000,
+        "measurement_ns": 60000000000,
+        "connection_start_interval_ns": 2000000,
+        "drain_ns": 30000000000,
+        "distinct_user_per_recipient": true,
+        "recovery_interval_ns": 10000000000,
+        "shared_generator_http_pool": true
+      },
+      "distinct_recipient_users": 10000,
+      "conversations": 102,
+      "connected_at_start": 10000,
+      "min_connected": 10000,
+      "peak_connected": 10000,
+      "recipients_with_measured_delivery": 10000,
+      "expected": 1200000,
+      "delivered": 406930,
+      "missing": 793070,
+      "missing_warmup": 109899,
+      "connection_failures": 0,
+      "retries": 0,
+      "http_attempt_errors": 0,
+      "unacknowledged": 9209,
+      "duplicate_callbacks": 0,
+      "suppressed_duplicates": 92934,
+      "delivery_latency": {
+        "samples": 406930,
+        "p50_ms": 722.760606,
+        "p95_ms": 2573.41589,
+        "p99_ms": 3879.028675,
+        "max_ms": 8369.064849
+      },
+      "ack_latency": {
+        "samples": 4150,
+        "p50_ms": 171.210933,
+        "p95_ms": 583.686738,
+        "p99_ms": 1094.526508,
+        "max_ms": 2026.813175
+      },
+      "sender_throughput": 64.22939870774074,
+      "recipient_throughput": 6298.0407749737205,
+      "scheduler_lateness": {
+        "samples": 14280,
+        "p50_ms": 15.139035,
+        "p95_ms": 303.097136,
+        "p99_ms": 932.308762,
+        "max_ms": 1475.682596
+      },
+      "audit": {
+        "history_read_attempts": 102,
+        "durable_rows": 5071,
+        "acknowledged_checked": 5071,
+        "missing_or_changed_acknowledged": 0,
+        "unacknowledged_but_committed": 0
+      },
+      "passed": false,
+      "failure": "connection, delivery or message assertions failed; inspect counters",
+      "resources": {
+        "phi-messaging-app1-1": {
+          "samples": 23,
+          "max_cpu_percent": 102.32,
+          "max_memory_mib": 287.8
+        },
+        "phi-messaging-app2-1": {
+          "samples": 23,
+          "max_cpu_percent": 165.59,
+          "max_memory_mib": 271.6
+        },
+        "phi-messaging-app3-1": {
+          "samples": 23,
+          "max_cpu_percent": 163.94,
+          "max_memory_mib": 281.8
+        },
+        "phi-messaging-postgres-1": {
+          "samples": 23,
+          "max_cpu_percent": 241.31,
+          "max_memory_mib": 309.9
+        },
+        "phi-messaging-redis-1": {
+          "samples": 23,
+          "max_cpu_percent": 50.9,
+          "max_memory_mib": 15.19
+        },
+        "phi-messaging-load-balancer-1": {
+          "samples": 23,
+          "max_cpu_percent": 145.2,
+          "max_memory_mib": 371.4
+        }
+      }
+    },
+    {
+      "status": "SKIPPED",
+      "users": 20000,
+      "reason": "Not reached"
+    }
+  ],
+  "latency_basis": "Monotonic elapsed time in one Linux generator, first send HTTP attempt to recipient callback; percentiles cover received messages only. Missing messages and errors are reported separately and fail assertions.",
+  "resource_basis": "Sampled Docker CPU (100% equals one logical CPU) and memory maxima per container; not continuous peaks. Generator resource usage is not included in these external samples."
+}

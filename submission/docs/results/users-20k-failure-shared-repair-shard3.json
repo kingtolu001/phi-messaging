@@ -1,0 +1,131 @@
+{
+  "clock_discontinuity_detected": false,
+  "wall_measurement_and_drain_seconds": 0,
+  "resumes_with_shared_durable_reconciliation": 2512,
+  "measurement_started_at": "0001-01-01T00:00:00Z",
+  "measurement_ends_at": "0001-01-01T00:00:00Z",
+  "delivery_latency_ms_upper_bound_histogram": null,
+  "ack_latency_ms_upper_bound_histogram": null,
+  "generator_environment": {
+    "arch": "amd64",
+    "ephemeral_port_range": "1024\t65535",
+    "go": "go1.26.2",
+    "gomaxprocs": 2,
+    "gomemlimit": "800MiB",
+    "os": "linux"
+  },
+  "database_counter_window_seconds_monotonic": 0,
+  "database_queries_before": {
+    "at": "2026-10-25T20:27:47.440022713Z",
+    "statements": 0,
+    "execution_ms": 0,
+    "error": "pg_stat_statements unavailable"
+  },
+  "database_queries_after": {
+    "at": "0001-01-01T00:00:00Z",
+    "statements": 0,
+    "execution_ms": 0
+  },
+  "missing_warmup_deliveries": 0,
+  "history_audit": {
+    "history_read_attempts": 0,
+    "durable_rows": 0,
+    "acknowledged_checked": 0,
+    "missing_or_changed_acknowledged": 0,
+    "unacknowledged_but_committed": 0
+  },
+  "min_resumed_during_measurement": 0,
+  "scheduler_lateness": {
+    "samples": 0,
+    "p50_ms": 0,
+    "p95_ms": 0,
+    "p99_ms": 0,
+    "max_ms": 0
+  },
+  "websocket_establishment_failures": 0,
+  "websocket_disconnects": 2512,
+  "measurement_and_drain_seconds": 0,
+  "diagnostics_before": {
+    "postgres": "",
+    "redis": "",
+    "errors": [
+      "PostgreSQL diagnostics: exec: \"docker\": executable file not found in $PATH",
+      "Redis diagnostics: exec: \"docker\": executable file not found in $PATH"
+    ]
+  },
+  "diagnostics_after": {
+    "postgres": "",
+    "redis": ""
+  },
+  "config": {
+    "ready_timeout_ns": 120000000000,
+    "user_offset": 15000,
+    "ready_file": ".artifacts/users-20k-failure-shared-repair-ready-3.json",
+    "start_barrier": ".artifacts/users-20k-failure-shared-repair-start",
+    "send_rate_scope": "aggregate_across_workload_not_per_device",
+    "device_http_pool": "shared_generator_max_256_connections",
+    "url": "http://load-balancer",
+    "connections": 5000,
+    "logical_messages_per_second": 10,
+    "warmup_ns": 10000000000,
+    "measurement_ns": 60000000000,
+    "connection_start_interval_ns": 20000000,
+    "drain_ns": 30000000000,
+    "distinct_user_per_recipient": true,
+    "recovery_interval_ns": 30000000000,
+    "shared_generator_http_pool": true
+  },
+  "started": "2026-10-25T20:27:35.31804797Z",
+  "conversation": "e25bb316-6868-4860-aded-03b7fb4d1d9a",
+  "conversation_count": 51,
+  "distinct_recipient_users": 5000,
+  "recipients_with_measured_delivery": 0,
+  "passed": false,
+  "failure": "start barrier canceled",
+  "max_simultaneously_resumed": 2511,
+  "connected_at_measurement_start": 0,
+  "never_connected": 0,
+  "connection_retries": 0,
+  "retry_http_statuses": {},
+  "client_terminal_errors": 0,
+  "client_error_kinds": {},
+  "http_attempt_errors": 0,
+  "http_recovery_retries": 0,
+  "unacknowledged_logical_messages": 0,
+  "scheduler_queue_drops": 0,
+  "unscheduled_rate_slots": 0,
+  "measured_logical_messages": 0,
+  "measured_acknowledged_messages": 0,
+  "expected_measured_deliveries": 0,
+  "received_measured_deliveries": 0,
+  "missing_measured_deliveries": 0,
+  "duplicate_callbacks": 0,
+  "suppressed_duplicates": 0,
+  "gap_recovery_triggers": 0,
+  "sender_ack_latency": {
+    "samples": 0,
+    "p50_ms": 0,
+    "p95_ms": 0,
+    "p99_ms": 0,
+    "max_ms": 0
+  },
+  "recipient_delivery_latency": {
+    "samples": 0,
+    "p50_ms": 0,
+    "p95_ms": 0,
+    "p99_ms": 0,
+    "max_ms": 0
+  },
+  "acknowledged_messages_per_second": 0,
+  "recipient_deliveries_per_second_including_drain": 0,
+  "kill_requested_at": "0001-01-01T00:00:00Z",
+  "other_device_online_after_kill": false,
+  "retry_delays_ms": null,
+  "connections_by_instance": {
+    "2911ec751684": 861,
+    "9f2f2e632942": 797,
+    "b1d0e72e02cc": 854
+  },
+  "resource_samples": null,
+  "records": null
+}

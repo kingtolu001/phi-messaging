@@ -8,6 +8,8 @@ import (
 
 func (s *Store) Ping(ctx context.Context) error { return s.db.PingContext(ctx) }
 
+func (s *Store) PoolStats() sql.DBStats { return s.db.Stats() }
+
 func (s *Store) Head(ctx context.Context, actor, id string) (int64, error) {
 	if !validID(actor) || !validID(id) {
 		return 0, ErrInvalid

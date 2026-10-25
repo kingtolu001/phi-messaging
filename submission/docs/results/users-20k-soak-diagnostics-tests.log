@@ -1,0 +1,110 @@
+ Container phi-messaging-redis-1  Running
+ Container phi-messaging-postgres-1  Running
+?   	phi-messaging/cmd/client	[no test files]
+?   	phi-messaging/cmd/exercise	[no test files]
+?   	phi-messaging/cmd/server	[no test files]
+=== RUN   TestSmallBuffersStreamLargeFramesAndIgnoreReceiptBurst
+--- PASS: TestSmallBuffersStreamLargeFramesAndIgnoreReceiptBurst (0.07s)
+=== RUN   TestDevicesReuseAndReleaseRecoveryConnections
+--- PASS: TestDevicesReuseAndReleaseRecoveryConnections (2.30s)
+=== RUN   TestRecoveryMergesDuplicatesAndRejectsGaps
+--- PASS: TestRecoveryMergesDuplicatesAndRejectsGaps (0.00s)
+=== RUN   TestHTTPRecoveryOutageKeepsSocketAndRepairsGap
+=== RUN   TestHTTPRecoveryOutageKeepsSocketAndRepairsGap/Service_Unavailable
+=== RUN   TestHTTPRecoveryOutageKeepsSocketAndRepairsGap/Unauthorized
+--- PASS: TestHTTPRecoveryOutageKeepsSocketAndRepairsGap (0.04s)
+    --- PASS: TestHTTPRecoveryOutageKeepsSocketAndRepairsGap/Service_Unavailable (0.03s)
+    --- PASS: TestHTTPRecoveryOutageKeepsSocketAndRepairsGap/Unauthorized (0.00s)
+=== RUN   TestConfiguredPeriodicRepairRecoversMissingSocketEvent
+--- PASS: TestConfiguredPeriodicRepairRecoversMissingSocketEvent (0.06s)
+=== RUN   TestRejectedResumeIsPermanent
+--- PASS: TestRejectedResumeIsPermanent (0.00s)
+=== RUN   TestRetryJitterStillVariesAtCap
+--- PASS: TestRetryJitterStillVariesAtCap (0.00s)
+=== RUN   TestSlowFailedHandshakeDoesNotResetBackoff
+--- PASS: TestSlowFailedHandshakeDoesNotResetBackoff (0.00s)
+=== RUN   TestRejectUnsolicitedMessages
+--- PASS: TestRejectUnsolicitedMessages (0.00s)
+PASS
+ok  	phi-messaging/internal/client	3.509s
+=== RUN   TestHistoryAuditRetriesReadButRequiresEveryAcknowledgement
+--- PASS: TestHistoryAuditRetriesReadButRequiresEveryAcknowledgement (0.11s)
+=== RUN   TestAuditChecksEachConversationIndependently
+--- PASS: TestAuditChecksEachConversationIndependently (0.00s)
+=== RUN   TestHistoryAuditRejectsAnotherConversationsRows
+--- PASS: TestHistoryAuditRejectsAnotherConversationsRows (3.11s)
+=== RUN   TestFaultControllerChecksKillResponse
+--- PASS: TestFaultControllerChecksKillResponse (0.01s)
+=== RUN   TestReportsCannotOverwriteFailureEvidence
+--- PASS: TestReportsCannotOverwriteFailureEvidence (0.00s)
+=== RUN   TestPercentilesRetainTail
+--- PASS: TestPercentilesRetainTail (0.00s)
+=== RUN   TestHistogramPreservesEverySampleAndBounds
+--- PASS: TestHistogramPreservesEverySampleAndBounds (0.00s)
+=== RUN   TestScheduleExcludesEndBoundary
+--- PASS: TestScheduleExcludesEndBoundary (0.00s)
+=== RUN   TestRecoverySubjectMustHaveResumedOnPinnedEndpoint
+--- PASS: TestRecoverySubjectMustHaveResumedOnPinnedEndpoint (0.00s)
+=== RUN   TestQueryRateUsesMonotonicWindowNotWallClock
+--- PASS: TestQueryRateUsesMonotonicWindowNotWallClock (0.00s)
+=== RUN   TestDistinctUserFixturesAndGroupMembership
+--- PASS: TestDistinctUserFixturesAndGroupMembership (0.74s)
+=== RUN   TestUserFixturesRefuseOverwrite
+--- PASS: TestUserFixturesRefuseOverwrite (0.00s)
+PASS
+ok  	phi-messaging/internal/exercise	5.029s
+?   	phi-messaging/internal/realtime	[no test files]
+=== RUN   TestCachedPageRequiresCompleteCoverage
+--- PASS: TestCachedPageRequiresCompleteCoverage (0.00s)
+=== RUN   TestFeedAdmissionAndCleanupAreBounded
+--- PASS: TestFeedAdmissionAndCleanupAreBounded (0.00s)
+=== RUN   TestConfiguredFeedAdmissionIsAtomic
+--- PASS: TestConfiguredFeedAdmissionIsAtomic (0.00s)
+=== RUN   TestSharedFeedTargetsHintsAndKeepsRemainingDevice
+--- PASS: TestSharedFeedTargetsHintsAndKeepsRemainingDevice (0.32s)
+=== RUN   TestRecoveryCacheFallsBackAndChecksCurrentMembership
+--- PASS: TestRecoveryCacheFallsBackAndChecksCurrentMembership (1.66s)
+=== RUN   TestManyDevicesShareOnePeriodicReconciliation
+--- PASS: TestManyDevicesShareOnePeriodicReconciliation (1.13s)
+=== RUN   TestHTTPAuthenticationMembershipAndValidation
+--- PASS: TestHTTPAuthenticationMembershipAndValidation (0.85s)
+=== RUN   TestWebSocketAuthenticationOriginAndMembership
+--- PASS: TestWebSocketAuthenticationOriginAndMembership (0.25s)
+=== RUN   TestCrossInstanceOrderedDeliveryAndReceipts
+--- PASS: TestCrossInstanceOrderedDeliveryAndReceipts (1.08s)
+=== RUN   TestMissedHintAndReconnectRecovery
+--- PASS: TestMissedHintAndReconnectRecovery (0.65s)
+=== RUN   TestMultiDevicePresenceAndLeaseExpiry
+--- PASS: TestMultiDevicePresenceAndLeaseExpiry (2.17s)
+=== RUN   TestBoundedQueueAndGracefulShutdown
+--- PASS: TestBoundedQueueAndGracefulShutdown (0.14s)
+=== RUN   TestDependencyFailuresPreserveDurability
+--- PASS: TestDependencyFailuresPreserveDurability (0.18s)
+=== RUN   TestWebSocketCapacityAndHandshakeLimit
+--- PASS: TestWebSocketCapacityAndHandshakeLimit (0.17s)
+=== RUN   TestRecoveryClientSurvivesNodeShutdown
+--- PASS: TestRecoveryClientSurvivesNodeShutdown (0.50s)
+PASS
+ok  	phi-messaging/internal/server	10.119s
+=== RUN   TestOutboxPublisherConnectionCrash
+--- PASS: TestOutboxPublisherConnectionCrash (0.43s)
+=== RUN   TestOutboxRetryAndConcurrentClaims
+--- PASS: TestOutboxRetryAndConcurrentClaims (0.68s)
+=== RUN   TestDeliverySnapshotRespectsCapturedHead
+--- PASS: TestDeliverySnapshotRespectsCapturedHead (0.53s)
+=== RUN   TestConcurrentDirectCreation
+--- PASS: TestConcurrentDirectCreation (0.80s)
+=== RUN   TestConcurrentIdenticalSends
+--- PASS: TestConcurrentIdenticalSends (0.87s)
+=== RUN   TestConcurrentCrossConversationKey
+--- PASS: TestConcurrentCrossConversationKey (0.65s)
+=== RUN   TestConcurrentOrderingAndReads
+--- PASS: TestConcurrentOrderingAndReads (1.99s)
+=== RUN   TestHistoryAndAuthorization
+--- PASS: TestHistoryAndAuthorization (0.40s)
+=== RUN   TestValidationAndConversationPagination
+--- PASS: TestValidationAndConversationPagination (0.45s)
+=== RUN   TestOutboxFailureRollsBackSendAndRead
+--- PASS: TestOutboxFailureRollsBackSendAndRead (0.35s)
+PASS
+ok  	phi-messaging/internal/storage	8.186s

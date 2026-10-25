@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "sequence",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\send.sequence.json",
+    "sha256": "4a97bceb91e065da5d6b8e0e08e08040ecbd766667a428bf54b2246b19fb64bd",
+    "bytes": 4917
+  },
+  "artifact": {
+    "path": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\send.html",
+    "sha256": "067bc545738680dd254fea43f974f885f145bae0fb4cd941cdc946a79c7c0b6c",
+    "bytes": 826134
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\review\\users20k-recovery-20261025\\send\\send.finalize.json",
+    "summaryReceipt": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\review\\users20k-recovery-20261025\\send\\send.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\review\\users20k-recovery-20261025\\send\\send.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 6896,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

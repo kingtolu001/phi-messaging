@@ -1,0 +1,15 @@
+{
+  "users": 20000,
+  "fault_requested": false,
+  "shards": 4,
+  "finished_at": "2026-10-25T20:26:14.1903233+00:00",
+  "diagnostics_exit_code": 0,
+  "started_at": "2026-10-25T20:18:19.8779759+00:00",
+  "barrier_released_at": "2026-10-25T20:20:56.3599201+00:00",
+  "ramp_milliseconds_per_driver": 20,
+  "status": "PASS",
+  "global_aggregate_sends_per_second": 40,
+  "database_statements_per_second_full_run": 1397.8413409550196,
+  "idle_sleep_prevention": true,
+  "database_counter_window_seconds_monotonic": 438.3408775
+}

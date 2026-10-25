@@ -5,10 +5,12 @@ import (
 	"database/sql"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
+	"strconv"
 	"strings"
 	"syscall"
 	"time"
@@ -56,7 +58,17 @@ func run() error {
 		return errors.New("startup dependencies unavailable")
 	}
 	instance, _ := os.Hostname()
-	app, err := server.New(storage.New(db), cache, server.Config{InstanceID: instance, Tokens: tokens, Origins: strings.Split(os.Getenv("ALLOWED_ORIGINS"), ","), Prefix: "phi:"})
+	config := server.Config{InstanceID: instance, Tokens: tokens, Origins: strings.Split(os.Getenv("ALLOWED_ORIGINS"), ","), Prefix: "phi:"}
+	config.LogDiagnostics = os.Getenv("LOG_DIAGNOSTICS") == "1"
+	for name, target := range map[string]*int{"MAX_CONNECTIONS": &config.MaxConnections, "HANDSHAKES_PER_SECOND": &config.HandshakesPerSecond, "MAX_DELIVERY_FEEDS": &config.MaxDeliveryFeeds} {
+		if value := os.Getenv(name); value != "" {
+			*target, err = strconv.Atoi(value)
+			if err != nil || *target < 1 {
+				return fmt.Errorf("invalid %s", name)
+			}
+		}
+	}
+	app, err := server.New(storage.New(db), cache, config)
 	if err != nil {
 		return err
 	}

@@ -7,10 +7,12 @@ import (
 	"errors"
 	"fmt"
 	"math/rand/v2"
+	"net"
 	"net/http"
 	"net/url"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/gorilla/websocket"
@@ -19,6 +21,16 @@ import (
 
 var ErrGap = errors.New("noncontiguous message sequence")
 var errConversationLimit = errors.New("sample client supports at most 100 conversations")
+
+// Stream large frames through small buffers; release the rarely used write
+// buffer after resume instead of retaining one for every idle socket.
+var recoveryDialer = func() *websocket.Dialer {
+	d := *websocket.DefaultDialer
+	d.ReadBufferSize = 1024
+	d.WriteBufferSize = 1024
+	d.WriteBufferPool = &sync.Pool{}
+	return &d
+}()
 
 type processingError struct{ error }
 
@@ -29,6 +41,9 @@ func (e statusError) Error() string { return fmt.Sprintf("server returned HTTP %
 type Client struct {
 	URL, Token string
 	HTTP       *http.Client
+	// Zero keeps the original one-second repair interval. Larger intervals trade
+	// missed-event recovery latency for fewer HTTP membership/history queries.
+	RecoveryInterval time.Duration
 	// Cursors belong to this client device, not to the user's read receipts.
 	// Run owns this map. Persist it in a real client after processing each message.
 	Cursors   map[string]int64
@@ -39,13 +54,17 @@ type Client struct {
 	FirstWebSocketURL string
 	OnState           func(State)
 	firstAttempted    bool
+	connectedAt       time.Time
+	discoveryPending  bool
 }
 
 type State struct {
-	Kind       string
-	InstanceID string
-	Delay      time.Duration
-	Status     int
+	DurableReconciliation bool
+	Kind                  string
+	InstanceID            string
+	Delay                 time.Duration
+	Status                int
+	Pinned                bool
 }
 
 func (c *Client) state(s State) {
@@ -55,6 +74,30 @@ func (c *Client) state(s State) {
 }
 func retryDelay(base time.Duration) time.Duration {
 	return base/2 + time.Duration(rand.Int64N(int64(base-base/2)))
+}
+
+func (c *Client) repairDelay() time.Duration {
+	if c.RecoveryInterval == 0 {
+		return time.Second
+	}
+	return retryDelay(c.RecoveryInterval)
+}
+
+func (c *Client) retryRecovery(ctx context.Context, err error) bool {
+	if ctx.Err() != nil {
+		return false
+	}
+	var status statusError
+	var network net.Error
+	if errors.As(err, &status) {
+		if status != 429 && status < 500 {
+			return false
+		}
+	} else if !errors.As(err, &network) {
+		return false
+	}
+	c.state(State{Kind: "recovery_retry", Status: int(status)})
+	return true
 }
 
 func (c *Client) Accept(m storage.Message) error {
@@ -96,12 +139,12 @@ func (c *Client) discover(ctx context.Context) (bool, error) {
 	if len(c.Subscriptions) > 0 {
 		return false, nil
 	}
-	changed := false
+	changed := c.discoveryPending
 	after := ""
 	for {
 		var list []storage.Conversation
 		if err := c.get(ctx, "/v1/conversations?limit=100"+after, &list); err != nil {
-			return false, err
+			return changed, err
 		}
 		for _, v := range list {
 			if _, ok := c.Cursors[v.ID]; !ok {
@@ -110,6 +153,7 @@ func (c *Client) discover(ctx context.Context) (bool, error) {
 				}
 				c.Cursors[v.ID] = 0
 				changed = true
+				c.discoveryPending = true
 			}
 		}
 		if len(list) < 100 {
@@ -117,6 +161,7 @@ func (c *Client) discover(ctx context.Context) (bool, error) {
 		}
 		after = "&after=" + list[len(list)-1].ID
 	}
+	c.discoveryPending = false
 	return changed, nil
 }
 func (c *Client) Recover(ctx context.Context) error {
@@ -154,6 +199,9 @@ func (c *Client) Run(ctx context.Context) error {
 	if c.Token == "" || c.OnMessage == nil {
 		return errors.New("token and message callback are required")
 	}
+	if c.RecoveryInterval < 0 {
+		return errors.New("invalid recovery interval")
+	}
 	if c.HTTP == nil {
 		// A device owns its recovery connections. Sharing DefaultTransport's
 		// two idle slots across thousands of devices creates connection churn.
@@ -178,7 +226,7 @@ func (c *Client) Run(ctx context.Context) error {
 	}
 	backoff := 100 * time.Millisecond
 	for ctx.Err() == nil {
-		started := time.Now()
+		c.connectedAt = time.Time{}
 		err = c.once(ctx)
 		var processing processingError
 		if errors.As(err, &processing) || errors.Is(err, errConversationLimit) {
@@ -191,7 +239,7 @@ func (c *Client) Run(ctx context.Context) error {
 		if ctx.Err() != nil {
 			break
 		}
-		if time.Since(started) > 10*time.Second {
+		if c.stableSession() {
 			backoff = 100 * time.Millisecond
 		}
 		delay := retryDelay(backoff)
@@ -208,6 +256,10 @@ func (c *Client) Run(ctx context.Context) error {
 		backoff = min(backoff*2, 10*time.Second)
 	}
 	return ctx.Err()
+}
+
+func (c *Client) stableSession() bool {
+	return !c.connectedAt.IsZero() && time.Since(c.connectedAt) > 10*time.Second
 }
 func (c *Client) once(ctx context.Context) error {
 	if _, err := c.discover(ctx); err != nil {
@@ -228,11 +280,12 @@ func (c *Client) once(ctx context.Context) error {
 			c.state(State{Kind: "connection_failed"})
 		}
 	}()
-	if !c.firstAttempted && c.FirstWebSocketURL != "" {
+	pinned := !c.firstAttempted && c.FirstWebSocketURL != ""
+	if pinned {
 		endpoint = "ws" + strings.TrimPrefix(strings.TrimRight(c.FirstWebSocketURL, "/"), "http") + "/v1/ws"
 	}
 	c.firstAttempted = true
-	conn, res, err := websocket.DefaultDialer.DialContext(ctx, endpoint, http.Header{"Authorization": []string{"Bearer " + c.Token}})
+	conn, res, err := recoveryDialer.DialContext(ctx, endpoint, http.Header{"Authorization": []string{"Bearer " + c.Token}})
 	if err != nil {
 		if res != nil {
 			res.Body.Close()
@@ -264,8 +317,9 @@ func (c *Client) once(ctx context.Context) error {
 		return err
 	}
 	var resumed struct {
-		Type string `json:"type"`
-		Code string `json:"code"`
+		Type                  string `json:"type"`
+		Code                  string `json:"code"`
+		DurableReconciliation bool   `json:"durable_reconciliation"`
 	}
 	if err = conn.ReadJSON(&resumed); err != nil {
 		return err
@@ -276,7 +330,8 @@ func (c *Client) once(ctx context.Context) error {
 		}
 		return statusError(400)
 	}
-	c.state(State{Kind: "connected", InstanceID: ready.InstanceID})
+	c.connectedAt = time.Now()
+	c.state(State{Kind: "connected", InstanceID: ready.InstanceID, Pinned: pinned, DurableReconciliation: resumed.DurableReconciliation})
 	established = true
 	defer c.state(State{Kind: "disconnected", InstanceID: ready.InstanceID})
 	conn.SetReadDeadline(time.Now().Add(60 * time.Second))
@@ -288,7 +343,7 @@ func (c *Client) once(ctx context.Context) error {
 		Type string `json:"type"`
 		storage.Message
 	}
-	frames := make(chan frame, 128)
+	frames := make(chan frame, 32)
 	readDone := make(chan struct{})
 	readerErr := make(chan error, 1)
 	go func() {
@@ -298,6 +353,11 @@ func (c *Client) once(ctx context.Context) error {
 			if e := conn.ReadJSON(&f); e != nil {
 				readerErr <- e
 				return
+			}
+			// This sample client's receipt recovery is HTTP-based. Do not queue
+			// ignored read frames behind potentially slow history requests.
+			if f.Type != "message" && f.Type != "error" {
+				continue
 			}
 			select {
 			case frames <- f:
@@ -312,10 +372,15 @@ func (c *Client) once(ctx context.Context) error {
 	defer func() { conn.Close(); <-readDone }()
 	// The socket is already registered. HTTP and buffered live events may overlap;
 	// Accept suppresses duplicates and advances only contiguous positions.
+	repairPending := false
 	if err = c.Recover(ctx); err != nil {
-		return err
+		if !c.retryRecovery(ctx, err) {
+			return err
+		}
+		repairPending = true
 	}
-	ticker := time.NewTicker(time.Second)
+	// Spread periodic repairs instead of aligning every device on whole seconds.
+	ticker := time.NewTimer(c.repairDelay())
 	defer ticker.Stop()
 	for {
 		select {
@@ -331,7 +396,14 @@ func (c *Client) once(ctx context.Context) error {
 				continue
 			}
 			if err = c.Accept(f.Message); errors.Is(err, ErrGap) {
+				if repairPending {
+					continue
+				}
 				if err = c.Recover(ctx); err != nil {
+					if c.retryRecovery(ctx, err) {
+						repairPending = true
+						continue
+					}
 					return err
 				}
 				err = c.Accept(f.Message)
@@ -340,16 +412,31 @@ func (c *Client) once(ctx context.Context) error {
 				return err
 			}
 		case <-ticker.C:
+			ticker.Reset(c.repairDelay())
+			// This server reconciles subscribed conversations against PostgreSQL
+			// even without Redis hints. Avoid duplicate per-device history polls.
+			// Keep HTTP repair after a gap/failure, and for older servers.
+			if resumed.DurableReconciliation && len(c.Subscriptions) > 0 && !repairPending {
+				continue
+			}
 			changed, e := c.discover(ctx)
 			if e != nil {
+				if c.retryRecovery(ctx, e) {
+					continue
+				}
 				return e
 			}
 			if changed {
 				return nil
 			}
 			if err = c.Recover(ctx); err != nil {
+				if c.retryRecovery(ctx, err) {
+					repairPending = true
+					continue
+				}
 				return err
 			}
+			repairPending = false
 		}
 	}
 }

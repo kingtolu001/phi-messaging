@@ -1,0 +1,58 @@
+{
+  "passed": false,
+  "failures": [
+    "At least one shard failed its connection/delivery/durability assertions",
+    "Requested user count was not maintained throughout the measurement"
+  ],
+  "distinct_recipient_users": 20000,
+  "shards": 4,
+  "recipients_with_measured_delivery": 20000,
+  "connected_at_measurement_start": 20000,
+  "global_aggregate_sends_per_second": 40,
+  "rate_scope": "sum of generator rates across workload; never per user",
+  "concurrent_measurement_overlap_seconds": 59.969,
+  "measurement_and_drain_seconds": 100.171140625,
+  "sum_of_per_shard_minimum_connections": 4661,
+  "expected_deliveries": 235248,
+  "received_deliveries": 157326,
+  "missing_deliveries": 77922,
+  "missing_warmup_deliveries": 0,
+  "measured_acknowledged_messages": 1602,
+  "http_attempt_errors": 260,
+  "http_recovery_retries": 57529,
+  "connection_failures": 13631,
+  "connection_retries": 34482,
+  "unacknowledged_messages": 798,
+  "scheduler_drops": 783,
+  "duplicate_callbacks": 0,
+  "suppressed_duplicates": 76495,
+  "recipient_deliveries_per_second": 1570.5721130696168,
+  "acknowledged_messages_per_second": 15.992630112870893,
+  "delivery_latency": {
+    "samples": 157326,
+    "p50_ms_upper_bound": 29817,
+    "p95_ms_upper_bound": 77978,
+    "p99_ms_upper_bound": 88674,
+    "resolution_ms": 1
+  },
+  "ack_latency": {
+    "samples": 1602,
+    "p50_ms_upper_bound": 2018,
+    "p95_ms_upper_bound": 9188,
+    "p99_ms_upper_bound": 14206,
+    "resolution_ms": 1
+  },
+  "durable_acknowledgements_checked": 2002,
+  "durable_missing_or_changed": 0,
+  "audit_errors": [],
+  "fault_requested": false,
+  "pinned_client_recovery_ms": null,
+  "sources": [
+    "docs/results/users-sharded-20k-shard0.json",
+    "docs/results/users-sharded-20k-shard1.json",
+    "docs/results/users-sharded-20k-shard2.json",
+    "docs/results/users-sharded-20k-shard3.json"
+  ],
+  "latency_basis": "Local monotonic durations in each process; merged 1ms histogram counts, not averaged percentiles. Missing deliveries remain errors.",
+  "overlap_basis": "Shared filesystem barrier and wall timestamps within the same Docker VM; wall timestamps are used only to verify concurrent windows, never to compute delivery latency."
+}

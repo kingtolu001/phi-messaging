@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: global latency uses all samples rather than averaging percentiles
+ok 1 - global latency uses all samples rather than averaging percentiles
+  ---
+  duration_ms: 104.9913
+  type: 'test'
+  ...
+# Subtest: overlapping user identities cannot count as distinct users
+ok 2 - overlapping user identities cannot count as distinct users
+  ---
+  duration_ms: 93.1127
+  type: 'test'
+  ...
+# Subtest: missing deliveries fail even if a component pass flag is wrong
+ok 3 - missing deliveries fail even if a component pass flag is wrong
+  ---
+  duration_ms: 103.3389
+  type: 'test'
+  ...
+# Subtest: healthy reports cannot be relabeled as a node-failure proof
+ok 4 - healthy reports cannot be relabeled as a node-failure proof
+  ---
+  duration_ms: 117.0655
+  type: 'test'
+  ...
+# Subtest: clock discontinuity invalidates an otherwise successful run
+ok 5 - clock discontinuity invalidates an otherwise successful run
+  ---
+  duration_ms: 114.8231
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 727.159

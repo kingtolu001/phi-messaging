@@ -873,11 +873,11 @@ rect.c-bg-rect { fill: var(--bg); }
         </g>
         </g>
 
-        <g data-edge-from="device" data-edge-to="lb" data-edge-label="Client 1 s HTTP catch-up also repairs gaps" data-edge-key="17" data-edge-id="client-poll">
+        <g data-edge-from="device" data-edge-to="lb" data-edge-label="HTTP gap repair; legacy periodic fallback" data-edge-key="17" data-edge-id="client-poll">
           <path data-composition-edge-from="device" data-composition-edge-to="lb" data-composition-edge-id="client-poll" data-composition-points="123.5,1280;393.1,1280" d="M 123.5 1280 L 393.1 1280" class="a-default" data-animate="edge" style="--step: 12;" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <g>
-          <rect x="113.70000000000002" y="1260" width="289.2" height="18" rx="3" class="c-mask"/>
-          <text x="258.3" y="1270" class="t-muted" font-size="11" text-anchor="middle">Client 1 s HTTP catch-up also repairs gaps</text>
+          <rect x="117.00000000000003" y="1260" width="282.59999999999997" height="18" rx="3" class="c-mask"/>
+          <text x="258.3" y="1270" class="t-muted" font-size="11" text-anchor="middle">HTTP gap repair; legacy periodic fallback</text>
         </g>
         </g>
 

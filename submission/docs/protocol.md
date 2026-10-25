@@ -47,7 +47,7 @@ frames handle heartbeat and close. Frames are limited to 32 KiB. The `ready` fra
 has no conversation ID because it describes the connection. Initial read events
 restore current receipts, including zero positions.
 
-After validating all resume cursors the server sends `{"type":"resumed"}` before
+After validating all resume cursors the server sends `{"type":"resumed","durable_reconciliation":true}` before
 events. The client counts a connection as established only after that frame.
 Instance IDs support diagnostics, not authentication. Reconnect delays retain
 jitter at the ten-second cap (between half the current exponential base and the
@@ -64,6 +64,16 @@ position. There is no ordering guarantee between different conversations, or
 between read events and the message stream.
 
 Register the live connection before catch-up. On opening or reopening a connection the client recovers each conversation over the after endpoint, merges live events by sequence, suppresses duplicates and only advances its cursor across contiguous sequences. A gap triggers another history request. Periodic catch-up also repairs missed Redis events when no later live event exposes a gap. New clients discover conversation IDs through the conversation listing.
+
+The `durable_reconciliation` capability means this node periodically repairs its
+active conversation feeds from PostgreSQL without requiring Redis notification.
+Clients with fixed explicit subscriptions avoid redundant periodic HTTP history
+requests while this capability is active and no gap repair is pending. Initial
+and reconnect catch-up still use authorized HTTP history; gaps still trigger
+HTTP repair, with transient failures retried. Servers omitting the capability
+retain the client's periodic HTTP fallback. Clients discovering new conversations
+continue their discovery/repair cycle. A failed shared refresh retains only the
+previous committed snapshot and retries; invalid authoritative state fails closed.
 
 Redis notifications are hints, not durable delivery acknowledgements. Outbox workers claim rows with FOR UPDATE SKIP LOCKED, publish and then mark published. Crashes may cause repeats. A successful publish with no active subscriber does not ensure delivery; database recovery remains mandatory. Dispatchers fetch and emit messages in sequence order per conversation. Bound outbound queues; disconnect slow consumers and let them recover. Load generator and sample client must implement this recovery protocol, rather than assume WebSocket delivery is inherently reliable.
 

@@ -1,0 +1,32 @@
+{
+  "stop_exit_code": 1,
+  "status": "NOT_STOPPED",
+  "reason": "Stop was requested after profiling, but the container had already exited. Use the complete users20k-run4-20000.json report for the actual delivery verdict.",
+  "at": "2026-10-25T09:00:58.4147739+01:00",
+  "container": "phi-messaging-loadgen-run-afbe4c5cd74f",
+  "command": [
+    "-mode",
+    "load",
+    "-url",
+    "http://load-balancer",
+    "-distinct-users",
+    "-shared-http",
+    "-recovery-interval",
+    "10s",
+    "-connections",
+    "20000",
+    "-rate",
+    "40",
+    "-warmup",
+    "10s",
+    "-duration",
+    "60s",
+    "-ramp",
+    "2ms",
+    "-drain",
+    "30s",
+    "-out",
+    "docs/results/users20k-run4-20000.json"
+  ],
+  "observed_port_range": null
+}

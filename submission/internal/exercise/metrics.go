@@ -6,7 +6,9 @@ import (
 	"math"
 	"os"
 	"os/exec"
+	"runtime"
 	"sort"
+	"strings"
 	"time"
 )
 
@@ -16,6 +18,14 @@ type Percentiles struct {
 	P95     float64 `json:"p95_ms"`
 	P99     float64 `json:"p99_ms"`
 	Max     float64 `json:"max_ms"`
+}
+
+func durationHistogram(values []time.Duration) map[int64]int {
+	bins := map[int64]int{}
+	for _, value := range values {
+		bins[value.Milliseconds()+1]++
+	}
+	return bins
 }
 
 func summarize(values []time.Duration) Percentiles {
@@ -36,9 +46,13 @@ func summarize(values []time.Duration) Percentiles {
 }
 
 type ResourceSample struct {
-	At          time.Time `json:"at"`
-	DockerStats string    `json:"docker_stats"`
-	Error       string    `json:"error,omitempty"`
+	At                     time.Time `json:"at"`
+	DockerStats            string    `json:"docker_stats"`
+	Error                  string    `json:"error,omitempty"`
+	GeneratorHeapBytes     uint64    `json:"generator_heap_alloc_bytes"`
+	GeneratorGCs           uint32    `json:"generator_gc_cycles"`
+	GeneratorGCCPUFraction float64   `json:"generator_gc_cpu_fraction"`
+	GeneratorGoroutines    int       `json:"generator_goroutines"`
 }
 
 type Diagnostics struct {
@@ -64,6 +78,9 @@ func diagnostics() Diagnostics {
 }
 
 func command(ctx context.Context, args ...string) (string, error) {
+	if socket := os.Getenv("PHI_DOCKER_SOCKET"); socket != "" && strings.Join(args, " ") == "compose kill -s SIGKILL app1" {
+		return "", killApp1(ctx, socket)
+	}
 	raw, e := exec.CommandContext(ctx, "docker", args...).CombinedOutput()
 	return string(raw), e
 }
@@ -72,6 +89,10 @@ func resourceSample() ResourceSample {
 	defer cancel()
 	raw, e := command(ctx, "stats", "--no-stream", "--format", "{{json .}}", "phi-messaging-app1-1", "phi-messaging-app2-1", "phi-messaging-app3-1", "phi-messaging-postgres-1", "phi-messaging-redis-1", "phi-messaging-load-balancer-1")
 	s := ResourceSample{At: time.Now().UTC(), DockerStats: raw}
+	var memory runtime.MemStats
+	runtime.ReadMemStats(&memory)
+	s.GeneratorHeapBytes, s.GeneratorGCs, s.GeneratorGCCPUFraction = memory.HeapAlloc, memory.NumGC, memory.GCCPUFraction
+	s.GeneratorGoroutines = runtime.NumGoroutine()
 	if e != nil {
 		s.Error = e.Error()
 	}

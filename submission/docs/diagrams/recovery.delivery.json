@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "receiptId": "f52dc3dc-2044-4e73-83a6-d91e95e3cd2c",
+  "receiptId": "ae227974-0012-46e8-88d5-657f75c523af",
   "status": "current",
   "command": "deliver",
   "type": "sequence",
   "input": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\recovery.sequence.json",
   "output": "C:\\Users\\toluk\\Desktop\\phi-messaging\\submission\\docs\\diagrams\\recovery.html",
   "specification": {
-    "sha256": "464cf4219a860ab5aaaacde83ea78fa7bf15d194fb5bf15ff3e3c1d652fe2b82",
-    "bytes": 5993
+    "sha256": "805b3077e1a8932517016c8c7da846217b58d17f890874230fc4be61c7bc443f",
+    "bytes": 7715
   },
   "artifact": {
-    "sha256": "68de700c60c2fbf1f163dcbc0342fd83bb47c2fa47533eec9f02ed68fdfafc61",
-    "bytes": 828178
+    "sha256": "c44c1007f40e2fdef9f2af7aa17c89dcdc215b621503479b56524e34dd795be5",
+    "bytes": 828191
   }
 }

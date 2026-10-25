@@ -138,8 +138,8 @@ Verified diagrams (2026-10-24):
   provenance and real-browser checks. A note overlap was repaired; an initial
   Chrome cleanup failure remains recorded separately from later passing runs.
 - Reviewed complete light PNG exports. Recorded local hashes/ranges for 13
-  implementation/config files. The workspace has no Git snapshot, so native
-  commit-pinned source verification was unavailable and was not claimed.
+  implementation/config files at that review. Native commit-pinned source
+  verification was not run and was not claimed.
 - README links the diagrams, editable sources, validation records and repeatable
   generation commands.
 - No application/load-test rerun is claimed for this documentation/tooling change;
@@ -155,3 +155,61 @@ Remaining:
   dependency HA, client cursor persistence and retention/observability design.
 
 No commits or pushes were made for this delivery.
+
+## Distinct-user 20,000 validation follow-up (2026-10-25)
+
+- Scope: 20,000 separately authenticated recipients, one connection each, plus
+  one sender; 40 logical sends/second aggregate across four drivers, not per user.
+- A one-minute four-driver run passed after expanding the proxy source-port
+  range. Subsequent five-minute runs failed; sustained reliability is unresolved.
+- Added bounded client buffers, transient HTTP repair retries without replacing
+  healthy sockets, diagnostics, transient shared-feed refresh retries and lease
+  renewal retries within the last successful lease deadline.
+- Current-source race suite: 50 top-level tests passed in the latest completed
+  preflight; the focused readiness regression passed. Final-code load and fault
+  validation are still in progress, not covered by those unit/integration results.
+- Startup runs `users-20k-soak-lease-grace` and
+  `users-20k-soak-readiness-fix` failed before measurement. The controller now
+  tolerates incomplete file writes; full cohort assertions remain mandatory.
+  The repeat allows two minutes after ramp for readiness, with a bounded
+  five-minute controller startup deadline. Measurement duration is unchanged.
+- Remaining: complete the repeat soak, investigate any failures, rerun node
+  failure and final correctness checks, refresh diagram source evidence and
+  record final results. See `docs/validation-20000-users.md` and retained raw
+  reports. No 20,000-writer or production capacity claim is established.
+- Follow-up: the extended startup attempt failed, and the slower 20 ms/driver
+  ramp reached the full cohort but failed its measurement (752,886 missing
+  recipient deliveries). All 5,426 acknowledged messages passed durable audit.
+  Redis diagnostics identified renewal deadline/network/pool errors. Added one
+  bounded lease-batching worker per app; 53 top-level race tests passed with no
+  skips before `users-20k-soak-batched-leases`. Its load result remains pending.
+- Subsequent result: lease batching alone failed the soak. Negotiated shared
+  PostgreSQL repair removes redundant fixed-subscription HTTP polling, retaining
+  initial/reconnect/gap HTTP catch-up and legacy fallback. A disturbed run stays
+  FAIL; host power/timestamp evidence is retained and clock checks were added.
+- Verified final clean soak: `users-20k-soak-shared-repair-awake` PASS; 20,000 users
+  continuously resumed, 1,176,436/1,176,436 deliveries, all 12,400 acknowledgements
+  durable, no send/repair/connection errors or drops. Delivery p50/p95/p99 upper
+  bounds 86/327/803 ms at 40 aggregate sends/s over 300 seconds. Five aggregation
+  regressions passed. The current preflight passed 55 race-enabled tests.
+- Fault harness sender selection was corrected for distinct-user membership;
+  the first attempt was stopped before its barrier and is not node-failure proof.
+  Corrected fault validation remains in progress.
+
+### Final verified follow-up
+
+- Clean five-minute 20,000-recipient soak: PASS at 40 aggregate sends/s;
+  delivery 1,176,436/1,176,436, all 12,400 acknowledgements durable, p99 803 ms.
+- 20,000-recipient app1 SIGKILL: PASS; delivery 235,248/235,248, all 2,800
+  acknowledgements durable; selected affected client resumed elsewhere in
+  3.271 seconds. Outage request/reconnect errors remain explicitly reported.
+- Final preflight: 56 race-enabled tests passed, zero failed/skipped. Three
+  separate-process Compose tests, go vet and all 24 dependency-failure assertions
+  passed. Five aggregation regressions passed, including clock-discontinuity
+  rejection. The disturbed run and stopped fault attempt remain recorded.
+- Archify: three diagrams regenerated, all four native gates and six static
+  exports passed checks; light PNGs inspected. Fifteen current source/config
+  hashes are recorded; no Git-pinned source verification is claimed.
+- Remaining limits: higher-rate historical failures were not rerun on final code;
+  no longer clean soak, 20,000-writer, multi-host or dependency-HA proof. These
+  results establish only the stated local workload. No commit or push performed.

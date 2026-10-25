@@ -1,0 +1,85 @@
+ Container phi-messaging-redis-1  Running
+ Container phi-messaging-postgres-1  Running
+?   	phi-messaging/cmd/client	[no test files]
+?   	phi-messaging/cmd/exercise	[no test files]
+# phi-messaging/internal/server [phi-messaging/internal/server.test]
+internal/server/shared_client_test.go:48:15: assignment mismatch: 2 variables but e.store.Send returns 3 values
+?   	phi-messaging/cmd/server	[no test files]
+=== RUN   TestSmallBuffersStreamLargeFramesAndIgnoreReceiptBurst
+--- PASS: TestSmallBuffersStreamLargeFramesAndIgnoreReceiptBurst (0.11s)
+=== RUN   TestDevicesReuseAndReleaseRecoveryConnections
+--- PASS: TestDevicesReuseAndReleaseRecoveryConnections (2.28s)
+=== RUN   TestRecoveryMergesDuplicatesAndRejectsGaps
+--- PASS: TestRecoveryMergesDuplicatesAndRejectsGaps (0.00s)
+=== RUN   TestHTTPRecoveryOutageKeepsSocketAndRepairsGap
+=== RUN   TestHTTPRecoveryOutageKeepsSocketAndRepairsGap/Service_Unavailable
+=== RUN   TestHTTPRecoveryOutageKeepsSocketAndRepairsGap/Unauthorized
+--- PASS: TestHTTPRecoveryOutageKeepsSocketAndRepairsGap (0.04s)
+    --- PASS: TestHTTPRecoveryOutageKeepsSocketAndRepairsGap/Service_Unavailable (0.03s)
+    --- PASS: TestHTTPRecoveryOutageKeepsSocketAndRepairsGap/Unauthorized (0.00s)
+=== RUN   TestConfiguredPeriodicRepairRecoversMissingSocketEvent
+--- PASS: TestConfiguredPeriodicRepairRecoversMissingSocketEvent (0.07s)
+=== RUN   TestRejectedResumeIsPermanent
+--- PASS: TestRejectedResumeIsPermanent (0.00s)
+=== RUN   TestRetryJitterStillVariesAtCap
+--- PASS: TestRetryJitterStillVariesAtCap (0.00s)
+=== RUN   TestSlowFailedHandshakeDoesNotResetBackoff
+--- PASS: TestSlowFailedHandshakeDoesNotResetBackoff (0.00s)
+=== RUN   TestRejectUnsolicitedMessages
+--- PASS: TestRejectUnsolicitedMessages (0.00s)
+=== RUN   TestSharedDurableRepairSkipsIdlePollsButRepairsGaps
+--- PASS: TestSharedDurableRepairSkipsIdlePollsButRepairsGaps (0.21s)
+PASS
+ok  	phi-messaging/internal/client	3.776s
+=== RUN   TestHistoryAuditRetriesReadButRequiresEveryAcknowledgement
+--- PASS: TestHistoryAuditRetriesReadButRequiresEveryAcknowledgement (0.14s)
+=== RUN   TestAuditChecksEachConversationIndependently
+--- PASS: TestAuditChecksEachConversationIndependently (0.01s)
+=== RUN   TestHistoryAuditRejectsAnotherConversationsRows
+--- PASS: TestHistoryAuditRejectsAnotherConversationsRows (3.13s)
+=== RUN   TestFaultControllerChecksKillResponse
+--- PASS: TestFaultControllerChecksKillResponse (0.01s)
+=== RUN   TestReportsCannotOverwriteFailureEvidence
+--- PASS: TestReportsCannotOverwriteFailureEvidence (0.00s)
+=== RUN   TestPercentilesRetainTail
+--- PASS: TestPercentilesRetainTail (0.00s)
+=== RUN   TestHistogramPreservesEverySampleAndBounds
+--- PASS: TestHistogramPreservesEverySampleAndBounds (0.00s)
+=== RUN   TestScheduleExcludesEndBoundary
+--- PASS: TestScheduleExcludesEndBoundary (0.00s)
+=== RUN   TestRecoverySubjectMustHaveResumedOnPinnedEndpoint
+--- PASS: TestRecoverySubjectMustHaveResumedOnPinnedEndpoint (0.00s)
+=== RUN   TestQueryRateUsesMonotonicWindowNotWallClock
+--- PASS: TestQueryRateUsesMonotonicWindowNotWallClock (0.00s)
+=== RUN   TestDistinctUserFixturesAndGroupMembership
+--- PASS: TestDistinctUserFixturesAndGroupMembership (1.14s)
+=== RUN   TestUserFixturesRefuseOverwrite
+--- PASS: TestUserFixturesRefuseOverwrite (0.01s)
+PASS
+ok  	phi-messaging/internal/exercise	5.535s
+?   	phi-messaging/internal/realtime	[no test files]
+FAIL	phi-messaging/internal/server [build failed]
+=== RUN   TestOutboxPublisherConnectionCrash
+--- PASS: TestOutboxPublisherConnectionCrash (0.98s)
+=== RUN   TestOutboxRetryAndConcurrentClaims
+--- PASS: TestOutboxRetryAndConcurrentClaims (0.93s)
+=== RUN   TestDeliverySnapshotRespectsCapturedHead
+--- PASS: TestDeliverySnapshotRespectsCapturedHead (0.57s)
+=== RUN   TestConcurrentDirectCreation
+--- PASS: TestConcurrentDirectCreation (0.91s)
+=== RUN   TestConcurrentIdenticalSends
+--- PASS: TestConcurrentIdenticalSends (1.47s)
+=== RUN   TestConcurrentCrossConversationKey
+--- PASS: TestConcurrentCrossConversationKey (1.05s)
+=== RUN   TestConcurrentOrderingAndReads
+--- PASS: TestConcurrentOrderingAndReads (2.78s)
+=== RUN   TestHistoryAndAuthorization
+--- PASS: TestHistoryAndAuthorization (0.74s)
+=== RUN   TestValidationAndConversationPagination
+--- PASS: TestValidationAndConversationPagination (0.75s)
+=== RUN   TestOutboxFailureRollsBackSendAndRead
+--- PASS: TestOutboxFailureRollsBackSendAndRead (0.62s)
+PASS
+ok  	phi-messaging/internal/storage	11.864s
+FAIL
+

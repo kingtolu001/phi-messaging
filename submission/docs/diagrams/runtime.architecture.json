@@ -1,26 +1,175 @@
 {
   "schema_version": 1,
   "diagram_type": "architecture",
-  "meta": {"title": "Messaging runtime: three apps, one durable store", "locale": "en", "output": "docs/diagrams/runtime.html", "quality_profile": "showcase"},
+  "meta": {
+    "title": "Messaging runtime: three apps, one durable store",
+    "locale": "en",
+    "output": "docs/diagrams/runtime.html",
+    "quality_profile": "showcase"
+  },
   "components": [
-    {"id":"devices","type":"external","label":"Client devices","sublabel":"Processed cursors + reconnect","pos":[40,40],"size":[210,80]},
-    {"id":"proxy","type":"cloud","label":"Nginx","sublabel":"HTTP / WebSocket :8080","tag":"Single proxy","pos":[440,40],"size":[240,80]},
-    {"id":"apps","type":"backend","label":"Go app replicas x3","sublabel":"app1 / app2 / app3","tag":"API + WS + local workers","pos":[440,270],"size":[240,100]},
-    {"id":"postgres","type":"database","label":"PostgreSQL (single)","sublabel":"Messages / members / outbox","tag":"SINGLE INSTANCE: durable","pos":[870,270],"size":[240,100]},
-    {"id":"redis","type":"database","label":"Redis (single)","sublabel":"Pub/sub hints + device leases","tag":"SINGLE INSTANCE: ephemeral","pos":[440,550],"size":[240,100]}
+    {
+      "id": "devices",
+      "type": "external",
+      "label": "Client devices",
+      "sublabel": "Processed cursors + reconnect",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        210,
+        80
+      ]
+    },
+    {
+      "id": "proxy",
+      "type": "cloud",
+      "label": "Nginx",
+      "sublabel": "HTTP / WebSocket :8080",
+      "tag": "Single proxy",
+      "pos": [
+        440,
+        40
+      ],
+      "size": [
+        240,
+        80
+      ]
+    },
+    {
+      "id": "apps",
+      "type": "backend",
+      "label": "Go app replicas x3",
+      "sublabel": "app1 / app2 / app3",
+      "tag": "API + WS + local workers",
+      "pos": [
+        440,
+        270
+      ],
+      "size": [
+        240,
+        100
+      ]
+    },
+    {
+      "id": "postgres",
+      "type": "database",
+      "label": "PostgreSQL (single)",
+      "sublabel": "Messages / members / outbox",
+      "tag": "SINGLE INSTANCE: durable",
+      "pos": [
+        870,
+        270
+      ],
+      "size": [
+        240,
+        100
+      ]
+    },
+    {
+      "id": "redis",
+      "type": "database",
+      "label": "Redis (single)",
+      "sublabel": "Pub/sub hints + device leases",
+      "tag": "SINGLE INSTANCE: ephemeral",
+      "pos": [
+        440,
+        550
+      ],
+      "size": [
+        240,
+        100
+      ]
+    }
   ],
   "connections": [
-    {"id":"ingress","from":"devices","to":"proxy","label":"HTTP / WS","variant":"emphasis"},
-    {"id":"routing","from":"proxy","to":"apps","label":"Route / upgrade","variant":"emphasis"},
-    {"id":"durable-io","from":"apps","to":"postgres","label":"Authorized SQL","variant":"emphasis"},
-    {"id":"redis-calls","from":"apps","to":"redis","label":"Publish / leases"},
-    {"id":"hint-delivery","from":"redis","to":"apps","label":"Pub/sub hints","variant":"dashed"}
+    {
+      "id": "ingress",
+      "from": "devices",
+      "to": "proxy",
+      "label": "HTTP / WS",
+      "variant": "emphasis"
+    },
+    {
+      "id": "routing",
+      "from": "proxy",
+      "to": "apps",
+      "label": "Route / upgrade",
+      "variant": "emphasis"
+    },
+    {
+      "id": "durable-io",
+      "from": "apps",
+      "to": "postgres",
+      "label": "Authorized SQL",
+      "variant": "emphasis"
+    },
+    {
+      "id": "redis-calls",
+      "from": "apps",
+      "to": "redis",
+      "label": "Publish / leases"
+    },
+    {
+      "id": "hint-delivery",
+      "from": "redis",
+      "to": "apps",
+      "label": "Pub/sub hints",
+      "variant": "dashed"
+    }
   ],
   "cards": [
-    {"dot":"emerald","title":"Inside EACH Go process","items":["One outbox publisher and one Redis subscription listener.","Four shared-feed refresh workers; one 1 s durable sweep.","Authenticated HTTP handlers; per-socket reader, writer and catch-up.","Workers are goroutines inside app1, app2 and app3, not another service."]},
-    {"dot":"cyan","title":"Recovery ownership","items":["Device owns its last successfully processed contiguous cursor.","Client: initial/gap/1 s HTTP catch-up and capped jittered reconnect.","Server: shared committed tail and receipt reconciliation every 1 s.","Replies and WS events return through Nginx; no direct device-to-store access."]},
-    {"dot":"amber","title":"Bounds and authorization","items":["Each app: 32 SQL connections, 1,000 sockets, 100 handshake attempts/s.","128 live feeds, 128 messages/feed, four workers and 128 queued jobs.","128 outbound events/socket; full queues or write timeout close the socket.","Bearer identity is local mock configuration; membership gates conversation access."]},
-    {"dot":"rose","title":"Durability and single points of failure","items":["Send success follows PostgreSQL COMMIT of message, sequence and outbox.","Redis never acknowledges durable sends; missed hints recover from history.","One PostgreSQL instance/volume: no configured database failover.","One Redis instance: presence/live setup unavailable on outage; history still works if PostgreSQL is healthy.","One Nginx and one Docker host are additional shared failure points."]},
-    {"dot":"slate","title":"Scope and evidence","items":["Arrows show ingress and dependencies; Go replicas are grouped because they run identical code.","Code-inspected working files; implementation-evidence.json records paths, ranges and SHA-256 hashes.","No Git snapshot exists: Archify commit-pinned source verification is not claimed."]}
+    {
+      "dot": "emerald",
+      "title": "Inside EACH Go process",
+      "items": [
+        "One outbox publisher, Redis listener and bounded lease-batch worker.",
+        "Four shared-feed refresh workers; one 1 s durable sweep.",
+        "Authenticated HTTP handlers; per-socket reader, writer and catch-up.",
+        "Workers are goroutines inside app1, app2 and app3, not another service."
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Recovery ownership",
+      "items": [
+        "Device owns its last successfully processed contiguous cursor.",
+        "Client: HTTP initial/reconnect/gap repair; capped jittered reconnect.",
+        "Server: 1 s durable sweep; fixed subscriptions share repair after negotiation.",
+        "Replies and WS events return through Nginx; no direct device-to-store access."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Default profile bounds and authorization",
+      "items": [
+        "Each app: 32 SQL connections, 1,000 sockets, 100 handshake attempts/s.",
+        "128 live feeds, 128 messages/feed, four workers and 128 queued jobs.",
+        "128 outbound events/socket; full queues or write timeout close the socket.",
+        "Bearer identity is local mock configuration; membership gates conversation access."
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Durability and single points of failure",
+      "items": [
+        "Send success follows PostgreSQL COMMIT of message, sequence and outbox.",
+        "Redis never acknowledges durable sends; missed hints recover from history.",
+        "One PostgreSQL instance/volume: no configured database failover.",
+        "One Redis instance: presence/live setup unavailable on outage; history still works if PostgreSQL is healthy.",
+        "One Nginx and one Docker host are additional shared failure points."
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Scope and evidence",
+      "items": [
+        "Arrows show ingress and dependencies; Go replicas are grouped because they run identical code.",
+        "Code-inspected working files; implementation-evidence.json records paths, ranges and SHA-256 hashes.",
+        "Uncommitted working-file review; Git-pinned source verification is not claimed.",
+        "Scale profile overrides: 12,000 sockets, 512 feeds, 500 handshakes/s per app."
+      ]
+    }
   ]
 }

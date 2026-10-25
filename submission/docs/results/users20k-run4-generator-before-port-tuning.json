@@ -1,0 +1,39 @@
+{
+  "socket_stats": [
+    "sockets: used 750",
+    "TCP: inuse 747 orphan 0 tw 0 alloc 3905 mem 0",
+    "UDP: inuse 2 mem 0",
+    "UDPLITE: inuse 0",
+    "RAW: inuse 0",
+    "FRAG: inuse 0 memory 0"
+  ],
+  "port_range": "32768\t60999",
+  "container": "/phi-messaging-loadgen-run-afbe4c5cd74f",
+  "command": [
+    "-mode",
+    "load",
+    "-url",
+    "http://load-balancer",
+    "-distinct-users",
+    "-shared-http",
+    "-recovery-interval",
+    "10s",
+    "-connections",
+    "20000",
+    "-rate",
+    "40",
+    "-warmup",
+    "10s",
+    "-duration",
+    "60s",
+    "-ramp",
+    "2ms",
+    "-drain",
+    "30s",
+    "-out",
+    "docs/results/users20k-run4-20000.json"
+  ],
+  "sysctls": null,
+  "captured_at": "2026-10-25T07:52:51.9271321+00:00",
+  "memory_limit": 3221225472
+}

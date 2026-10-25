@@ -1,0 +1,14 @@
+{
+  "status": "FAIL",
+  "barrier_released_at": "2026-10-25T18:04:13.4278435+00:00",
+  "diagnostics_exit_code": 0,
+  "users": 20000,
+  "error": "Sharded validation failed; inspect all retained reports",
+  "global_aggregate_sends_per_second": 40,
+  "shards": 4,
+  "started_at": "2026-10-25T18:00:52.9467196+00:00",
+  "finished_at": "2026-10-25T18:11:04.9414143+00:00",
+  "database_statements_per_second_full_run": 1450.4880678427367,
+  "fault_requested": false,
+  "database_counter_window_seconds_monotonic": 480.8085054
+}

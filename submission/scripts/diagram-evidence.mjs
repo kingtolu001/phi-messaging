@@ -6,6 +6,8 @@ import { fileURLToPath } from 'node:url';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const output = path.join(root, 'docs/diagrams/implementation-evidence.json');
 const reviewed = [
+	['compose.scale.yaml', [], 'Local scale profile overrides socket/feed/admission bounds; PostgreSQL and Redis remain single instances.'],
+	['internal/server/renewals.go', ['func (s *Server) renewLease(', 'func (s *Server) renewLeases('], 'One bounded renewal worker per app, batching individual Redis connection leases.'],
   ['compose.yaml', [], 'Three apps and single PostgreSQL, Redis and Nginx containers.'],
   ['config/nginx.conf', [], 'HTTP/WS forwarding, round-robin upstream and no proxy POST retries.'],
   ['cmd/server/main.go', ['func run('], '32 SQL connections; workers belong to app process; bounded shutdown.'],
@@ -35,9 +37,9 @@ if (process.argv.includes('--record')) {
     });
     return { path: file, sha256: hash(bytes), claim, ranges };
   });
-  fs.writeFileSync(output, JSON.stringify({ review_date: '2026-10-24',
+  fs.writeFileSync(output, JSON.stringify({ review_date: new Date().toISOString().slice(0,10),
     basis: 'Manual inspection of working files; whole-file SHA-256 drift detection',
-    git_commit_verified: false, limitation: 'Workspace has no Git repository. Native Git-pinned source evidence is unavailable.', files,
+    git_commit_verified: false, limitation: 'Reviewed uncommitted working files. Native Git-pinned source verification was not run; hashes detect later drift only.', files,
   }, null, 2) + '\n');
 } else {
   const evidence = JSON.parse(fs.readFileSync(output));

@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"errors"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -36,7 +37,7 @@ type deliveryHub struct {
 }
 
 func newDeliveryHub(s *Server) *deliveryHub {
-	h := &deliveryHub{server: s, feeds: map[string]*conversationFeed{}, jobs: make(chan *conversationFeed, maxDeliveryFeeds)}
+	h := &deliveryHub{server: s, feeds: map[string]*conversationFeed{}, jobs: make(chan *conversationFeed, s.config.MaxDeliveryFeeds)}
 	s.wg.Add(deliveryWorkers + 1)
 	for i := 0; i < deliveryWorkers; i++ {
 		go h.worker()
@@ -93,7 +94,11 @@ func (h *deliveryHub) attach(c *session) bool {
 			needed++
 		}
 	}
-	if len(h.feeds)+needed > maxDeliveryFeeds {
+	limit := maxDeliveryFeeds
+	if h.server != nil {
+		limit = h.server.config.MaxDeliveryFeeds
+	}
+	if len(h.feeds)+needed > limit {
 		return false
 	}
 	for id := range c.cursors {
@@ -201,8 +206,14 @@ func (h *deliveryHub) refresh(f *conversationFeed) {
 	}
 	f.scheduled = false
 	if err != nil {
-		for c := range f.sessions {
-			c.stop()
+		h.server.diagnostics.feedError.Add(1)
+		// A transient read failure must not turn pool pressure into a socket
+		// reconnect storm. Retain only the last committed snapshot; the periodic
+		// sweep retries. Missing conversations or invalid ordering fail closed.
+		if errors.Is(err, storage.ErrInvalid) || errors.Is(err, storage.ErrNotFound) {
+			for c := range f.sessions {
+				c.stop()
+			}
 		}
 		return
 	}

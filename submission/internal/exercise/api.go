@@ -64,15 +64,21 @@ func (a API) Create(ctx context.Context) (storage.Conversation, error) {
 	return c, e
 }
 func (a API) History(ctx context.Context, id string) ([]storage.Message, error) {
+	return a.history(ctx, id, bobToken)
+}
+func (a API) history(ctx context.Context, id, token string) ([]storage.Message, error) {
 	all := []storage.Message{}
 	cursor := int64(0)
 	for {
 		var page []storage.Message
-		_, e := a.Call(ctx, bobToken, "GET", fmt.Sprintf("/v1/conversations/%s/messages?after=%d&limit=100", id, cursor), nil, &page)
+		_, e := a.Call(ctx, token, "GET", fmt.Sprintf("/v1/conversations/%s/messages?after=%d&limit=100", id, cursor), nil, &page)
 		if e != nil {
 			return all, e
 		}
 		for _, m := range page {
+			if m.ConversationID != id {
+				return all, fmt.Errorf("durable history conversation mismatch")
+			}
 			if m.Sequence != cursor+1 {
 				return all, fmt.Errorf("durable history gap")
 			}

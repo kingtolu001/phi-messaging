@@ -1,0 +1,19 @@
+{
+  "largest_resource_gap_seconds": 3277.086,
+  "windows_power_events": [
+    {
+      "at_utc": "2026-10-25T19:16:38.0740831Z",
+      "event_id": 107,
+      "provider": "Microsoft-Windows-Kernel-Power"
+    },
+    {
+      "at_utc": "2026-10-25T19:16:04.7368104Z",
+      "event_id": 42,
+      "provider": "Microsoft-Windows-Kernel-Power"
+    }
+  ],
+  "gap_before": "2026-10-25T19:17:40.2833467+00:00",
+  "gap_after": "2026-10-25T20:12:17.3693600+00:00",
+  "run": "users-20k-soak-shared-repair-v2",
+  "interpretation": "Failed run with a host power transition and a large resource-sample timestamp gap; not a clean sustained-load baseline"
+}

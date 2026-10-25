@@ -46,11 +46,12 @@ losing one application process. No diagram implies dependency HA, durable sample
 client cursors or a successful 1,000-device load result.
 
 [Implementation evidence](implementation-evidence.json) records SHA-256 hashes,
-reviewed function ranges and responsibility claims for 13 actual source/config
+reviewed function ranges and responsibility claims for 15 actual source/config
 files. `diagram-evidence.mjs` detects later drift; it does not prove semantics.
-This workspace has no Git repository, so native `meta.repository`/`sources` and
-`--repo-root` commit verification were deliberately omitted. No revision was
-invented and no project commit was created. Code correspondence is manual review
+The reviewed implementation contains uncommitted changes, so native
+`--repo-root` commit verification was not run against these working bytes. No
+revision is claimed to contain those edits and no project commit was created.
+Code correspondence is manual review
 plus local file hashes, separate from Archify's automated diagram checks.
 
 ## Tool and regeneration
@@ -105,9 +106,9 @@ gates, six export bindings, the implementation snapshot and authored local links
 Tool/font notices are retained in [Archify MIT](licenses/Archify-MIT.txt) and
 [JetBrains Mono OFL](licenses/JetBrainsMono-OFL.txt).
 
-## Verification performed — 2026-10-24
+## Historical verification — 2026-10-24
 
-- All three current diagrams passed native `finalize`: JSON/schema/layout
+- All three diagrams at that date passed native `finalize`: JSON/schema/layout
   validation, delivery, strict artifact/provenance checks and real Chrome browser
   checks. The current receipts are enumerated in [validation.json](validation.json).
 - The complete regeneration/export script ran successfully; all six native SVG/PNG
@@ -126,5 +127,17 @@ Tool/font notices are retained in [Archify MIT](licenses/Archify-MIT.txt) and
   completed checkout as described above. Application/load tests were not rerun for
   this documentation-only change; prior performance failures remain unchanged.
 
-No application code, migrations or dependency-HA configuration changed. No commit,
-push or external publication was performed.
+For that earlier diagram-only delivery, no application code, migrations or
+dependency-HA configuration changed. No commit, push or external publication was
+performed for it.
+
+## Verification performed — 2026-10-25
+
+The current sources include lease batching, negotiated shared PostgreSQL repair,
+and explicit default versus scale bounds. All three native finalize runs passed
+validate, deliver, strict check and browser-check under
+review/users20k-recovery-20261025/. All six SVG/PNG exports were regenerated;
+check-diagrams.mjs passed source/HTML hashes, gate receipts, export bindings and
+local links. The light PNG exports were inspected. No new manual dark-theme
+review or Git-pinned source verification was performed. Earlier dated receipts
+remain historical evidence. The working-file evidence now covers 15 files.

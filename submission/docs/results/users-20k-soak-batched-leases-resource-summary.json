@@ -1,0 +1,79 @@
+{
+  "source": "docs/results/users-20k-soak-batched-leases-resources.jsonl",
+  "samples": 85,
+  "errors": 0,
+  "containers": {
+    "phi-messaging-app1-1": {
+      "samples": 85,
+      "max_cpu_percent": 137.51,
+      "max_memory_mib": 519.3
+    },
+    "phi-messaging-app2-1": {
+      "samples": 85,
+      "max_cpu_percent": 150.03,
+      "max_memory_mib": 513.9
+    },
+    "phi-messaging-app3-1": {
+      "samples": 85,
+      "max_cpu_percent": 139.03,
+      "max_memory_mib": 516.8
+    },
+    "phi-messaging-load-balancer-1": {
+      "samples": 85,
+      "max_cpu_percent": 227.09,
+      "max_memory_mib": 644.5
+    },
+    "phi-messaging-postgres-1": {
+      "samples": 85,
+      "max_cpu_percent": 259.88,
+      "max_memory_mib": 444.9
+    },
+    "phi-messaging-redis-1": {
+      "samples": 85,
+      "max_cpu_percent": 93.85,
+      "max_memory_mib": 21.54
+    },
+    "osai-temporal": {
+      "samples": 85,
+      "max_cpu_percent": 33.9,
+      "max_memory_mib": 200.2
+    },
+    "osai-otel": {
+      "samples": 85,
+      "max_cpu_percent": 0.12,
+      "max_memory_mib": 34.21
+    },
+    "osai-postgres": {
+      "samples": 85,
+      "max_cpu_percent": 42.01,
+      "max_memory_mib": 127.9
+    },
+    "phi-messaging-users-20k-soak-batched-leases-1": {
+      "samples": 83,
+      "max_cpu_percent": 141.73,
+      "max_memory_mib": 258.5
+    },
+    "phi-messaging-users-20k-soak-batched-leases-0": {
+      "samples": 83,
+      "max_cpu_percent": 100.51,
+      "max_memory_mib": 249.9
+    },
+    "phi-messaging-users-20k-soak-batched-leases-2": {
+      "samples": 83,
+      "max_cpu_percent": 87.91,
+      "max_memory_mib": 252.1
+    },
+    "phi-messaging-users-20k-soak-batched-leases-3": {
+      "samples": 83,
+      "max_cpu_percent": 122.75,
+      "max_memory_mib": 251
+    }
+  },
+  "same_sample_group_maxima": {
+    "app_cpu_percent": 337.37,
+    "app_memory_mib": 1549.5,
+    "driver_cpu_percent": 349.9,
+    "driver_memory_mib": 1000.5
+  },
+  "basis": "Sampled whole-run CPU/memory; 100% CPU equals one logical CPU. Group maxima sum simultaneous rows, not independent per-container peaks. Includes setup and teardown."
+}

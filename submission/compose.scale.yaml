@@ -1,0 +1,68 @@
+# Explicit load-test profile. Defaults in compose.yaml remain unchanged.
+x-scale: &scale
+  environment:
+    TOKENS_FILE: /scale/tokens.json
+    MAX_CONNECTIONS: "12000"
+    HANDSHAKES_PER_SECOND: "500"
+    MAX_DELIVERY_FEEDS: "512"
+    LOG_DIAGNOSTICS: "1"
+  volumes:
+    - ${SCALE_FIXTURE_DIR:-./.artifacts/scale}:/scale:ro
+  ulimits:
+    nofile:
+      soft: 65536
+      hard: 65536
+
+services:
+  app1:
+    <<: *scale
+  app2:
+    <<: *scale
+  app3:
+    <<: *scale
+  load-balancer:
+    sysctls:
+      net.ipv4.ip_local_port_range: "1024 65535"
+    volumes:
+      - ./config/nginx.scale.conf:/etc/nginx/nginx.conf:ro
+  loadgen: &loadgen
+    profiles: [scale]
+    image: phi-messaging-tests:latest
+    entrypoint: [/src/.artifacts/exercise-linux]
+    working_dir: /src
+    volumes:
+      - .:/src
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    mem_limit: 3g
+    sysctls:
+      net.ipv4.ip_local_port_range: "1024 65535"
+    # The Linux generator avoids Windows' smaller dynamic TCP port range.
+    # It uses the same network/protocol as external clients through the proxy.
+    environment:
+      GOMEMLIMIT: 2500MiB
+  faultgen:
+    <<: *loadgen
+    volumes:
+      - .:/src
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      GOMEMLIMIT: 2500MiB
+      PHI_DOCKER_SOCKET: /var/run/docker.sock
+  shardgen: &shardgen
+    <<: *loadgen
+    mem_limit: 1g
+    environment:
+      GOMEMLIMIT: 800MiB
+      GOMAXPROCS: "2"
+  shardfault:
+    <<: *shardgen
+    volumes:
+      - .:/src
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      GOMEMLIMIT: 800MiB
+      GOMAXPROCS: "2"
+      PHI_DOCKER_SOCKET: /var/run/docker.sock

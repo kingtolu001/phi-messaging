@@ -1,0 +1,10 @@
+{
+  "started_at": "2026-10-25T12:53:34.4267505+00:00",
+  "users": 10000,
+  "finished_at": "2026-10-25T12:55:48.0388584+00:00",
+  "barrier_released_at": "2026-10-25T12:54:33.3901079+00:00",
+  "fault_requested": false,
+  "shards": 4,
+  "global_aggregate_sends_per_second": 20,
+  "status": "PASS"
+}

@@ -120,11 +120,18 @@ The proxy uses round-robin routing; it does not automatically retry requests,
 including sends with an uncertain commit outcome. Clients retry sends using the
 same client message ID. Expect failed requests during node detection/recovery.
 There is no TLS, production identity provider, durable client cursor store, outbox
-retention job, database HA, or measured capacity claim. Compose credentials and
+retention job, database HA, or production capacity claim. Compose credentials and
 tokens are for local use. Proxy request logging is disabled to avoid credential
 exposure; production needs redacted observability.
 
 ## Submission work still pending
+
+Distinct-user testing and retained five-minute 20,000-recipient failures are
+recorded in the [20,000-user validation report](docs/validation-20000-users.md).
+The final clean five-minute run passed with 20,000 connected recipients, all
+1,176,436 deliveries received and all 12,400 acknowledged messages audited.
+Delivery p99 was at most 803 ms at 40 aggregate logical sends/second, not 40 per
+user. This bounded local workload does not establish production capacity.
 
 Repeatable SIGKILL/dependency-outage validation and measured local load results
 are now available; see [exact commands](docs/harness.md) and the

@@ -1,0 +1,12 @@
+{
+  "global_aggregate_sends_per_second": 40,
+  "started_at": "2026-10-25T13:10:29.4483608+00:00",
+  "fault_requested": false,
+  "finished_at": "2026-10-25T13:13:07.9877262+00:00",
+  "users": 20000,
+  "barrier_released_at": "2026-10-25T13:11:48.8424394+00:00",
+  "database_statements_per_second_full_run": 2398.5930749052422,
+  "status": "PASS",
+  "shards": 4,
+  "database_counter_window_seconds_monotonic": 137.9775517
+}

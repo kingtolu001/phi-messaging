@@ -1,0 +1,27 @@
+File: exercise-linux
+Build ID: f71227fea7e605f065beef12ba2e27935da611ff
+Type: cpu
+Time: 2026-10-25 08:40:02 WAT
+Duration: 485.84s, Total samples = 1338.86s (275.58%)
+Showing nodes accounting for 1338.83s, 100% of 1338.86s total
+----------------------------------------------------------+-------------
+      flat  flat%   sum%        cum   cum%   calls calls% + context 	 	 
+----------------------------------------------------------+-------------
+                                          1025.38s 99.47% |   syscall.RawSyscall6
+                                             4.36s  0.42% |   internal/runtime/syscall/linux.EpollCtl
+                                             1.14s  0.11% |   internal/runtime/syscall/linux.EpollWait
+  1030.88s 77.00% 77.00%   1030.88s 77.00%                | internal/runtime/syscall/linux.Syscall6
+----------------------------------------------------------+-------------
+                                          1020.49s 99.50% |   syscall.Syscall
+                                             3.59s  0.35% |   syscall.RawSyscall
+                                             1.58s  0.15% |   syscall.Syscall6
+     0.28s 0.021% 77.02%   1025.66s 76.61%                | syscall.RawSyscall6
+                                          1025.38s   100% |   internal/runtime/syscall/linux.Syscall6
+----------------------------------------------------------+-------------
+                                             1.22s 69.71% |   syscall.setsockopt
+                                             0.53s 30.29% |   syscall.getsockopt
+     0.04s 0.003% 77.02%      1.75s  0.13%                | syscall.Syscall6
+                                             1.58s 90.29% |   syscall.RawSyscall6
+                                             0.10s  5.71% |   runtime.entersyscall
+                                             0.03s  1.71% |   runtime.exitsyscall
+----------------------------------------------------------+-------------

@@ -29,6 +29,21 @@ func TestPercentilesRetainTail(t *testing.T) {
 	}
 }
 
+func TestHistogramPreservesEverySampleAndBounds(t *testing.T) {
+	values := []time.Duration{0, time.Microsecond, 999 * time.Microsecond, time.Millisecond, time.Second}
+	bins := durationHistogram(values)
+	if bins[1] != 3 || bins[2] != 1 || bins[1001] != 1 {
+		t.Fatal(bins)
+	}
+	count := 0
+	for _, n := range bins {
+		count += n
+	}
+	if count != len(values) {
+		t.Fatal("histogram lost latency samples")
+	}
+}
+
 func TestScheduleExcludesEndBoundary(t *testing.T) {
 	for _, rate := range []int{2, 3, 5} {
 		measured := 0

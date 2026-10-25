@@ -1,42 +1,42 @@
 {
+  "archify": "3.2.0",
   "evidence": "automated artifact and browser gates; source semantics reviewed separately",
   "runs": [
     {
-      "source_sha256": "f956e6c507b1253865493b5c8f15e053f6929bb4ebc5d831b54685358e630333",
+      "name": "runtime",
+      "html_sha256": "846a9f2248e2297f61b562c7aefe296dcabffe2611c975fa82e6e56ba704eff6",
       "gates": {
         "validate": "pass",
         "deliver": "pass",
         "check": "pass",
         "browser-check": "pass"
       },
-      "name": "runtime",
-      "html_sha256": "c98afef7ad079f6ddb5f7383cce0c32c6ac63d18d1410e69f388011f7a7c1db1",
-      "receipt": "docs/diagrams/review/final-20261024/runtime/runtime.finalize-summary.json"
+      "receipt": "docs/diagrams/review/users20k-recovery-20261025/runtime/runtime.finalize-summary.json",
+      "source_sha256": "335e950d90399729c217c8ad793a2a93abdddfa1aad2de4ed13c48e9544956c2"
     },
     {
       "name": "send",
-      "receipt": "docs/diagrams/review/send-legend-final/send.finalize-summary.json",
-      "source_sha256": "4a97bceb91e065da5d6b8e0e08e08040ecbd766667a428bf54b2246b19fb64bd",
       "html_sha256": "067bc545738680dd254fea43f974f885f145bae0fb4cd941cdc946a79c7c0b6c",
       "gates": {
         "validate": "pass",
         "deliver": "pass",
         "check": "pass",
         "browser-check": "pass"
-      }
+      },
+      "receipt": "docs/diagrams/review/users20k-recovery-20261025/send/send.finalize-summary.json",
+      "source_sha256": "4a97bceb91e065da5d6b8e0e08e08040ecbd766667a428bf54b2246b19fb64bd"
     },
     {
-      "source_sha256": "464cf4219a860ab5aaaacde83ea78fa7bf15d194fb5bf15ff3e3c1d652fe2b82",
+      "name": "recovery",
+      "html_sha256": "c44c1007f40e2fdef9f2af7aa17c89dcdc215b621503479b56524e34dd795be5",
       "gates": {
         "validate": "pass",
         "deliver": "pass",
         "check": "pass",
         "browser-check": "pass"
       },
-      "name": "recovery",
-      "html_sha256": "68de700c60c2fbf1f163dcbc0342fd83bb47c2fa47533eec9f02ed68fdfafc61",
-      "receipt": "docs/diagrams/review/final-20261024/recovery/recovery.finalize-summary.json"
+      "receipt": "docs/diagrams/review/users20k-recovery-20261025/recovery/recovery.finalize-summary.json",
+      "source_sha256": "805b3077e1a8932517016c8c7da846217b58d17f890874230fc4be61c7bc443f"
     }
-  ],
-  "archify": "3.2.0"
+  ]
 }

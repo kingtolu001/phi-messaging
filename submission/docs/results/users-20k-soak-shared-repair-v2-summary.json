@@ -1,0 +1,63 @@
+{
+  "passed": false,
+  "failures": [
+    "At least one shard failed its connection/delivery/durability assertions",
+    "Nonzero or unavailable failure counter: missing_measured_deliveries",
+    "Nonzero or unavailable failure counter: unacknowledged_logical_messages",
+    "Nonzero or unavailable failure counter: scheduler_queue_drops",
+    "Not every intended recipient delivery was observed"
+  ],
+  "distinct_recipient_users": 20000,
+  "shards": 4,
+  "recipients_with_measured_delivery": 20000,
+  "connected_at_measurement_start": 20000,
+  "global_aggregate_sends_per_second": 40,
+  "rate_scope": "sum of generator rates across workload; never per user",
+  "concurrent_measurement_overlap_seconds": 299.926,
+  "measurement_and_drain_seconds": 301.3956171875,
+  "sum_of_per_shard_minimum_connections": 20000,
+  "expected_deliveries": 1176436,
+  "received_deliveries": 1103714,
+  "missing_deliveries": 72722,
+  "missing_warmup_deliveries": 0,
+  "measured_acknowledged_messages": 11178,
+  "http_attempt_errors": 2069,
+  "http_recovery_retries": 0,
+  "connection_failures": 0,
+  "connection_retries": 0,
+  "unacknowledged_messages": 822,
+  "scheduler_drops": 159,
+  "duplicate_callbacks": 0,
+  "suppressed_duplicates": 0,
+  "recipient_deliveries_per_second": 3662.010782702832,
+  "acknowledged_messages_per_second": 37.08746697881177,
+  "delivery_latency": {
+    "samples": 1103714,
+    "p50_ms_upper_bound": 225,
+    "p95_ms_upper_bound": 4588,
+    "p99_ms_upper_bound": 14656,
+    "max_ms_upper_bound": 43236,
+    "resolution_ms": 1
+  },
+  "ack_latency": {
+    "samples": 11178,
+    "p50_ms_upper_bound": 69,
+    "p95_ms_upper_bound": 1327,
+    "p99_ms_upper_bound": 3795,
+    "max_ms_upper_bound": 14129,
+    "resolution_ms": 1
+  },
+  "durable_acknowledgements_checked": 11578,
+  "durable_missing_or_changed": 0,
+  "audit_errors": [],
+  "fault_requested": false,
+  "pinned_client_recovery_ms": null,
+  "sources": [
+    "docs/results/users-20k-soak-shared-repair-v2-shard0.json",
+    "docs/results/users-20k-soak-shared-repair-v2-shard1.json",
+    "docs/results/users-20k-soak-shared-repair-v2-shard2.json",
+    "docs/results/users-20k-soak-shared-repair-v2-shard3.json"
+  ],
+  "latency_basis": "Local monotonic durations in each process; merged 1ms histogram counts, not averaged percentiles. Missing deliveries remain errors.",
+  "overlap_basis": "Shared filesystem barrier and wall timestamps within the same Docker VM; wall timestamps are used only to verify concurrent windows, never to compute delivery latency."
+}

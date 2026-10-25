@@ -1,0 +1,11 @@
+{
+  "users": 20000,
+  "fault_requested": false,
+  "finished_at": "2026-10-25T18:41:35.9809679+00:00",
+  "error": "Cohort at offset 0 connected 4079/5000 users",
+  "diagnostics_exit_code": 0,
+  "status": "FAIL",
+  "shards": 4,
+  "global_aggregate_sends_per_second": 40,
+  "started_at": "2026-10-25T18:36:57.5566113+00:00"
+}

@@ -484,12 +484,17 @@ func TestBoundedQueueAndGracefulShutdown(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	left, right := netPipeWebSocket(t)
 	defer right.Close()
-	c := &session{conn: left, ctx: ctx, cancel: cancel, outbound: make(chan any, 1)}
+	c := &session{server: &Server{}, conn: left, ctx: ctx, cancel: cancel, outbound: make(chan any, 1)}
 	if !c.enqueue("one") || c.enqueue("two") || ctx.Err() == nil {
 		t.Fatal("full queue did not disconnect")
 	}
+	if c.server.diagnostics.queueFull.Load() != 1 {
+		t.Fatal("slow-consumer closure was not counted")
+	}
 	e := setup(t)
-	app, n := node(t, e, e.config)
+	cfg := e.config
+	cfg.LogDiagnostics = true
+	app, n := node(t, e, cfg)
 	conv := conversation(t, e)
 	live := connect(t, n.URL, e.tokens[0], map[string]string{conv.ID: "0"})
 	next(t, live, "read")

@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"net"
 	"net/http"
 	"sync"
 	"time"
@@ -37,6 +38,7 @@ func (c *session) enqueue(event any) bool {
 	case c.outbound <- event:
 		return true
 	default:
+		c.server.diagnostics.queueFull.Add(1)
 		c.stop()
 		return false
 	}
@@ -84,6 +86,7 @@ func (s *Server) acceptWebSocket(w http.ResponseWriter, r *http.Request, actor s
 	defer func() { s.mu.Lock(); s.slots--; s.mu.Unlock(); s.wg.Done() }()
 	ctx, cancel := context.WithTimeout(s.ctx, 2*time.Second)
 	id := uuid.NewString()
+	leaseDeadline := time.Now().Add(s.config.LeaseTTL)
 	err := s.leases.Touch(ctx, actor, id)
 	cancel()
 	if err != nil {
@@ -161,24 +164,36 @@ func (s *Server) acceptWebSocket(w http.ResponseWriter, r *http.Request, actor s
 	}
 	defer s.delivery.detach(c)
 	conn.SetWriteDeadline(time.Now().Add(s.config.WriteTimeout))
-	if conn.WriteJSON(map[string]string{"type": "resumed"}) != nil {
+	if conn.WriteJSON(map[string]any{"type": "resumed", "durable_reconciliation": true}) != nil {
 		return
 	}
-	conn.SetReadDeadline(time.Now().Add(s.config.LeaseTTL))
+	conn.SetReadDeadline(leaseDeadline)
 	conn.SetPongHandler(func(string) error {
+		nextDeadline := time.Now().Add(s.config.LeaseTTL)
 		ctx, cancel := context.WithTimeout(c.ctx, 2*time.Second)
 		defer cancel()
-		if err := s.leases.Touch(ctx, actor, id); err != nil {
-			return err
+		if err := s.renewLease(ctx, actor, id); err != nil {
+			s.diagnostics.recordLeaseError(err)
+			// A failed renewal does not invalidate the last successful lease.
+			// Keep its existing deadline; another pong may renew before expiry.
+			return nil
 		}
-		return conn.SetReadDeadline(time.Now().Add(s.config.LeaseTTL))
+		return conn.SetReadDeadline(nextDeadline)
 	})
 	var workers sync.WaitGroup
 	workers.Add(2)
 	go func() { defer workers.Done(); c.writeLoop() }()
 	go func() { defer workers.Done(); c.recoverLoop() }()
 	// This goroutine must keep reading to process pong and close control frames.
-	conn.ReadMessage() // Resume is the only application frame; control frames are handled while reading.
+	_, _, readErr := conn.ReadMessage() // Resume is the only application frame; control frames are handled while reading.
+	if c.ctx.Err() == nil {
+		var network net.Error
+		if errors.As(readErr, &network) && network.Timeout() {
+			s.diagnostics.readTimeout.Add(1)
+		} else {
+			s.diagnostics.readError.Add(1)
+		}
+	}
 	c.stop()
 	workers.Wait()
 }
@@ -198,10 +213,16 @@ func (c *session) writeLoop() {
 		case event := <-c.outbound:
 			c.conn.SetWriteDeadline(time.Now().Add(c.server.config.WriteTimeout))
 			if c.conn.WriteJSON(event) != nil {
+				if c.ctx.Err() == nil {
+					c.server.diagnostics.writeError.Add(1)
+				}
 				return
 			}
 		case <-ticker.C:
 			if c.conn.WriteControl(websocket.PingMessage, nil, time.Now().Add(c.server.config.WriteTimeout)) != nil {
+				if c.ctx.Err() == nil {
+					c.server.diagnostics.writeError.Add(1)
+				}
 				return
 			}
 		}
@@ -240,6 +261,7 @@ func (c *session) catchUp() bool {
 			page, err = c.server.store.History(ctx, c.actor, conversation, storage.HistoryQuery{After: &cursor, Limit: 100})
 			cancel()
 			if err != nil {
+				c.server.diagnostics.historyError.Add(1)
 				return false
 			}
 		}

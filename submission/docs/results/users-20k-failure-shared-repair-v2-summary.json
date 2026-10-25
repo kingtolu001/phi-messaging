@@ -1,0 +1,79 @@
+{
+  "clock_checks": [
+    {
+      "discontinuity": false,
+      "wall_seconds": 59.994049927,
+      "monotonic_seconds": 60.000838705
+    },
+    {
+      "discontinuity": false,
+      "wall_seconds": 59.994452421,
+      "monotonic_seconds": 60.001241299
+    },
+    {
+      "discontinuity": false,
+      "wall_seconds": 59.995151544,
+      "monotonic_seconds": 60.001940022
+    },
+    {
+      "discontinuity": false,
+      "wall_seconds": 59.99464638,
+      "monotonic_seconds": 60.001435358
+    }
+  ],
+  "passed": true,
+  "failures": [],
+  "distinct_recipient_users": 20000,
+  "shards": 4,
+  "recipients_with_measured_delivery": 20000,
+  "connected_at_measurement_start": 20000,
+  "global_aggregate_sends_per_second": 40,
+  "rate_scope": "sum of generator rates across workload; never per user",
+  "concurrent_measurement_overlap_seconds": 59.969,
+  "measurement_and_drain_seconds": 60.0322412109375,
+  "sum_of_per_shard_minimum_connections": 13505,
+  "expected_deliveries": 235248,
+  "received_deliveries": 235248,
+  "missing_deliveries": 0,
+  "missing_warmup_deliveries": 0,
+  "measured_acknowledged_messages": 2400,
+  "http_attempt_errors": 42,
+  "http_recovery_retries": 1977,
+  "connection_failures": 7435,
+  "connection_retries": 14081,
+  "unacknowledged_messages": 0,
+  "scheduler_drops": 0,
+  "duplicate_callbacks": 0,
+  "suppressed_duplicates": 5672,
+  "recipient_deliveries_per_second": 3918.69427585421,
+  "acknowledged_messages_per_second": 39.97851740312396,
+  "delivery_latency": {
+    "samples": 235248,
+    "p50_ms_upper_bound": 120,
+    "p95_ms_upper_bound": 9160,
+    "p99_ms_upper_bound": 14893,
+    "max_ms_upper_bound": 16993,
+    "resolution_ms": 1
+  },
+  "ack_latency": {
+    "samples": 2400,
+    "p50_ms_upper_bound": 24,
+    "p95_ms_upper_bound": 2298,
+    "p99_ms_upper_bound": 6044,
+    "max_ms_upper_bound": 11940,
+    "resolution_ms": 1
+  },
+  "durable_acknowledgements_checked": 2800,
+  "durable_missing_or_changed": 0,
+  "audit_errors": [],
+  "fault_requested": true,
+  "pinned_client_recovery_ms": 3271.401708,
+  "sources": [
+    "docs/results/users-20k-failure-shared-repair-v2-shard0.json",
+    "docs/results/users-20k-failure-shared-repair-v2-shard1.json",
+    "docs/results/users-20k-failure-shared-repair-v2-shard2.json",
+    "docs/results/users-20k-failure-shared-repair-v2-shard3.json"
+  ],
+  "latency_basis": "Local monotonic durations in each process; merged 1ms histogram counts, not averaged percentiles. Missing deliveries remain errors.",
+  "overlap_basis": "Shared filesystem barrier and wall timestamps within the same Docker VM; wall timestamps are used only to verify concurrent windows, never to compute delivery latency."
+}

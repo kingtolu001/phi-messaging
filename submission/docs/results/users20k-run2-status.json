@@ -1,0 +1,56 @@
+﻿{
+    "stages":  [
+                   {
+                       "database_statements_per_second_full_run":  307.57421770682663,
+                       "exit_code":  0,
+                       "full_run_seconds_monotonic":  74.8534782,
+                       "users":  300,
+                       "report":  "docs/results/users20k-run2-300.json",
+                       "reason":  "All generator assertions passed",
+                       "status":  "PASS",
+                       "aggregate_logical_sends_per_second":  8
+                   },
+                   {
+                       "database_statements_per_second_full_run":  734.74754372828011,
+                       "exit_code":  0,
+                       "full_run_seconds_monotonic":  77.237413699999991,
+                       "users":  1000,
+                       "report":  "docs/results/users20k-run2-1000.json",
+                       "reason":  "All generator assertions passed",
+                       "status":  "PASS",
+                       "aggregate_logical_sends_per_second":  22
+                   },
+                   {
+                       "database_statements_per_second_full_run":  1828.3073678156215,
+                       "exit_code":  0,
+                       "full_run_seconds_monotonic":  85.756368299999991,
+                       "users":  3000,
+                       "report":  "docs/results/users20k-run2-3000.json",
+                       "reason":  "All generator assertions passed",
+                       "status":  "PASS",
+                       "aggregate_logical_sends_per_second":  62
+                   },
+                   {
+                       "database_statements_per_second_full_run":  3156.9965369313386,
+                       "exit_code":  1,
+                       "full_run_seconds_monotonic":  131.81991019999998,
+                       "users":  10000,
+                       "report":  "docs/results/users20k-run2-10000.json",
+                       "reason":  "Not reached",
+                       "status":  "FAIL",
+                       "aggregate_logical_sends_per_second":  204
+                   },
+                   {
+                       "status":  "SKIPPED",
+                       "users":  20000,
+                       "reason":  "Not reached"
+                   }
+               ],
+    "started_at":  "2026-10-25T07:14:35.0395621+00:00",
+    "error":  "Distinct-user stage 10000 failed; larger stages remain skipped",
+    "finished_at":  "2026-10-25T07:23:20.2594159+00:00",
+    "docker_probe_output":  "28.5.2",
+    "target_distinct_recipient_users":  20000,
+    "status":  "FAIL",
+    "free_disk_bytes":  11055022080
+}

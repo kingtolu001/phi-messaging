@@ -17,38 +17,56 @@ type HistoryAudit struct {
 
 func Audit(ctx context.Context, r LoadReport) HistoryAudit {
 	a := HistoryAudit{}
-	readCtx, cancel := context.WithTimeout(ctx, 20*time.Second)
+	readCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
 	defer cancel()
-	var page []storage.Message
+	all := map[string]bool{}
+	for _, record := range r.Records {
+		id := record.Conversation
+		if id == "" {
+			id = r.Conversation
+		}
+		all[id] = true
+	}
+	if len(all) == 0 {
+		all[r.Conversation] = true
+	}
+	durable := map[string]storage.Message{}
 	var e error
 	api := NewAPI(r.Config.URL)
-	for attempt := 0; attempt < 5; attempt++ {
-		a.ReadAttempts++
-		page, e = api.History(readCtx, r.Conversation)
-		if e == nil {
-			break
+	defer api.HTTP.CloseIdleConnections()
+	for id := range all {
+		var page []storage.Message
+		for attempt := 0; attempt < 5; attempt++ {
+			a.ReadAttempts++
+			page, e = api.history(readCtx, id, aliceToken)
+			if e == nil {
+				break
+			}
+			select {
+			case <-readCtx.Done():
+				a.Error = e.Error()
+				return a
+			case <-time.After(time.Duration(100*(1<<attempt)) * time.Millisecond):
+			}
 		}
-		select {
-		case <-readCtx.Done():
+		if e != nil {
 			a.Error = e.Error()
 			return a
-		case <-time.After(time.Duration(100*(1<<attempt)) * time.Millisecond):
+		}
+		a.Rows += len(page)
+		for _, m := range page {
+			durable[m.ClientMessageID] = m
 		}
 	}
-	if e != nil {
-		a.Error = e.Error()
-		return a
-	}
-	a.Rows = len(page)
-	durable := map[string]int64{}
-	for _, m := range page {
-		durable[m.ClientMessageID] = m.Sequence
-	}
 	for _, rec := range r.Records {
-		sequence, exists := durable[rec.ID]
+		message, exists := durable[rec.ID]
 		if rec.Ack {
 			a.Acknowledged++
-			if !exists || sequence != rec.Sequence {
+			id := rec.Conversation
+			if id == "" {
+				id = r.Conversation
+			}
+			if !exists || message.Sequence != rec.Sequence || message.ConversationID != id {
 				a.MissingAcknowledged++
 			}
 		} else if exists {

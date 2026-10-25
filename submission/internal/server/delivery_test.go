@@ -52,6 +52,19 @@ func TestFeedAdmissionAndCleanupAreBounded(t *testing.T) {
 	}
 }
 
+func TestConfiguredFeedAdmissionIsAtomic(t *testing.T) {
+	h := &deliveryHub{server: &Server{config: Config{MaxDeliveryFeeds: 2}}, feeds: map[string]*conversationFeed{}, jobs: make(chan *conversationFeed, 2)}
+	one := &session{cursors: map[string]int64{"one": 0}, wake: make(chan struct{}, 1)}
+	tooMany := &session{cursors: map[string]int64{"two": 0, "three": 0}, wake: make(chan struct{}, 1)}
+	if !h.attach(one) || h.attach(tooMany) || len(h.feeds) != 1 {
+		t.Fatal("capacity check left partially attached subscriptions")
+	}
+	h.detach(one)
+	if !h.attach(tooMany) || len(h.feeds) != 2 {
+		t.Fatal("capacity was not released")
+	}
+}
+
 func TestSharedFeedTargetsHintsAndKeepsRemainingDevice(t *testing.T) {
 	e := setup(t)
 	cfg := e.config
@@ -130,6 +143,70 @@ func TestRecoveryCacheFallsBackAndChecksCurrentMembership(t *testing.T) {
 		t.Fatal(err)
 	}
 	request(t, node.URL, e.tokens[0], "GET", base+"?after=180", nil, 503, nil)
+}
+
+func TestTransientFeedReadTimeoutKeepsSocketAndRecovers(t *testing.T) {
+	e := setup(t)
+	cfg := e.config
+	cfg.PollInterval = 20 * time.Millisecond
+	app, node := node(t, e, cfg)
+	c := conversation(t, e)
+	reader := connect(t, node.URL, e.tokens[1], map[string]string{c.ID: "0"})
+	next(t, reader, "read")
+	next(t, reader, "read")
+	// Exhaust the real pool so a dispatcher read hits its operation deadline.
+	// Redis heartbeat renewal remains available independently of PostgreSQL.
+	e.db.SetMaxOpenConns(1)
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+	held, err := e.db.Conn(ctx)
+	cancel()
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer held.Close()
+	eventually(t, 7*time.Second, func() bool { return app.diagnostics.feedError.Load() > 0 })
+	app.mu.Lock()
+	active := len(app.sessions)
+	app.mu.Unlock()
+	if active != 1 {
+		t.Fatal("transient dispatcher timeout closed the authenticated socket")
+	}
+	snapshot := app.delivery.snapshot(c.ID)
+	if snapshot == nil || snapshot.Head != 0 || len(snapshot.Receipts) != 2 {
+		t.Fatal("lost the last committed snapshot")
+	}
+	if err = held.Close(); err != nil {
+		t.Fatal(err)
+	}
+	request(t, node.URL, e.tokens[0], "POST", "/v1/conversations/"+c.ID+"/messages", map[string]string{"client_message_id": uuid.NewString(), "body": "after transient pool timeout"}, 201, nil)
+	if message := next(t, reader, "message"); message.Sequence != 1 {
+		t.Fatal(message)
+	}
+}
+
+func TestMissingConversationStateStillClosesSocket(t *testing.T) {
+	e := setup(t)
+	cfg := e.config
+	cfg.PollInterval = time.Hour
+	app, node := node(t, e, cfg)
+	c := conversation(t, e)
+	reader := connect(t, node.URL, e.tokens[1], map[string]string{c.ID: "0"})
+	next(t, reader, "read")
+	next(t, reader, "read")
+	// A missing authoritative membership set is not a transient pool error.
+	if _, err := e.db.Exec("DELETE FROM members WHERE conversation_id=$1", c.ID); err != nil {
+		t.Fatal(err)
+	}
+	app.delivery.wake(c.ID)
+	eventually(t, 2*time.Second, func() bool { app.mu.Lock(); defer app.mu.Unlock(); return len(app.sessions) == 0 })
+	select {
+	case _, open := <-reader.events:
+		if open {
+			t.Fatal("socket remained readable after authoritative state disappeared")
+		}
+	case <-time.After(time.Second):
+		t.Fatal("missing membership did not close the socket")
+	}
 }
 
 func TestManyDevicesShareOnePeriodicReconciliation(t *testing.T) {

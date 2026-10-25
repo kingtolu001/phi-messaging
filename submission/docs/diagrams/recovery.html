@@ -5388,11 +5388,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         </g>
         </g>
 
-        <g data-edge-from="device" data-edge-to="lb" data-edge-label="Client 1 s HTTP catch-up also repairs gaps" data-edge-key="17" data-edge-id="client-poll">
+        <g data-edge-from="device" data-edge-to="lb" data-edge-label="HTTP gap repair; legacy periodic fallback" data-edge-key="17" data-edge-id="client-poll">
           <path data-composition-edge-from="device" data-composition-edge-to="lb" data-composition-edge-id="client-poll" data-composition-points="123.5,1280;393.1,1280" d="M 123.5 1280 L 393.1 1280" class="a-default" data-animate="edge" style="--step:12" stroke-width="1.4" marker-end="url(#arrowhead)"/>
         <g data-detail="context">
-          <rect x="113.70000000000002" y="1260" width="289.2" height="18" rx="3" class="c-mask"/>
-          <text x="258.3" y="1270" class="t-muted" font-size="11" text-anchor="middle">Client 1 s HTTP catch-up also repairs gaps</text>
+          <rect x="117.00000000000003" y="1260" width="282.59999999999997" height="18" rx="3" class="c-mask"/>
+          <text x="258.3" y="1270" class="t-muted" font-size="11" text-anchor="middle">HTTP gap repair; legacy periodic fallback</text>
         </g>
         </g>
 
@@ -5699,7 +5699,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           <li>Client owns reconnect, jitter, HTTP catch-up, duplicate suppression and processed cursors.</li>
           <li>Each surviving app owns shared-feed reconciliation and bounded WS delivery.</li>
           <li>Register/resume first, then HTTP catch-up: live/history overlap is expected.</li>
-          <li>Server and client both reconcile every second; neither needs every Redis hint.</li>
+          <li>Fixed subscriptions negotiate shared server repair; older servers retain HTTP polls.</li>
         </ul>
       </div>
 
@@ -5722,7 +5722,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           <h3>Multiple devices and failure limits</h3>
         </div>
         <ul>
-          <li>One 30 s Redis lease per connection; pongs renew after server pings every 10 s.</li>
+          <li>30 s per-connection leases; one bounded batch worker per node renews pongs.</li>
           <li>A killed node cannot clean up; expired leases are pruned on Redis presence operations.</li>
           <li>Other device leases keep the user online; last_seen is last observed activity.</li>
           <li>Cursor memory is not persisted by the sample client; restarting it can replay from zero.</li>

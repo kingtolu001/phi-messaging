@@ -1,0 +1,231 @@
+{
+  "review_date": "2026-10-24",
+  "basis": "Manual inspection of working files; whole-file SHA-256 drift detection",
+  "git_commit_verified": false,
+  "limitation": "Workspace has no Git repository. Native Git-pinned source evidence is unavailable.",
+  "files": [
+    {
+      "path": "compose.yaml",
+      "sha256": "99b11f5251c7ee543ad12408508a224fd1124ce820d2bf8e04d74c0554fa4cda",
+      "claim": "Three apps and single PostgreSQL, Redis and Nginx containers.",
+      "ranges": []
+    },
+    {
+      "path": "config/nginx.conf",
+      "sha256": "6575c8950d74aad144a60622edadca2d4574d20b77cfc2f1601e27c735caa087",
+      "claim": "HTTP/WS forwarding, round-robin upstream and no proxy POST retries.",
+      "ranges": []
+    },
+    {
+      "path": "cmd/server/main.go",
+      "sha256": "8ca200c9682cb232f586b36b7279adc06ea6c2f33dbb9477ae225e88e7239bc1",
+      "claim": "32 SQL connections; workers belong to app process; bounded shutdown.",
+      "ranges": [
+        {
+          "symbol": "func run(",
+          "line": 21,
+          "end_line": 88
+        }
+      ]
+    },
+    {
+      "path": "internal/server/server.go",
+      "sha256": "b7719fa34d0f40e73b7f9399c91cbe7f6674ee3dc242245a3d6ef0ef2fb6de89",
+      "claim": "One publisher/listener in each app, default limits and targeted hints.",
+      "ranges": [
+        {
+          "symbol": "func New(",
+          "line": 49,
+          "end_line": 95
+        },
+        {
+          "symbol": "func (s *Server) listen(",
+          "line": 110,
+          "end_line": 139
+        },
+        {
+          "symbol": "func (s *Server) publish(",
+          "line": 140,
+          "end_line": 163
+        }
+      ]
+    },
+    {
+      "path": "internal/server/delivery.go",
+      "sha256": "601318f663f298d38ba0ae53b38f97d3fa24a5903afc89b332433277eaeadf98",
+      "claim": "Four workers, one-second sweep, bounded shared tails and authorized HTTP fallback.",
+      "ranges": [
+        {
+          "symbol": "func newDeliveryHub(",
+          "line": 38,
+          "end_line": 60
+        },
+        {
+          "symbol": "func (h *deliveryHub) attach(",
+          "line": 87,
+          "end_line": 116
+        },
+        {
+          "symbol": "func (h *deliveryHub) refresh(",
+          "line": 149,
+          "end_line": 223
+        },
+        {
+          "symbol": "func (s *Server) recoveryPage(",
+          "line": 260,
+          "end_line": 270
+        }
+      ]
+    },
+    {
+      "path": "internal/server/websocket.go",
+      "sha256": "012933fa35a0f0660eb1e829e342407037cb53e13d3a2d550bd28c267ca56aaa",
+      "claim": "Membership before events, ready/resume/resumed, leases, queued cursor and ordered delivery.",
+      "ranges": [
+        {
+          "symbol": "func (c *session) enqueue(",
+          "line": 30,
+          "end_line": 43
+        },
+        {
+          "symbol": "func (s *Server) acceptWebSocket(",
+          "line": 61,
+          "end_line": 184
+        },
+        {
+          "symbol": "func (c *session) writeLoop(",
+          "line": 190,
+          "end_line": 209
+        },
+        {
+          "symbol": "func (c *session) catchUp(",
+          "line": 223,
+          "end_line": 283
+        }
+      ]
+    },
+    {
+      "path": "internal/server/http.go",
+      "sha256": "4ef7dd9eae13ed5d7acb49e73c940d20ca7e57c5d079b7d7fc5bf14f1eb61744",
+      "claim": "Bearer authentication, Send before success response, history and receipt endpoints.",
+      "ranges": [
+        {
+          "symbol": "func (s *Server) auth(",
+          "line": 109,
+          "end_line": 125
+        },
+        {
+          "symbol": "func (s *Server) routes(",
+          "line": 126,
+          "end_line": 291
+        }
+      ]
+    },
+    {
+      "path": "internal/storage/storage.go",
+      "sha256": "a62338f4de907e803b71623e126bc7fb6825bdc903d9e37816a7dc27945fa2f4",
+      "claim": "Conversation lock, idempotency, atomic message/head/outbox commit and monotonic reads.",
+      "ranges": [
+        {
+          "symbol": "func lockConversation(",
+          "line": 110,
+          "end_line": 123
+        },
+        {
+          "symbol": "func (s *Store) Send(",
+          "line": 145,
+          "end_line": 192
+        },
+        {
+          "symbol": "func (s *Store) MarkRead(",
+          "line": 285,
+          "end_line": 322
+        }
+      ]
+    },
+    {
+      "path": "internal/storage/delivery.go",
+      "sha256": "5734ea224886786c7f59f4d6c8838fd303d71602ff864b3793fffe8f3e51be0b",
+      "claim": "Fresh membership/head checks; SKIP LOCKED publish then mark in one transaction.",
+      "ranges": [
+        {
+          "symbol": "func (s *Store) Head(",
+          "line": 11,
+          "end_line": 23
+        },
+        {
+          "symbol": "func (s *Store) PublishNext(",
+          "line": 46,
+          "end_line": 71
+        }
+      ]
+    },
+    {
+      "path": "internal/storage/live.go",
+      "sha256": "01e119f6b7568c97fc146ac5eee6aacd1f2b74ec12d58836e18c115047ecd5db",
+      "claim": "Committed head/receipt snapshot and immutable message tail bounded by head.",
+      "ranges": [
+        {
+          "symbol": "func (s *Store) DeliveryState(",
+          "line": 14,
+          "end_line": 38
+        },
+        {
+          "symbol": "func (s *Store) DeliveryMessages(",
+          "line": 39,
+          "end_line": 57
+        }
+      ]
+    },
+    {
+      "path": "internal/client/client.go",
+      "sha256": "94fee36573919a132306d2be19afd64bc127a8c253587b89b4019be058dc2d8b",
+      "claim": "Device owns cursor, callback-before-advance, dedup, gap repair, HTTP polling and jittered reconnect.",
+      "ranges": [
+        {
+          "symbol": "func retryDelay(",
+          "line": 56,
+          "end_line": 59
+        },
+        {
+          "symbol": "func (c *Client) Accept(",
+          "line": 60,
+          "end_line": 78
+        },
+        {
+          "symbol": "func (c *Client) Recover(",
+          "line": 122,
+          "end_line": 147
+        },
+        {
+          "symbol": "func (c *Client) Run(",
+          "line": 148,
+          "end_line": 211
+        },
+        {
+          "symbol": "func (c *Client) once(",
+          "line": 212,
+          "end_line": 355
+        }
+      ]
+    },
+    {
+      "path": "internal/realtime/presence.go",
+      "sha256": "eb6580ae0882fee954a4e64a544616466ad0f3d6ab88af429621f463d5115c27",
+      "claim": "Redis TIME and Lua prune per-connection leases on presence operations.",
+      "ranges": [
+        {
+          "symbol": "func (l Leases) apply(",
+          "line": 37,
+          "end_line": 53
+        }
+      ]
+    },
+    {
+      "path": "migrations/001_initial.sql",
+      "sha256": "c5c32a891f7d0d093871c25ebfc9f72c021a02b91ca5d9a87986116bd1ae5367",
+      "claim": "Authoritative tables, ordering and sender/client-ID uniqueness.",
+      "ranges": []
+    }
+  ]
+}

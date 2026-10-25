@@ -5564,7 +5564,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           <h3>Inside EACH Go process</h3>
         </div>
         <ul>
-          <li>One outbox publisher and one Redis subscription listener.</li>
+          <li>One outbox publisher, Redis listener and bounded lease-batch worker.</li>
           <li>Four shared-feed refresh workers; one 1 s durable sweep.</li>
           <li>Authenticated HTTP handlers; per-socket reader, writer and catch-up.</li>
           <li>Workers are goroutines inside app1, app2 and app3, not another service.</li>
@@ -5578,8 +5578,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         </div>
         <ul>
           <li>Device owns its last successfully processed contiguous cursor.</li>
-          <li>Client: initial/gap/1 s HTTP catch-up and capped jittered reconnect.</li>
-          <li>Server: shared committed tail and receipt reconciliation every 1 s.</li>
+          <li>Client: HTTP initial/reconnect/gap repair; capped jittered reconnect.</li>
+          <li>Server: 1 s durable sweep; fixed subscriptions share repair after negotiation.</li>
           <li>Replies and WS events return through Nginx; no direct device-to-store access.</li>
         </ul>
       </div>
@@ -5587,7 +5587,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       <div class="card">
         <div class="card-header">
           <div class="card-dot amber"></div>
-          <h3>Bounds and authorization</h3>
+          <h3>Default profile bounds and authorization</h3>
         </div>
         <ul>
           <li>Each app: 32 SQL connections, 1,000 sockets, 100 handshake attempts/s.</li>
@@ -5619,7 +5619,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <ul>
           <li>Arrows show ingress and dependencies; Go replicas are grouped because they run identical code.</li>
           <li>Code-inspected working files; implementation-evidence.json records paths, ranges and SHA-256 hashes.</li>
-          <li>No Git snapshot exists: Archify commit-pinned source verification is not claimed.</li>
+          <li>Uncommitted working-file review; Git-pinned source verification is not claimed.</li>
+          <li>Scale profile overrides: 12,000 sockets, 512 feeds, 500 handshakes/s per app.</li>
         </ul>
       </div>
     </div>

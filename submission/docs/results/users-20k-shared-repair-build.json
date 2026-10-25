@@ -1,0 +1,68 @@
+{
+  "app_images": [
+    "[phi-messaging-app1:latest] sha256:5df1e597686152f833136856b5380144f348465909e27665b8e2bd65433e4a76",
+    "[phi-messaging-app2:latest] sha256:db90fe2bc158ababe928d867fb22985e40055f217945c84559f40b2e5f745e7a",
+    "[phi-messaging-app3:latest] sha256:e774606200df57da0e7b69af397fec70cd64d13b29b36b2521d2e2962470f1a0"
+  ],
+  "sources": [
+    {
+      "path": "cmd/server/main.go",
+      "sha256": "5d8dd54ff40eea2483bcbb8cd398d78eddb813236bc57041b65ae5b1e70ce437"
+    },
+    {
+      "path": "cmd/exercise/main.go",
+      "sha256": "2bc534a97b8c8fd985da9ba900e58e97b3c820c23e403e1a6133b3a4d9051cbe"
+    },
+    {
+      "path": "internal/client/client.go",
+      "sha256": "6c8d068942c1d912c781ea0620fbe4bce9ded09d9e10d5179fa8a43f03d01476"
+    },
+    {
+      "path": "internal/server/server.go",
+      "sha256": "a4a9490c4f8a4664ae50abc0ece09ce8700851ef167f78a41c74686119b8866f"
+    },
+    {
+      "path": "internal/server/websocket.go",
+      "sha256": "8647f0c3cc0bc74a76fc75cc759697dd3cd6d2cabddc9ff15ab72c56d2495c97"
+    },
+    {
+      "path": "internal/server/delivery.go",
+      "sha256": "cd0095cfb405f2a53188e772d5e84a7b212d64183f2c834ca2b1f8a2bc80af73"
+    },
+    {
+      "path": "internal/server/renewals.go",
+      "sha256": "11d5a29388d30f04a7592671f6446da4390bd6cc21d9853e082c63c81e4cc0d8"
+    },
+    {
+      "path": "internal/server/diagnostics.go",
+      "sha256": "1922edb9d2355a6614d086cd5d95d48c4342489192a9912352d30ce4602a3b6b"
+    },
+    {
+      "path": "internal/realtime/presence.go",
+      "sha256": "fd471b3b74dc9f77f5ad85bd78877dc9aeb0806147f6e9db4e6ae52a2415e8b8"
+    },
+    {
+      "path": "internal/exercise/load.go",
+      "sha256": "6eddbe543b71f3a4c28510bf899f319699725a5b6d30f80a82447aa6522d8537"
+    },
+    {
+      "path": "compose.yaml",
+      "sha256": "99b11f5251c7ee543ad12408508a224fd1124ce820d2bf8e04d74c0554fa4cda"
+    },
+    {
+      "path": "compose.scale.yaml",
+      "sha256": "b336020db297ff6da1319da33f79ceb198415ef33c94e31c7d1d598f2940eba2"
+    },
+    {
+      "path": "config/nginx.scale.conf",
+      "sha256": "334b99eb2ac2d3b0756947eefbbe5c0e4269770f17fc8aa35929d1a2215da0ac"
+    },
+    {
+      "path": "scripts/users-sharded.ps1",
+      "sha256": "f73fd7a1ba8506ce0a9f3a07ec649af1d5827d819188cb77cd246cd2917cfd0e"
+    }
+  ],
+  "recorded_at": "2026-10-25T19:13:40.5927031+00:00",
+  "driver_sha256": "8fac40c64100e8b1f042d227162d940d245f5d4b0a003afaf6f77cc24a7d3ca7",
+  "basis": "Uncommitted working files; not a Git-pinned source verification"
+}
